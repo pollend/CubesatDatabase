@@ -2,8 +2,18 @@
     <head>
         <title>Digital Astronautics - @yield('title')</title>
 
-        <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
-        <script src="{{ URL::asset('js/all.js') }}"></script>
+        @push('scripts')
+            <script src="{{ URL::asset('js/all.js') }}"></script>
+        @endpush
+        
+        @push('css')
+            <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
+        @endpush
+
+
+        @stack('scripts')
+        @stack('css')
+
     </head>
     <body>
         <div class="Wrapper" >

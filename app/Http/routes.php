@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+
+Route::resource('satellite', 'SatelliteController');
+Route::resource('satellite/{id}/single', 'SatelliteController@single');
+Route::resource('satellite/{id}/modify', 'SatelliteController@modify');
+Route::resource('satellite/{id}/history', 'SatelliteController@history');
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
