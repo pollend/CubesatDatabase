@@ -13,4 +13,8 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+    mix.copy('node_modules/angular/angular.min.js','resources/assets/js/').
+    copy('node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js','resources/assets/js/').
+    copy('node_modules/jquery/dist/jquery.min.js','resources/assets/js/').
+    scripts(['jquery.min.js','angular.min.js','bootstrap.min.js']);
 });
