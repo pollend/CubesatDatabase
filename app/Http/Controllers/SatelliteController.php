@@ -16,7 +16,7 @@ class SatelliteController extends Controller
      */
     public function index(Request $request)
     {
-        return view('list.satellite');
+        return view('database_list.satellite');
     }
 
     public function single($id)

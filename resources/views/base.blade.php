@@ -1,18 +1,14 @@
-<html>
+
+
+<html ng-app="app">
     <head>
         <title>Digital Astronautics - @yield('title')</title>
 
-        @push('scripts')
-            <script src="{{ URL::asset('js/all.js') }}"></script>
-        @endpush
-        
-        @push('css')
-            <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
-        @endpush
+        <script src="{{ URL::asset('js/all.js') }}"></script>
+        <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
 
-
-        @stack('scripts')
-        @stack('css')
+        @stack('script-head')
+        @stack('css-head')
 
     </head>
     <body>

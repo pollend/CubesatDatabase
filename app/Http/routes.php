@@ -22,6 +22,29 @@ Route::resource('satellite/{id}/modify', 'SatelliteController@modify');
 Route::resource('satellite/{id}/history', 'SatelliteController@history');
 
 
+Route::resource('component', 'ComponentController');
+Route::resource('component/{id}/single', 'ComponentController@single');
+Route::resource('component/{id}/modify', 'ComponentController@modify');
+Route::resource('component/{id}/history', 'ComponentController@history');
+
+
+Route::resource('vendor', 'VendorController');
+Route::resource('vendor/{id}/single', 'VendorController@single');
+Route::resource('vendor/{id}/modify', 'VendorController@modify');
+Route::resource('vendor/{id}/history', 'VendorController@history');
+
+
+Route::resource('mission', 'MissionController');
+Route::resource('mission/{id}/single', 'MissionController@single');
+Route::resource('mission/{id}/modify', 'MissionController@modify');
+Route::resource('mission/{id}/history', 'MissionController@history');
+
+Route::resource('spaceport', 'SpaceportController');
+Route::resource('spaceport/{id}/single', 'SpaceportController@single');
+Route::resource('spaceport/{id}/modify', 'SpaceportController@modify');
+Route::resource('spaceport/{id}/history', 'SpaceportController@history');
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
