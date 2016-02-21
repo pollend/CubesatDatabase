@@ -16,14 +16,14 @@
 			<div class="search-input">
 				<div class="row">
 					<div class="col-md-2 left">
-					  <select ng-model="satellite.sat_column" name="sat_column">    
+					  <select ng-model="search_area.sat_column" name="sat_column">    
 							<option value="" >Name</option>
-							<option value="Orbit">Orbit</option>
-							<option value="TLE" >TLE</option>
+							<option value="orbit">Orbit</option>
+							<option value="tle" >TLE</option>
 						</select>
 					</div>
 					<div class="col-md-10 right">
-					  <input type="text" name="search" placeholder="search" ng-model="satellite.search"></input>
+					  <input type="text" name="search" placeholder="search" ng-model="search_area.search"></input>
 					</div>
 				</div>
 			</div>
@@ -31,8 +31,8 @@
 		<div class="form-group">
 			<label >Status:</label>
 			<div>
-				<select ng-model="satellite.sat_status" name="sat_status">
-					<option value="">All</option>
+				<select ng-model="search_area.sat_status" name="sat_status">
+					<option value="">all</option>
 					<option value="active" >active</option>
 					<option value="in-orbit" >in-orbit</option>
 					<option value="in-development" >in-development</option>
@@ -62,13 +62,15 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="satellite in satellites">
-			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.id}}</a></td>
-			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.name}}</a></td>
-			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.status}}</a></td>
-			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.orbit}}</a></td>
+			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.id}}</a></td>
+			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.name}}</a></td>
+			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.status}}</a></td>
+			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.orbit}}</a></td>
 		</tr>
 
 	</tbody>
 </table>
+
+<uib-pagination total-items="totalItems" ng-model="current_page" ng-change="pageChanged()"></uib-pagination>
 </div>
 @endsection

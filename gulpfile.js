@@ -20,5 +20,7 @@ elixir(function(mix) {
     copy('node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js','resources/assets/js/').
     scripts(['jquery.min.js','angular.min.js','bootstrap.min.js','ui-bootstrap.js']);
 
+   	mix.copy('node_modules/angular-ui-bootstrap/template','public/uib/template');
+
     mix.scripts(['controllers/app.js','controllers/satelliteController.js'],'public/js/satelliteController.js');
 });

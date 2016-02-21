@@ -16,8 +16,26 @@ class SatelliteAPIController extends Controller
      */
     public function index(Request $request)
     {
-        $satellites = \App\Satellite::select('id','name','COSPAR','status','tle','orbit')->paginate(15);
-        return $satellites->toArray();
+       return \App\Satellite::select('id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request)
+        {
+            if($request->has("search"))
+            {
+                if($request->has("column"))
+                {
+                   $query->where($request->input("column"),"LIKE","%".$request->input("search")."%");
+
+                }
+                else
+                {
+                    $query->where("name","LIKE","%".$request->input("search")."%");
+                }
+            }
+            if($request->has("status"))
+            {
+                 $query->where("status",$request->input("search"));
+            }
+        })->paginate(15)->toArray();
+
     }
 
     /**
@@ -49,7 +67,7 @@ class SatelliteAPIController extends Controller
      */
     public function show($id)
     {
-        //
+       return \App\Satellite::where("id","=",$id)->firstOrFail()->toJson();
     }
 
     /**
