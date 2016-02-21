@@ -1,7 +1,3 @@
-var app = angular.module('app',['ui.bootstrap'])
-.config(["$locationProvider", function($locationProvider) {
-    $locationProvider.html5Mode(true);
-}])
 app.controller('database_list',function($scope,$location,$http)
 {
 	$scope.satellites = {};
@@ -65,4 +61,3 @@ app.controller('database_history',function($scope,$location)
 	
 	});
 });
-//# sourceMappingURL=satelliteController.js.map

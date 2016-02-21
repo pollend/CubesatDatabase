@@ -2,6 +2,11 @@
 
 @section('title', 'Home')
 
+@push('script-head')
+	<script src="{{ URL::asset('js/satelliteController.js') }}"></script>
+@endpush
+
+
 
 @section('search_area')
 	
@@ -11,14 +16,14 @@
 			<div class="search-input">
 				<div class="row">
 					<div class="col-md-2 left">
-					  <select name="sat_column">    
-							<option value="Name" {{Request::input('sat_column') == 'Name' ? 'selected' : ''}}>Name</option>
-							<option value="Orbit"{{Request::input('sat_column') == 'Orbit' ? 'selected' : ''}}>Orbit</option>
-							<option value="TLE" {{Request::input('sat_column') == 'TLE' ? 'selected' : ''}}>TLE</option>
+					  <select ng-model="satellite.sat_column" name="sat_column">    
+							<option value="" >Name</option>
+							<option value="Orbit">Orbit</option>
+							<option value="TLE" >TLE</option>
 						</select>
 					</div>
 					<div class="col-md-10 right">
-					  <input type="text" name="search" placeholder="search" value="{{Request::input('search')}}"></input>
+					  <input type="text" name="search" placeholder="search" ng-model="satellite.search"></input>
 					</div>
 				</div>
 			</div>
@@ -26,16 +31,16 @@
 		<div class="form-group">
 			<label >Status:</label>
 			<div>
-				<select name="sat_status">
-					<option value="all" {{Request::input('sat_status') == 'all' ? 'selected' : ''}}>All</option>
-					<option value="active" {{Request::input('sat_status') == 'active' ? 'selected' : ''}} >active</option>
-					<option value="in-orbit" {{Request::input('sat_status') == 'in-orbit' ? 'selected' : ''}}>in-orbit</option>
-					<option value="in-development" {{Request::input('sat_status') == 'in-development' ? 'selected' : ''}}>in-development</option>
-					<option value="data-collection"{{Request::input('sat_status') == 'data-collection' ? 'selected' : ''}} >data-collection</option>
-					<option value="data-analysis" {{Request::input('sat_status') == 'data-analysis' ? 'selected' : ''}} >data-analysis</option>
-					<option value="inactive" {{Request::input('sat_status') == 'inactive' ? 'selected' : ''}}>inactive</option>
-					<option value="de-orbited" {{Request::input('sat_status') == 'de-orbited' ? 'selected' : ''}}>de-orbited</option>
-					<option value="entry-closed" {{Request::input('sat_status') == 'entry-closed' ? 'selected' : ''}}>entry-closed</option>
+				<select ng-model="satellite.sat_status" name="sat_status">
+					<option value="">All</option>
+					<option value="active" >active</option>
+					<option value="in-orbit" >in-orbit</option>
+					<option value="in-development" >in-development</option>
+					<option value="data-collection">data-collection</option>
+					<option value="data-analysis" >data-analysis</option>
+					<option value="inactive" >inactive</option>
+					<option value="de-orbited" >de-orbited</option>
+					<option value="entry-closed" >entry-closed</option>
 				</select>
 			</div>
 		</div>
@@ -44,5 +49,26 @@
 @endsection
 
 @section('list')
-    <p>This is my body content.</p>
+
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Name</td>
+			<td>Status</td>
+			<td>Orbit</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="satellite in satellites">
+			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.id}}</a></td>
+			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.name}}</a></td>
+			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.status}}</a></td>
+			<td><a href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.orbit}}</a></td>
+		</tr>
+
+	</tbody>
+</table>
+</div>
 @endsection

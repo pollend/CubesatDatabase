@@ -2,6 +2,7 @@
 
 <html ng-app="app">
     <head>
+        <base href="/">
         <title>Digital Astronautics - @yield('title')</title>
 
         <script src="{{ URL::asset('js/all.js') }}"></script>

@@ -19,3 +19,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Satellite::class, function (Faker\Generator $faker) {
+    return [
+		'name' => str_random(10),
+		'content' => str_random(100),
+		'COSPAR' => str_random(10),
+		'wiki' => str_random(10),
+		'status' => str_random(10),
+		'tle' => str_random(10),
+		'orbit' => str_random(10)
+    ];
+});
