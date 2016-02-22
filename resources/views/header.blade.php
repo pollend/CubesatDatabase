@@ -12,20 +12,20 @@ $pages = array(
 <nav  class="navbar navbar-default" id="top-header" role="navigation">
   <div class="container-fluid center_container">
 		<div class="nav navbar-nav navbar-left ">
-			 <a class="navbar-brand" href="#">Digital Astronautics</a>
+			 <a target="_self" class="navbar-brand" href="#">Digital Astronautics</a>
 	 	</div>
 	 	<ul class="nav navbar-nav navbar-right">
 	 		@foreach($pages as $page)
 	 			@if(isset($page['sub_menu']))
 					<li>
-						<a id="{{ $page['page_name'] }}"  data-toggle="dropdown" class="dropdown-toggle" href="{{ url($page['page-id']) }}">
+						<a target="_self" id="{{ $page['page_name'] }}"  data-toggle="dropdown" class="dropdown-toggle" href="{{ url($page['page-id']) }}">
 							{{ $page['page_name'] }} <span class="caret"></span>
 						</a> 
 						<ul class="dropdown-menu" >
 							@foreach($page['sub_menu'] as $sub_menu)
 
 								<li>
-									<a id="{{ $sub_menu['page_name'] }}" href="{{ url($sub_menu['page-id']) }}">
+									<a target="_self" id="{{ $sub_menu['page_name'] }}" href="{{ url($sub_menu['page-id']) }}">
 										{{ $sub_menu['page_name'] }}
 									</a>
 								</li>
@@ -35,7 +35,7 @@ $pages = array(
 					</li>
 	 			@else
 	 				<li>
-						<a id="{{ $page['page_name'] }}" href="">
+						<a target="_self" id="{{ $page['page_name'] }}" href="">
 							{{ $page['page_name'] }}
 						</a>
 					</li>

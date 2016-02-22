@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('satellite/', 'SatelliteController@index');
-Route::get('satellite/{id}/single', 'SatelliteController@single');
+Route::get('satellite/', 'SatelliteController@home');
+Route::get('satellite/{id}', 'SatelliteController@single');
 Route::get('satellite/{id}/modify', 'SatelliteController@modify');
 Route::get('satellite/{id}/history', 'SatelliteController@history');
-Route::resource('api/satellites', 'SatelliteAPIController');
+Route::resource('api/satellites', 'SatelliteController');
 
 Route::get('component/', 'ComponentController@index');
 Route::get('component/{id}/single', 'ComponentController@single');
@@ -29,18 +29,18 @@ Route::get('component/{id}/history', 'ComponentController@history');
 
 
 Route::get('vendor/', 'VendorController@index');
-Route::get('vendor/{id}/single', 'VendorController@single');
+Route::get('vendor/{id}', 'VendorController@single');
 Route::get('vendor/{id}/modify', 'VendorController@modify');
 Route::get('vendor/{id}/history', 'VendorController@history');
 
 
 Route::get('mission/', 'MissionController@index');
-Route::get('mission/{id}/single', 'MissionController@single');
+Route::get('mission/{id}', 'MissionController@single');
 Route::get('mission/{id}/modify', 'MissionController@modify');
 Route::get('mission/{id}/history', 'MissionController@history');
 
 Route::get('spaceport/', 'SpaceportController@index');
-Route::get('spaceport/{id}/single', 'SpaceportController@single');
+Route::get('spaceport/{id}', 'SpaceportController@single');
 Route::get('spaceport/{id}/modify', 'SpaceportController@modify');
 Route::get('spaceport/{id}/history', 'SpaceportController@history');
 

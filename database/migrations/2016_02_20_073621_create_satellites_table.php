@@ -16,10 +16,10 @@ class CreateSatellitesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string("name");
-            $table->string("content");
+            $table->binary("content");
             $table->string("COSPAR");
             $table->string("wiki");
-            $table->string("status");
+            $table->enum("status",array("active","in-orbit","in-development","data-collection","data-analysis","inactive","de-orbited","entry-closed"));
             $table->string("tle");
             $table->string("orbit");
         });

@@ -56,14 +56,17 @@
 		<tr>
 			<td>#</td>
 			<td>Name</td>
+			<td>TLE</td>
 			<td>Status</td>
 			<td>Orbit</td>
+
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="satellite in satellites">
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.id}}</a></td>
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.name}}</a></td>
+			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.tle}}</a></td>	
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.status}}</a></td>
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.orbit}}</a></td>
 		</tr>

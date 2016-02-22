@@ -57,29 +57,24 @@ app.controller('database_list',function($scope,$location,$http,$httpParamSeriali
 });
 
 
-app.controller('database_single',function($scope,$location)
+app.controller('database_single',function($scope,$location,$http)
 {
-	$http.get({method:'GET',url:'/api/satellite'}).then(function success(response) {
+		$http({
+			method: "GET",
+			url:'/api/satellites/' + $location.path().split("/")[2]}).then(
+		function success(response) {
+			$scope.satellite = response.data
+		},function error(response) {
 		
-	},function error(response) {
-	
-	});
+		});
 });
 
 app.controller('database_modify',function($scope,$location)
 {
-	$http.get({method:'GET',url:'/api/satellite'}).then(function success(response) {
-		
-	},function error(response) {
-	
-	});
+
 });
 
 app.controller('database_history',function($scope,$location)
 {
-	$http.get({method:'GET',url:'/api/satellite'}).then(function success(response) {
-		
-	},function error(response) {
-	
-	});
+
 });
