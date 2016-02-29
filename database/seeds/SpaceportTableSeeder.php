@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class SpaceportTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(SatelliteTableSeeder::class);
-        $this->call(SpaceportTableSeeder::class);
+        factory(App\Spaceport::class, 50)->create()->each(function($u) {});
     }
 }

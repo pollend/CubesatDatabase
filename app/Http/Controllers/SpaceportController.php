@@ -14,9 +14,17 @@ class SpaceportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('database_list.spaceport');
+        return \App\Spaceport::select('id','latlong','url_website','url_googlemap','address1','address2','name','state','country','city','zip')->where(function($query) use ($request)
+        {
+            if($request->has("search"))
+            {
+               $query->where("name","LIKE","%".$request->input("search")."%");
+            }
+
+        })->paginate(15)->toArray();
+
     }
 
     /**
@@ -48,7 +56,7 @@ class SpaceportController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Spaceport::where("id","=",$id)->firstOrFail()->toJson();
     }
 
     /**
@@ -84,4 +92,23 @@ class SpaceportController extends Controller
     {
         //
     }
+
+    public function home(Request $request)
+    {
+        return view('database_list.spaceport');
+    }
+
+    public function single($id)
+    {
+         return view('database_view.spaceport',['controller' => "SpaceportController",'page' => 'single','id' => $id]);
+    }
+    public function modify($id)
+    {
+        return view('database_view.spaceport',['controller' => "SpaceportController",'page' => 'modify','id' => $id]);
+    }
+    public function history($id)
+    {
+       return view('database_view.spaceport',['controller' => "SpaceportController",'page' => 'history','id' => $id]);
+    }
+
 }

@@ -32,3 +32,24 @@ $factory->define(App\Satellite::class, function (Faker\Generator $faker) {
 		'orbit' => str_random(10)
     ];
 });
+
+
+$factory->define(App\Spaceport::class, function (Faker\Generator $faker) {
+    return [
+        'latlong' => str_random(10),
+        'url_website' => str_random(10),
+        'description' => str_random(10),
+        'url_googlemap' => str_random(10),
+        'address1' => str_random(10),
+        'address2' => str_random(10),
+        'name' => str_random(10),
+        'state' => str_random(10),
+        'country' => str_random(10),
+        'city' => str_random(10),
+        'zip' => str_random(10)
+    ];
+});
+
+
+
+

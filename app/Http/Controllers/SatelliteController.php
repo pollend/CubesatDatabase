@@ -112,15 +112,15 @@ class SatelliteController extends Controller
 
     public function single($id)
     {
-         return view('database_view.satellite',['page' => 'single','id' => $id]);
+         return view('database_view.satellite',['controller' => "SatelliteController",'page' => 'single','id' => $id]);
     }
     public function modify($id)
     {
-        return view('database_view.satellite',['page' => 'modify','id' => $id]);
+        return view('database_view.satellite',['controller' => "SatelliteController",'page' => 'modify','id' => $id]);
     }
     public function history($id)
     {
-       return view('database_view.satellite',['page' => 'history','id' => $id]);
+       return view('database_view.satellite',['controller' => "SatelliteController",'page' => 'history','id' => $id]);
     }
 
     

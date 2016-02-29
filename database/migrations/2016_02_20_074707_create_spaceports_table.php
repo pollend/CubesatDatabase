@@ -16,7 +16,7 @@ class CreateSpaceportsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string("latlong");
-            $table->string("url");
+            $table->string("url_website");
             $table->string("description");
             $table->string("url_googlemap");
             $table->string("address1");

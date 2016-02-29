@@ -1,6 +1,6 @@
 app.controller('database_list',function($scope,$location,$http,$httpParamSerializer)
 {
-	$scope.satellites = {};
+	$scope.spaceports = {};
 	$scope.data= {};
 	$scope.search_area ={};
 	$scope.$watchCollection('data',function(newValue,oldValue)
@@ -26,8 +26,6 @@ app.controller('database_list',function($scope,$location,$http,$httpParamSeriali
 	$scope.submit =  function()
 	{
 		$scope.data["search"] = $scope.search_area["search"];
-		$scope.data["column"] = $scope.search_area["sat_column"];
-		$scope.data["status"] = $scope.search_area["sat_status"];
 		$scope.update_table();
 	}
 
@@ -41,9 +39,9 @@ app.controller('database_list',function($scope,$location,$http,$httpParamSeriali
 	{
 		$http({
 			method: "GET",
-			url:'/api/satellite?' + $httpParamSerializer($scope.data)}).then(
+			url:'/api/spaceport?' + $httpParamSerializer($scope.data)}).then(
 		function success(response) {
-			$scope.satellites = response.data.data;
+			$scope.spaceports = response.data.data;
 			$scope.totalItems =  response.data.total;
 			$scope.current_page = response.data.current_page;
 		},function error(response) {
@@ -56,14 +54,13 @@ app.controller('database_list',function($scope,$location,$http,$httpParamSeriali
 
 });
 
-
 app.controller('database_single',function($scope,$location,$http)
 {
 		$http({
 			method: "GET",
-			url:'/api/satellite/' + $location.path().split("/")[2]}).then(
+			url:'/api/spaceport/' + $location.path().split("/")[2]}).then(
 		function success(response) {
-			$scope.satellite = response.data
+			$scope.spaceport = response.data
 		},function error(response) {
 		
 		});

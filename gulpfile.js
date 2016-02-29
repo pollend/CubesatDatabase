@@ -23,4 +23,6 @@ elixir(function(mix) {
    	mix.copy('node_modules/angular-ui-bootstrap/template','public/uib/template');
 
     mix.scripts(['controllers/app.js','controllers/satelliteController.js'],'public/js/satelliteController.js');
+    mix.scripts(['controllers/app.js','controllers/spaceportController.js'],'public/js/spaceportController.js');
+
 });
