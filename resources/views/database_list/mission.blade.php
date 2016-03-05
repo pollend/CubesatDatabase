@@ -23,5 +23,25 @@
 @endsection
 
 @section('list')
-    <p>This is my body content.</p>
+    <div class="table-responsive">
+	<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Name</td>
+			<td>Objective</td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach ($missions as $mission)
+			<tr>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$mission->id}}">{{$mission->id}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$mission->id}}">{{$mission->name}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$mission->id}}">{{$mission->objective}}</a></td>	
+			</tr>
+		@endforeach
+
+	</tbody>
+</table>
+{{$missions->render()}}
 @endsection

@@ -15,12 +15,12 @@
 		<div class="search-input">
 			<div class="row">
 				<div class="col-md-2 left">
-				  <select name="sat_column">    
+				  <select name="column">    
 						<option value="">Name</option>
 					</select>
 				</div>
 				<div class="col-md-10 right">
-				  <input type="text" name="search" ng-model="search_area.search" placeholder="search"></input>
+				  <input type="text" name="search" value="{{Request::input("search")}}" placeholder="search"></input>
 				</div>
 			</div>
 		</div>
@@ -41,18 +41,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="spaceport in spaceports">
-					<td><a target="_self" href="{{url('/spaceport/')}}/@{{spaceport.id}}">@{{spaceport.id}}</a></td>
-					<td><a target="_self" href="{{url('/spaceport/')}}/@{{spaceport.id}}">@{{spaceport.name}}</a></td>
-					<td><a target="_self" href="{{url('/spaceport/')}}/@{{spaceport.id}}">@{{spaceport.country}}</a></td>
-					<td><a target="_self" href="{{url('/spaceport/')}}/@{{spaceport.id}}">@{{spaceport.state}}</a></td>	
-					<td><a target="_self" href="{{url('/spaceport/')}}/@{{spaceport.id}}">@{{spaceport.city}}</a></td>
-					<td><a target="_self" href="{{url('/spaceport/')}}/@{{spaceport.id}}">@{{spaceport.zip}}</a></td>
-				</tr>
+
+				@foreach ($spaceports as $spaceport)
+					<tr>
+						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->id}}</a></td>
+						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->name}}</a></td>
+						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->country}}</a></td>
+						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->state}}</a></td>
+						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->city}}</a></td>
+						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->zip}}</a></td>
+					</tr>
+				@endforeach
 
 			</tbody>
 		</table>
 
-		<uib-pagination total-items="totalItems" ng-model="current_page" ng-change="pageChanged()"></uib-pagination>
+		{{$spaceports->render()}}
 	</div>
 @endsection

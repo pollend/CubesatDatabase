@@ -9,20 +9,20 @@
 
 @section('single')
 
-		<h1>@{{spaceport.name}}</h1>
+		<h1>{{$spaceport->name}}</h1>
 		<h2>Lat Long</h2>
-		@{{spaceport.latlong}}
+		{{$spaceport->latlong}}
 		<h2>Description:</h2>
-		@{{spaceport.description}}
+		{{$spaceport->description}}
 		<h2>Address:</h2>
 		<address>
-			@{{spaceport.address1}}
-			@{{spaceport.address2}}
-			@{{spaceport.city}}
-			@{{spaceport.country}}
+			{{$spaceport->address1}}
+			{{$spaceport->address2}}
+			{{$spaceport->city}}
+			{{$spaceport->country}}
 		</address>
 
-		@{{spaceport.content}}
+		{{$spaceport->content}}
 @endsection
 
 

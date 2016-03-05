@@ -5,21 +5,10 @@
 
 
 @section('single')
-
-		<h1>{{$sat->name}} <small> {{$sat->status}}</small></h1>
-
-		<p><font size="+1">COSPAR: </font> {{$sat->COSPAR}}</p>
-
-
-		<h2>Parts</h2>
-
-		<ul>
-			<li ng-repeat="satellite in satellite.parts"></li>
-		</ul>
-
+		<h1>{{$component->formal_specification}} </h1>
 		<h2>Description</h2>
 
-		{{$sat->content}}
+		{{$component->description}}
 @endsection
 
 

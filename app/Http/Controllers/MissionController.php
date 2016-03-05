@@ -14,9 +14,29 @@ class MissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('database_list.mission');
+       $column = "";
+       switch ($request->input("column")) {
+            case "name":
+                $column = "name";
+            break;
+            case "objective":
+                $column = "objective";
+            break;
+            default:
+                $column = "name";
+            break;
+       }
+
+        return \App\Mission::select('id','objective','wiki','name')->where(function($query) use ($request,$column)
+        {
+            if($request->has("search"))
+            {
+                $query->where($column,"LIKE","%".$request->input("search")."%");
+            }
+
+        })->paginate(15)->appends([]);
     }
 
     /**
@@ -48,7 +68,7 @@ class MissionController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Mission::where("id","=",$id)->firstOrFail();
     }
 
     /**
@@ -84,4 +104,27 @@ class MissionController extends Controller
     {
         //
     }
+
+    public function home(Request $request)
+    {
+        $missions = $this->index($request);
+        return view('database_list.mission',["missions" => $missions]);
+    }
+
+    public function single($id)
+    {
+        $mission = $this->show($id);
+         return view('database_view.mission',['id' =>$id,'sat' => $mission]);
+    }
+    public function modify($id)
+    {
+        $mission = $this->show($id);
+        return view('database_view.mission',['id' =>$id,'sat' => $mission]);
+    }
+    public function history($id)
+    {
+        $mission = $this->show($id);
+       return view('database_view.mission',['id' =>$id,'sat' => $mission]);
+    }
+
 }

@@ -23,7 +23,7 @@ class SpaceportController extends Controller
                $query->where("name","LIKE","%".$request->input("search")."%");
             }
 
-        })->paginate(15)->toArray();
+        })->paginate(15)->appends(["search" => $request->input("search")]);
 
     }
 
@@ -56,7 +56,7 @@ class SpaceportController extends Controller
      */
     public function show($id)
     {
-        return \App\Spaceport::where("id","=",$id)->firstOrFail()->toJson();
+        return \App\Spaceport::where("id","=",$id)->firstOrFail();
     }
 
     /**
@@ -95,20 +95,26 @@ class SpaceportController extends Controller
 
     public function home(Request $request)
     {
-        return view('database_list.spaceport');
+        $spaceports = $this->index($request);
+        return view('database_list.spaceport',['spaceports' => $spaceports,]);
     }
 
     public function single($id)
     {
-         return view('database_view.spaceport',['controller' => "SpaceportController",'page' => 'single','id' => $id]);
+        
+        $spaceport = $this->show($id);
+         return view('database_view.spaceport',['spaceport'=> $spaceport,'id' => $id]);
     }
     public function modify($id)
     {
-        return view('database_view.spaceport',['controller' => "SpaceportController",'page' => 'modify','id' => $id]);
+        $spaceport = $this->show($id);
+         
+        return view('database_view.spaceport',['spaceport'=> $spaceport,'id' => $id]);
     }
     public function history($id)
     {
-       return view('database_view.spaceport',['controller' => "SpaceportController",'page' => 'history','id' => $id]);
+        $spaceport = $this->show($id);
+       return view('database_view.spaceport',['spaceport'=> $spaceport,'id' => $id]);
     }
 
 }

@@ -14,9 +14,30 @@ class VendorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('database_list.vendor');
+
+     $column = "";
+       switch ($request->input("column")) {
+            case "name":
+                $column = "name";
+            break;
+            case "type":
+                $column = "orbit";
+            break;
+            default:
+                $column = "name";
+            break;
+       }
+
+        return \App\Vendor::select('id','name','vendor_website','contact_info','type')->where(function($query) use ($request,$column)
+        {
+            if($request->has("search"))
+            {
+               $query->where($column,"LIKE","%".$request->input("search")."%");
+            }
+
+        })->paginate(15)->appends(["column" => $column,"search" => $request->input("search")]);
     }
 
     /**
@@ -83,5 +104,29 @@ class VendorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function home(Request $request)
+    {
+        $vendors = $this->index($request);
+        return view('database_list.vendor',["vendors"=>$vendors]);
+    }
+
+    public function single($id)
+    {
+        
+        $vendor = $this->show($id);
+         return view('database_view.spaceport',['spaceport'=> $vendor,'id' => $id]);
+    }
+    public function modify($id)
+    {
+        $vendor = $this->show($id);
+        return view('database_view.spaceport',['spaceport'=> $vendor,'id' => $id]);
+    }
+    public function history($id)
+    {
+        $vendor = $this->show($id);
+       return view('database_view.spaceport',['spaceport'=> $vendor,'id' => $id]);
     }
 }

@@ -16,25 +16,34 @@ class SatelliteController extends Controller
      */
     public function index(Request $request)
     {
-       return \App\Satellite::select('id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request)
+
+       $column = "";
+       switch ($request->input("column")) {
+            case "name":
+                $column = "name";
+            break;
+            case "orbit":
+                $column = "orbit";
+            break;
+            case "tle":
+                $column = "tle";
+            break;
+            default:
+                $column = "name";
+            break;
+       }
+
+       return \App\Satellite::select('id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
         {
             if($request->has("search"))
             {
-                if($request->has("column"))
-                {
-                   $query->where($request->input("column"),"LIKE","%".$request->input("search")."%");
-
-                }
-                else
-                {
-                    $query->where("name","LIKE","%".$request->input("search")."%");
-                }
+                $query->where($column,"LIKE","%".$request->input("search")."%");
             }
             if($request->has("status"))
             {
                  $query->where("status",$request->input("status"));
             }
-        })->paginate(15)->toArray();
+        })->paginate(15)->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
 
     }
 
@@ -67,7 +76,7 @@ class SatelliteController extends Controller
      */
     public function show($id)
     {
-       return \App\Satellite::where("id","=",$id)->firstOrFail()->toJson();
+       return \App\Satellite::where("id","=",$id)->firstOrFail();
     }
 
     /**
@@ -113,15 +122,18 @@ class SatelliteController extends Controller
 
     public function single($id)
     {
-         return view('database_view.satellite',['controller' => "SatelliteController",'page' => 'single','id' => $id]);
+        $sat = $this->show($id);
+         return view('database_view.satellite',['id' =>$id,'sat' => $sat]);
     }
     public function modify($id)
     {
-        return view('database_view.satellite',['controller' => "SatelliteController",'page' => 'modify','id' => $id]);
+        $sat = $this->show($id);
+        return view('database_view.satellite',['id' =>$id,'sat' => $sat]);
     }
     public function history($id)
     {
-       return view('database_view.satellite',['controller' => "SatelliteController",'page' => 'history','id' => $id]);
+        $sat = $this->show($id);
+       return view('database_view.satellite',['id' =>$id,'sat' => $sat]);
     }
 
     

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Spaceport extends Model
+class Vendor extends Model
 {
 	use \Venturecraft\Revisionable\RevisionableTrait;
 	
@@ -14,7 +14,7 @@ class Spaceport extends Model
 
     public function getUrlAttribute()
     {
-        return $this->attributes['url'] = url("/api/spaceport/".$this->attributes['id']);
+        return $this->attributes['url'] = url("/api/vendor/".$this->attributes['id']);
     }
 
     protected $appends = ['url'];

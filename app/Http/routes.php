@@ -31,21 +31,23 @@ Route::resource('api/spaceport', 'SpaceportController');
 
 
 Route::get('component/', 'ComponentController@home');
-Route::get('component/{id}/single', 'ComponentController@single');
+Route::get('component/{id}', 'ComponentController@single');
 Route::get('component/{id}/modify', 'ComponentController@modify');
 Route::get('component/{id}/history', 'ComponentController@history');
+Route::resource('api/component', 'ComponentController');
+
 
 Route::get('vendor/', 'VendorController@home');
 Route::get('vendor/{id}', 'VendorController@single');
 Route::get('vendor/{id}/modify', 'VendorController@modify');
 Route::get('vendor/{id}/history', 'VendorController@history');
-
+Route::resource('api/vendor', 'VendorController');
 
 Route::get('mission/', 'MissionController@home');
 Route::get('mission/{id}', 'MissionController@single');
 Route::get('mission/{id}/modify', 'MissionController@modify');
 Route::get('mission/{id}/history', 'MissionController@history');
-
+Route::resource('api/mission', 'MissionController');
 
 
 /*

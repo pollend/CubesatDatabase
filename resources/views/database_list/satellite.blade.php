@@ -16,14 +16,18 @@
 			<div class="search-input">
 				<div class="row">
 					<div class="col-md-2 left">
-					  <select ng-model="sat_column" name="sat_column">    
-							<option value="" >Name</option>
-							<option value="orbit">Orbit</option>
-							<option value="tle" >TLE</option>
-						</select>
+						@include("form.select",[
+							"properties" => "name='column'",
+
+							"options" =>[
+							'name'=>'Name',
+							'orbit'=>'Orbit',
+							'tle'=>'TLE'],
+
+							"selectedOption" => Request::input('column',"name")])
 					</div>
 					<div class="col-md-10 right">
-					  <input type="text" name="search" placeholder="search" ng-model="search"></input>
+					  <input  type="text" name="search" placeholder="search" value="{{Request::input("search")}}"></input>
 					</div>
 				</div>
 			</div>
@@ -31,17 +35,23 @@
 		<div class="form-group">
 			<label >Status:</label>
 			<div>
-				<select ng-model="sat_status" name="sat_status">
-					<option value="">all</option>
-					<option value="active" >active</option>
-					<option value="in-orbit" >in-orbit</option>
-					<option value="in-development" >in-development</option>
-					<option value="data-collection">data-collection</option>
-					<option value="data-analysis" >data-analysis</option>
-					<option value="inactive" >inactive</option>
-					<option value="de-orbited" >de-orbited</option>
-					<option value="entry-closed" >entry-closed</option>
-				</select>
+				@include("form.select",[
+				"properties" => "name='status'",
+
+				"options" =>[
+				'all'=>'all',
+				'active'=>'active',
+				'in-orbit'=>'in-orbit',
+				'in-orbit'=> 'in-orbit',
+				"in-development" =>"in-development",
+				"data-collection" =>"data-collection",
+				"data-analysis" => "data-analysis",
+				"inactive"=>"inactive",
+				"de-orbited"=> "de-orbited",
+				"entry-closed"=>"entry-closed"],
+
+				"selectedOption" => Request::input('status',"all")])
+				
 			</div>
 		</div>
 	</div>
@@ -63,29 +73,20 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="satellite in satellites">
-			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.id}}</a></td>
-			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.name}}</a></td>
-			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.tle}}</a></td>	
-			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.status}}</a></td>
-			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.orbit}}</a></td>
-			
-		</tr>
-
-		@for ($i = 0; $i < count($sats["data"]); $i++) 
-			<tr ng-show="render_static">
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["id"]}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["name"]}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["tle"]}}</a></td>	
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["status"]}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["orbit"]}}</a></td>
+		@foreach ($sats as $sat)
+			<tr>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->id}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->name}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->tle}}</a></td>	
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->status}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->orbit}}</a></td>
 			
 			</tr>
-		@endfor
+		@endforeach
+
 	</tbody>
 </table>
-
-@include('pagination', ['paginator' => $sats])
+{{$sats->render()}}
 
 </div>
 @endsection

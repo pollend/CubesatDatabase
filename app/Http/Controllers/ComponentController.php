@@ -14,9 +14,16 @@ class ComponentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       return view('database_list.component');
+      return \App\Component::select('id','formal_specification')->where(function($query) use ($request)
+        {
+            if($request->has("search"))
+            {
+               $query->where("formal_specification","LIKE","%".$request->input("search")."%");
+            }
+
+        })->paginate(15)->appends(["search" => $request->input("search")]);
     }
 
     /**
@@ -48,7 +55,7 @@ class ComponentController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Component::where("id","=",$id)->firstOrFail();
     }
 
     /**
@@ -83,5 +90,27 @@ class ComponentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function home(Request $request)
+    {
+        $components = $this->index($request);
+        return view('database_list.component',["components"=>$components]);
+    }
+
+    public function single($id)
+    {
+        $component = $this->show($id);
+         return view('database_view.component',['component'=>$component,'controller' => "SpaceportController",'page' => 'single','id' => $id]);
+    }
+    public function modify($id)
+    {
+        $component = $this->show($id);
+        return view('database_view.component',['component'=>$component,'controller' => "SpaceportController",'page' => 'modify','id' => $id]);
+    }
+    public function history($id)
+    {
+        $component = $this->show($id);
+       return view('database_view.component',['component'=>$component,'controller' => "SpaceportController",'page' => 'history','id' => $id]);
     }
 }

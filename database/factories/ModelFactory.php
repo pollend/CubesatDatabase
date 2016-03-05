@@ -51,5 +51,30 @@ $factory->define(App\Spaceport::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\Component::class, function (Faker\Generator $faker) {
+    return [
+        'description' => str_random(10),
+        'formal_specification' => str_random(10),
+    ];
+});
+
+
+$factory->define(App\Mission::class, function (Faker\Generator $faker) {
+    return [
+        'wiki' => str_random(10),
+        'name' => str_random(10),
+        'content' => str_random(10),
+        'objective' => str_random(10)
+    ];
+});
+
+$factory->define(App\Vendor::class, function (Faker\Generator $faker) {
+    return [
+        'name' => str_random(10),
+        'vendor_website' => str_random(10),
+        'contact_info' => str_random(10),
+        'type' => str_random(10)
+    ];
+});
 
 

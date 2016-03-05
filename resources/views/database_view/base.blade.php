@@ -3,21 +3,21 @@
 @section('content')
 
 	<ul class="nav nav-tabs">
-		 <li role="presentation" class="{{ $page == 'single' ? 'Active' : '' }}"><a target="_self" href=" {{action($controller . "@single",$id)}}">Single</a></li>
-		 <li role="presentation" class="{{ $page == 'modify' ? 'Active' : '' }}"><a target="_self" href="{{action($controller . "@modify",$id)}}">Modify</a></li>
-		 <li role="presentation" class="{{ $page == 'history' ? 'Active' : '' }}"><a target="_self" href="{{action($controller . "@history",$id)}}">History</a></li>
+		 <li role="presentation" class="{{ $currentAction == 'single' ? 'Active' : '' }}"><a  href=" {{action($currentController . "@single",$id)}}">Single</a></li>
+		 <li role="presentation" class="{{ $currentAction == 'modify' ? 'Active' : '' }}"><a  href="{{action($currentController . "@modify",$id)}}">Modify</a></li>
+		 <li role="presentation" class="{{ $currentAction == 'history' ? 'Active' : '' }}"><a  href="{{action($currentController . "@history",$id)}}">History</a></li>
 	</ul>
 
-	@if($page == "single")
-		<div ng-controller="database_single">
+	@if($currentAction == "single")
+		<div>
 			@yield('single')
 	    </div>
-	@elseif($page == "modify")
-		<div ng-controller="database_single">
+	@elseif($currentAction == "modify")
+		<div >
 			@yield('modify')
 	    </div>
-	@elseif($page == "history")
-		<div ng-controller="database_single">
+	@elseif($currentAction == "history")
+		<div >
 			@yield('history')
 	    </div>
 	@else

@@ -1,5 +1,6 @@
 
 
+
 <html ng-app="app">
     <head>
         <base href="/">
@@ -7,6 +8,7 @@
 
         <script src="{{ URL::asset('js/all.js') }}"></script>
         <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
+        <script src="{{ URL::asset('js/app.js') }}"></script>
 
         @stack('script-head')
         @stack('css-head')
@@ -23,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <footer class="Footer" class="center_container">
+        <footer class=" center_container">
             @include('footer')
         </footer>
         

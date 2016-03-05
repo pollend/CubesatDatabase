@@ -9,13 +9,18 @@
 		<div class="search-input">
 			<div class="row">
 				<div class="col-md-2 left">
-				  <select name="sat_column">    
-						<option value="vendor-name">Name</option>
-						<option value="vendor-type">Type</option>
-					</select>
+	
+					@include("form.select",[
+							"properties" => "name='column'",
+
+							"options" =>[
+							'name'=>'Name',
+							'type'=>'Type'],
+
+							"selectedOption" => Request::input('column',"name")])
 				</div>
 				<div class="col-md-10 right">
-				  <input type="text" name="search" placeholder="search"></input>
+				  <input type="text" name="search" value="{{Request::input("search")}}" placeholder="search"></input>
 				</div>
 			</div>
 		</div>
@@ -23,5 +28,28 @@
 @endsection
 
 @section('list')
-    <p>This is my body content.</p>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<td>#</td>
+					<td>Name</td>
+					<td>Type</td>
+				</tr>
+			</thead>
+			<tbody>
+
+				@foreach ($vendors as $vendor)
+					<tr>
+						<td><a target="_self" href="{{url('/vendor/')}}/{{$vendor->id}}">{{$vendor->id}}</a></td>
+						<td><a target="_self" href="{{url('/vendor/')}}/{{$vendor->id}}">{{$vendor->name}}</a></td>
+						<td><a target="_self" href="{{url('/vendor/')}}/{{$vendor->id}}">{{$vendor->type}}</a></td>
+					</tr>
+				@endforeach
+
+			</tbody>
+		</table>
+
+		{{$vendors->render()}}
+	</div>
 @endsection

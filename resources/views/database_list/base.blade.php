@@ -1,11 +1,12 @@
 @extends('base')
 
 @section('content')
-	<div ng-controller="database_list">
-		<form class="search_form">
+	<div>
+		<form class="search_form" action="{{url(Request::path())}}">
 		     @yield('search_area')
-		     <input class="btn btn-default pull-right" type="submit" value="search" ng-click="submit()"></input>
-	    </form>
-		@yield('list')
+		     <input class="btn btn-default pull-right" type="submit" ></input>
+		</form>
+			@yield('list')
+		
     </div>
 @endsection

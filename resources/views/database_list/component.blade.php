@@ -22,5 +22,26 @@
 @endsection
 
 @section('list')
-    <p>This is my body content.</p>
+    <div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<td>#</td>
+					<td>Formal Specification</td>
+				</tr>
+			</thead>
+			<tbody>
+
+				@foreach ($components as $component)
+					<tr>
+						<td><a target="_self" href="{{url('/component/')}}/{{$component->id}}">{{$component->id}}</a></td>
+						<td><a target="_self" href="{{url('/component/')}}/{{$component->id}}">{{$component->formal_specification}}</a></td>
+					</tr>
+				@endforeach
+
+			</tbody>
+		</table>
+
+		{{$components->render()}}
+	</div>
 @endsection
