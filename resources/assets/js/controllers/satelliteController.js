@@ -1,47 +1,28 @@
 app.controller('database_list',function($scope,$location,$http,$httpParamSerializer)
 {
-	$scope.satellites = {};
-	$scope.data= {};
-	$scope.search_area ={};
-	$scope.$watchCollection('data',function(newValue,oldValue)
-	{
-		for (var key in newValue) {
-			if (newValue.hasOwnProperty(key)) {
-				if(newValue[key] === "")
-					delete $location.search()[key];
-				else
-					$location.search(key,newValue[key]);
-			}
-		}
-		
-	});
+	$scope.render_static = true;	
 
-	var search = $location.search();
-	for (var key in search) {
-		if (search.hasOwnProperty(key)) {
-			$scope.data[key] = search[key];
-		}
-	}
-	
 	$scope.submit =  function()
 	{
-		$scope.data["search"] = $scope.search_area["search"];
-		$scope.data["column"] = $scope.search_area["sat_column"];
-		$scope.data["status"] = $scope.search_area["sat_status"];
+		$location.search("search",$scope.search);
+		$location.search("column",$scope.sat_column);
+		$location.search("status",$scope.sat_status);
 		$scope.update_table();
 	}
 
 	$scope.pageChanged = function()
 	{
-		$scope.data["page"] = $scope.current_page; 
+		$location.search("page",$scope.current_page);
 		$scope.update_table();
 	}
 
 	$scope.update_table = function()
 	{
+		$scope.render_static = false;
+		
 		$http({
 			method: "GET",
-			url:'/api/satellite?' + $httpParamSerializer($scope.data)}).then(
+			url:'/api/satellite?' + $httpParamSerializer($location.search)}).then(
 		function success(response) {
 			$scope.satellites = response.data.data;
 			$scope.totalItems =  response.data.total;
@@ -51,8 +32,8 @@ app.controller('database_list',function($scope,$location,$http,$httpParamSeriali
 		});
 
 	}
+	
 
-	$scope.update_table();
 
 });
 

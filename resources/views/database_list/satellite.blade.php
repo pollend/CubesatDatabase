@@ -16,14 +16,14 @@
 			<div class="search-input">
 				<div class="row">
 					<div class="col-md-2 left">
-					  <select ng-model="search_area.sat_column" name="sat_column">    
+					  <select ng-model="sat_column" name="sat_column">    
 							<option value="" >Name</option>
 							<option value="orbit">Orbit</option>
 							<option value="tle" >TLE</option>
 						</select>
 					</div>
 					<div class="col-md-10 right">
-					  <input type="text" name="search" placeholder="search" ng-model="search_area.search"></input>
+					  <input type="text" name="search" placeholder="search" ng-model="search"></input>
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 		<div class="form-group">
 			<label >Status:</label>
 			<div>
-				<select ng-model="search_area.sat_status" name="sat_status">
+				<select ng-model="sat_status" name="sat_status">
 					<option value="">all</option>
 					<option value="active" >active</option>
 					<option value="in-orbit" >in-orbit</option>
@@ -69,11 +69,23 @@
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.tle}}</a></td>	
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.status}}</a></td>
 			<td><a target="_self" href="{{url('/satellite/')}}/@{{satellite.id}}">@{{satellite.orbit}}</a></td>
+			
 		</tr>
 
+		@for ($i = 0; $i < count($sats["data"]); $i++) 
+			<tr ng-show="render_static">
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["id"]}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["name"]}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["tle"]}}</a></td>	
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["status"]}}</a></td>
+				<td><a target="_self" href="{{url('/satellite/')}}/{{$sats["data"][$i]["id"]}}">{{$sats["data"][$i]["orbit"]}}</a></td>
+			
+			</tr>
+		@endfor
 	</tbody>
 </table>
 
-<uib-pagination total-items="totalItems" ng-model="current_page" ng-change="pageChanged()"></uib-pagination>
+@include('pagination', ['paginator' => $sats])
+
 </div>
 @endsection

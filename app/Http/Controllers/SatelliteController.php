@@ -107,7 +107,8 @@ class SatelliteController extends Controller
 
     public function home(Request $request)
     {
-        return view('database_list.satellite');
+        $satellite = $this->index($request);
+        return view('database_list.satellite',["sats" => $satellite]);
     }
 
     public function single($id)
