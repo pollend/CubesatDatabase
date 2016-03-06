@@ -87,7 +87,7 @@ class SatelliteController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -117,23 +117,25 @@ class SatelliteController extends Controller
     public function home(Request $request)
     {
         $satellite = $this->index($request);
-        return view('database_list.satellite',["sats" => $satellite]);
+        return view('database_list.satellite',["items" => $satellite]);
     }
 
     public function single($id)
     {
         $sat = $this->show($id);
-         return view('database_view.satellite',['id' =>$id,'sat' => $sat]);
+         return view('database_view.satellite.single',['id' =>$id,'item' => $sat]);
     }
+
     public function modify($id)
     {
         $sat = $this->show($id);
-        return view('database_view.satellite',['id' =>$id,'sat' => $sat]);
+         return view('database_view.satellite.modify',['id' =>$id,'item' => $sat]);
     }
+
     public function history($id)
     {
         $sat = $this->show($id);
-       return view('database_view.satellite',['id' =>$id,'sat' => $sat]);
+       return view('database_view.satellite.history',['id' =>$id,'item' => $sat]);
     }
 
     

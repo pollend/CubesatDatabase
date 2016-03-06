@@ -17,5 +17,10 @@ class Spaceport extends Model
         return $this->attributes['url'] = url("/api/spaceport/".$this->attributes['id']);
     }
 
+    public function spaceports()
+    {
+        return $this->belongsToMany('App\Vendor', 'vendor_spaceport');
+    }
+
     protected $appends = ['url'];
 }

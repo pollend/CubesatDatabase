@@ -66,7 +66,8 @@ class ComponentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $component = $this->show($id);
+        return view('database_view.component',['item'=>$component,'id' => $id]);
     }
 
     /**
@@ -101,16 +102,22 @@ class ComponentController extends Controller
     public function single($id)
     {
         $component = $this->show($id);
-         return view('database_view.component',['component'=>$component,'controller' => "SpaceportController",'page' => 'single','id' => $id]);
+         return view('database_view.component',[
+            'item'=>$component,'controller' => "SpaceportController",
+            'id' => $id]);
     }
-    public function modify($id)
+
+       public function modify($id)
     {
-        $component = $this->show($id);
-        return view('database_view.component',['component'=>$component,'controller' => "SpaceportController",'page' => 'modify','id' => $id]);
+        $sat = $this->show($id);
+         return view('database_view.satellite.modify',['id' =>$id,'item' => $sat]);
     }
+
     public function history($id)
     {
         $component = $this->show($id);
-       return view('database_view.component',['component'=>$component,'controller' => "SpaceportController",'page' => 'history','id' => $id]);
+       return view('database_view.component',[
+        'item'=>$component,'controller' => "SpaceportController",
+        'page' => 'history','id' => $id]);
     }
 }

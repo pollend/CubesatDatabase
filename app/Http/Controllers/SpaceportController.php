@@ -67,7 +67,8 @@ class SpaceportController extends Controller
      */
     public function edit($id)
     {
-        //
+         $spaceport = $this->show($id);
+        return view('database_view.spaceport',['item'=> $spaceport,'id' => $id]);
     }
 
     /**
@@ -99,22 +100,23 @@ class SpaceportController extends Controller
         return view('database_list.spaceport',['spaceports' => $spaceports,]);
     }
 
+    public function modify($id)
+    {
+        $sat = $this->show($id);
+         return view('database_view.spaceport.modify',['id' =>$id,'item' => $sat]);
+    }
+
     public function single($id)
     {
         
         $spaceport = $this->show($id);
-         return view('database_view.spaceport',['spaceport'=> $spaceport,'id' => $id]);
+         return view('database_view.spaceport.single',['item'=> $spaceport,'id' => $id]);
     }
-    public function modify($id)
-    {
-        $spaceport = $this->show($id);
-         
-        return view('database_view.spaceport',['spaceport'=> $spaceport,'id' => $id]);
-    }
+
     public function history($id)
     {
         $spaceport = $this->show($id);
-       return view('database_view.spaceport',['spaceport'=> $spaceport,'id' => $id]);
+       return view('database_view.spaceport.history',['item'=> $spaceport,'id' => $id]);
     }
 
 }

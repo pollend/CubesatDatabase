@@ -17,5 +17,11 @@ class Component extends Model
         return $this->attributes['url'] = url("/api/component/".$this->attributes['id']);
     }
 
+
+   	public function satellites()
+   	{
+   		return $this->belongsToMany('App\Satellite', 'satellite_component');
+   	}
+
     protected $appends = ['url'];
 }

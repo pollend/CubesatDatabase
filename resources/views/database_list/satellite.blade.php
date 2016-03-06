@@ -73,20 +73,20 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach ($sats as $sat)
+		@foreach ($items as $sat)
 			<tr>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->id}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->name}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->tle}}</a></td>	
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->status}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$sat->id}}">{{$sat->orbit}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->id}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->name}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->tle}}</a></td>	
+				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->status}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->orbit}}</a></td>
 			
 			</tr>
 		@endforeach
 
 	</tbody>
 </table>
-{{$sats->render()}}
+{{$items->render()}}
 
 </div>
 @endsection

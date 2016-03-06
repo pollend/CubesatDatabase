@@ -5,5 +5,5 @@ Homestead.yaml
 Homestead.json
 /public/css
 /public/js
-/public/uib
+/public/static
 .env

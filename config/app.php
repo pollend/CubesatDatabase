@@ -161,6 +161,11 @@ return [
         */
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        /**
+        *Markdown
+        **/
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class
+
     ],
 
     /*

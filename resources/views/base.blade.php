@@ -15,19 +15,11 @@
 
     </head>
     <body>
-        <div class="Wrapper" >
-            @include('header')
-
-            <div class="Page" class="center_container">
-
-                <div class="container">
-                    @yield('content')
-                </div>
-            </div>
+        @include('header')
+        <div class="container" >
+            @yield('content')
         </div>
-        <footer class=" center_container">
-            @include('footer')
-        </footer>
+        @include('footer')
         
     </body>
 </html>

@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 class Satellite extends Model
 {
 	use \Venturecraft\Revisionable\RevisionableTrait;
@@ -16,6 +15,11 @@ class Satellite extends Model
     {
         return $this->attributes['url'] = url("/api/satellite/".$this->attributes['id']);
     }
+
+   	public function components()
+   	{
+   		return $this->belongsToMany('App\Component', 'satellite_component');
+   	}
 
     protected $appends = ['url'];
 }

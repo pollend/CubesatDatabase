@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(SatelliteTableSeeder::class);
         $this->call(SpaceportTableSeeder::class);
-        $this->call(ComponentTableSeeder::class);
+        //$this->call(ComponentTableSeeder::class);
         $this->call(MissionTableSeeder::class);
-         $this->call(VendorTableSeeder::class);
+        //$this->call(VendorTableSeeder::class);
     }
 }

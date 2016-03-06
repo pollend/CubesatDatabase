@@ -44,12 +44,12 @@
 
 				@foreach ($spaceports as $spaceport)
 					<tr>
-						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->id}}</a></td>
-						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->name}}</a></td>
-						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->country}}</a></td>
-						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->state}}</a></td>
-						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->city}}</a></td>
-						<td><a target="_self" href="{{url('/spaceport/')}}/{{$spaceport->id}}">{{$spaceport->zip}}</a></td>
+						<td><a target="_self" href="{{action("SpaceportController@single",$spaceport->id)}}">{{$spaceport->id}}</a></td>
+						<td><a target="_self" href="{{action("SpaceportController@single",$spaceport->id)}}">{{$spaceport->name}}</a></td>
+						<td><a target="_self" href="{{action("SpaceportController@single",$spaceport->id)}}">{{$spaceport->country}}</a></td>
+						<td><a target="_self" href="{{action("SpaceportController@single",$spaceport->id)}}">{{$spaceport->state}}</a></td>
+						<td><a target="_self" href="{{action("SpaceportController@single",$spaceport->id)}}">{{$spaceport->city}}</a></td>
+						<td><a target="_self" href="{{action("SpaceportController@single",$spaceport->id)}}">{{$spaceport->zip}}</a></td>
 					</tr>
 				@endforeach
 

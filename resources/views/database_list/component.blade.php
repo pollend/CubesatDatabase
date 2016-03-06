@@ -34,8 +34,8 @@
 
 				@foreach ($components as $component)
 					<tr>
-						<td><a target="_self" href="{{url('/component/')}}/{{$component->id}}">{{$component->id}}</a></td>
-						<td><a target="_self" href="{{url('/component/')}}/{{$component->id}}">{{$component->formal_specification}}</a></td>
+						<td><a target="_self" href="{{action("ComponentController@single",$component->id)}}">{{$component->id}}</a></td>
+						<td><a target="_self" href="{{action("ComponentController@single",$component->id)}}">{{$component->formal_specification}}</a></td>
 					</tr>
 				@endforeach
 

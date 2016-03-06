@@ -19,6 +19,9 @@ elixir(function(mix) {
     copy('node_modules/jquery/dist/jquery.min.js','resources/assets/js/').
     scripts(['jquery.min.js','angular.min.js','bootstrap.min.js']);
 
+    mix.copy('node_modules/bootstrap-markdown/css/bootstrap-markdown.min.css','public/css/').
+    copy('node_modules/bootstrap-markdown/js/bootstrap-markdown.js','public/js/');
+
     mix.scripts(['controllers/satelliteController.js'],'public/js/satelliteController.js');
     mix.scripts(['controllers/spaceportController.js'],'public/js/spaceportController.js');
  	mix.scripts(['controllers/app.js'],'public/js/app.js');

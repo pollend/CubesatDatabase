@@ -35,9 +35,9 @@
 	<tbody>
 		@foreach ($missions as $mission)
 			<tr>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$mission->id}}">{{$mission->id}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$mission->id}}">{{$mission->name}}</a></td>
-				<td><a target="_self" href="{{url('/satellite/')}}/{{$mission->id}}">{{$mission->objective}}</a></td>	
+				<td><a target="_self" href="{{action("MissionController@single",$mission->id)}}">{{$mission->id}}</a></td>
+				<td><a target="_self" href="{{action("MissionController@single",$mission->id)}}">{{$mission->name}}</a></td>
+				<td><a target="_self" href="{{action("MissionController@single",$mission->id)}}">{{$mission->objective}}</a></td>	
 			</tr>
 		@endforeach
 

@@ -11,6 +11,10 @@ class SpaceportTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Spaceport::class, 50)->create()->each(function($u) {});
+        factory(App\Spaceport::class, 10)->create()->each(function($spaceport) {
+        	factory(App\Vendor::class, 5)->create()->each(function($vendor) use ($spaceport) {
+        		 $vendor->vendors()->attach($spaceport->id);
+        	});
+        });
     }
 }

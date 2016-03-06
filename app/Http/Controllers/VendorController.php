@@ -69,7 +69,7 @@ class VendorController extends Controller
      */
     public function show($id)
     {
-        //
+       return \App\Vendor::where("id","=",$id)->firstOrFail();
     }
 
     /**
@@ -80,7 +80,8 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vendor = $this->show($id);
+        return view('database_view.vendor',['item'=> $vendor,'id' => $id]);
     }
 
     /**
@@ -113,20 +114,22 @@ class VendorController extends Controller
         return view('database_list.vendor',["vendors"=>$vendors]);
     }
 
+    public function modify($id)
+    {
+        $sat = $this->show($id);
+         return view('database_view.vendor.modify',['id' =>$id,'item' => $sat]);
+    }
+
     public function single($id)
     {
         
         $vendor = $this->show($id);
-         return view('database_view.spaceport',['spaceport'=> $vendor,'id' => $id]);
+         return view('database_view.vendor.single',['item'=> $vendor,'id' => $id]);
     }
-    public function modify($id)
-    {
-        $vendor = $this->show($id);
-        return view('database_view.spaceport',['spaceport'=> $vendor,'id' => $id]);
-    }
+
     public function history($id)
     {
         $vendor = $this->show($id);
-       return view('database_view.spaceport',['spaceport'=> $vendor,'id' => $id]);
+       return view('database_view.vendor.history',['item'=> $vendor,'id' => $id]);
     }
 }

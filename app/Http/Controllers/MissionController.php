@@ -79,7 +79,8 @@ class MissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mission = $this->show($id);
+        return view('database_view.mission',['id' =>$id,'item' => $mission]);
     }
 
     /**
@@ -114,17 +115,19 @@ class MissionController extends Controller
     public function single($id)
     {
         $mission = $this->show($id);
-         return view('database_view.mission',['id' =>$id,'sat' => $mission]);
+         return view('database_view.mission',['id' =>$id,'item' => $mission]);
     }
-    public function modify($id)
+
+       public function modify($id)
     {
         $mission = $this->show($id);
-        return view('database_view.mission',['id' =>$id,'sat' => $mission]);
+         return view('database_view.mission.modify',['id' =>$id,'item' => $mission]);
     }
+
     public function history($id)
     {
         $mission = $this->show($id);
-       return view('database_view.mission',['id' =>$id,'sat' => $mission]);
+       return view('database_view.mission',['id' =>$id,'item' => $mission]);
     }
 
 }

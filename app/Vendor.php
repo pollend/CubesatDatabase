@@ -17,5 +17,10 @@ class Vendor extends Model
         return $this->attributes['url'] = url("/api/vendor/".$this->attributes['id']);
     }
 
+    public function vendors()
+    {
+        return $this->belongsToMany('App\Spaceport', 'vendor_spaceport');
+    }
+
     protected $appends = ['url'];
 }

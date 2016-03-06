@@ -41,9 +41,9 @@
 
 				@foreach ($vendors as $vendor)
 					<tr>
-						<td><a target="_self" href="{{url('/vendor/')}}/{{$vendor->id}}">{{$vendor->id}}</a></td>
-						<td><a target="_self" href="{{url('/vendor/')}}/{{$vendor->id}}">{{$vendor->name}}</a></td>
-						<td><a target="_self" href="{{url('/vendor/')}}/{{$vendor->id}}">{{$vendor->type}}</a></td>
+						<td><a target="_self" href="{{action("VendorController@single",$vendor->id)}}">{{$vendor->id}}</a></td>
+						<td><a target="_self" href="{{action("VendorController@single",$vendor->id)}}">{{$vendor->name}}</a></td>
+						<td><a target="_self" href="{{action("VendorController@single",$vendor->id)}}">{{$vendor->type}}</a></td>
 					</tr>
 				@endforeach
 
