@@ -2,15 +2,17 @@
 
 @section('title', 'Home')
 
+@section('controller', 'satellite_list')
+
+
 @push('script-head')
-	<script src="{{ URL::asset('js/satelliteController.js') }}"></script>
+<script type="text/javascript" src="{{URL::asset('js/services/satelliteService.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('js/controllers/satelliteController.js')}}"></script>
 @endpush
-
-
 
 @section('search_area')
 	
-	<div class="form-group">
+	<div class="form-group-sm">
 		<label >Search:</label>
 		<div class="form-group">
 			<div class="search-input">
@@ -27,7 +29,7 @@
 							"selectedOption" => Request::input('column',"name")])
 					</div>
 					<div class="col-md-10 right">
-					  <input  type="text" name="search" placeholder="search" value="{{Request::input("search")}}"></input>
+					  <input  type="text" class="form-control" name="search" placeholder="search" value="{{Request::input("search")}}"></input>
 					</div>
 				</div>
 			</div>

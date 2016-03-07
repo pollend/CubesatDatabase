@@ -1,5 +1,5 @@
-<select {!!  isset($properties) ? $properties : '' !!}>
+<select class="form-control" {!!  isset($properties) ? $properties : '' !!}>
 	@while (list($key, $value) = each($options))
-		<option value="{{$key}}"  {{$key == $selectedOption ? "selected" : "" }}>{{$value}}</option>
+		<option value="{{$key}}"  {{isset($selectedOption) ? $key == $selectedOption ? "selected" : "" : ""}}>{{$value}}</option>
 	@endwhile
 </select>

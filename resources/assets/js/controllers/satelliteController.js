@@ -1,20 +1,33 @@
-app.controller('database_list',function($scope,$location,$http,$httpParamSerializer)
+
+
+
+app.controller('satellite_modify',function($scope,$location,$http,$httpParamSerializer,API_URL)
 {
+	$scope.master = {};
+
+	$scope.update = function(sat)
+	{
+		$scope.master= angular.copy(sat);
+	}
+
+	$scope.reset = function() {
+        $scope.sat = angular.copy($scope.master);
+    };
+
+    $scope.init = function()
+    {
+
+	    $http({
+		  method: 'GET',
+		  url: API_URL + "/satellite/" + $scope.id
+		}).then(function successCallback(response) {
+			$scope.master = angular.copy(response.data);
+		  	$scope.reset();
+		  }, function errorCallback(response) {
+
+		  });
+
+    }
 
 });
 
-
-app.controller('database_single',function($scope,$location,$http)
-{
-
-});
-
-app.controller('database_modify',function($scope,$location)
-{
-
-});
-
-app.controller('database_history',function($scope,$location)
-{
-
-});

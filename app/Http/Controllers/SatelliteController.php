@@ -9,15 +9,10 @@ use App\Http\Controllers\Controller;
 
 class SatelliteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
 
-       $column = "";
+    protected function getSatellites(Request $request)
+    {
+        $column = "";
        switch ($request->input("column")) {
             case "name":
                 $column = "name";
@@ -33,18 +28,45 @@ class SatelliteController extends Controller
             break;
        }
 
-       return \App\Satellite::select('id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
+       return  \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
         {
             if($request->has("search"))
             {
                 $query->where($column,"LIKE","%".$request->input("search")."%");
             }
-            if($request->has("status"))
+            if($request->has("status") && $request->input("status") != "all")
             {
                  $query->where("status",$request->input("status"));
             }
-        })->paginate(15)->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
+        })->paginate($request->input("count",15))->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
+        
+    }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $sats = $this->getSatellites($request);
+
+        $response= [];
+        foreach($sats->items() as $sat){
+            $response[] =
+            [
+                "id" => $sat->id,
+                "created_at" => $sat->created_at->toDateTimeString(),
+                "updated_at" => $sat->updated_at->toDateTimeString(),
+                "name" => $sat->name,
+                "COSPAR" => $sat->COSPAR,
+                "status" => $sat->status,
+                "tle" => $sat->tle,
+                "orbit" => $sat->orbit
+            ];
+        }
+       
+       return $response;
     }
 
     /**
@@ -116,25 +138,25 @@ class SatelliteController extends Controller
 
     public function home(Request $request)
     {
-        $satellite = $this->index($request);
+        $satellite = $this->getSatellites($request);
         return view('database_list.satellite',["items" => $satellite]);
     }
 
     public function single($id)
     {
-        $sat = $this->show($id);
+        $sat =  \App\Satellite::where("id","=",$id)->firstOrFail();
          return view('database_view.satellite.single',['id' =>$id,'item' => $sat]);
     }
 
     public function modify($id)
     {
-        $sat = $this->show($id);
+        $sat = \App\Satellite::where("id","=",$id)->firstOrFail();
          return view('database_view.satellite.modify',['id' =>$id,'item' => $sat]);
     }
 
     public function history($id)
     {
-        $sat = $this->show($id);
+        $sat = \App\Satellite::where("id","=",$id)->firstOrFail();
        return view('database_view.satellite.history',['id' =>$id,'item' => $sat]);
     }
 
