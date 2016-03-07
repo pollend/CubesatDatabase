@@ -77,12 +77,11 @@
 	<tbody>
 		@foreach ($items as $sat)
 			<tr>
-				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->id}}</a></td>
-				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->name}}</a></td>
-				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->tle}}</a></td>	
-				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->status}}</a></td>
-				<td><a target="_self" href="{{action("SatelliteController@single",$sat->id)}}">{{$sat->orbit}}</a></td>
-			
+				<td><a target="_self" href="{{action("SatelliteController@show",$sat->id)}}">{{$sat->id}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@show",$sat->id)}}">{{$sat->name}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@show",$sat->id)}}">{{$sat->tle}}</a></td>	
+				<td><a target="_self" href="{{action("SatelliteController@show",$sat->id)}}">{{$sat->status}}</a></td>
+				<td><a target="_self" href="{{action("SatelliteController@show",$sat->id)}}">{{$sat->orbit}}</a></td>
 			</tr>
 		@endforeach
 

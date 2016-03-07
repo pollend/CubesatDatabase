@@ -1,7 +1,9 @@
 @extends('base')
 
 @section('content')
-	@include("database_view.header")
+	{{-- @include("database_view.header") --}}
+
+		<a href="{{action('SatelliteController@edit',$id)}}">Edit</a>
 		<h1>{{$item->name}} <small> {{$item->status}}</small></h1>
 
 		<p><h2>COSPAR: </h2> {{$item->COSPAR}}</p>

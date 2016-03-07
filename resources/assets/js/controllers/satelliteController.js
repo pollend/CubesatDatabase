@@ -1,7 +1,7 @@
 
 
 
-app.controller('satellite_modify',function($scope,$location,$http,$httpParamSerializer,API_URL)
+app.controller('satellite_modify',function($scope,$location,$http,$httpParamSerializer)
 {
 	$scope.master = {};
 
@@ -19,7 +19,7 @@ app.controller('satellite_modify',function($scope,$location,$http,$httpParamSeri
 
 	    $http({
 		  method: 'GET',
-		  url: API_URL + "/satellite/" + $scope.id
+		  url:  "api/v1/satellite/" + $scope.id
 		}).then(function successCallback(response) {
 			$scope.master = angular.copy(response.data);
 		  	$scope.reset();

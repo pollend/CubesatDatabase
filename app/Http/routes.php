@@ -15,22 +15,19 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::group(['prefix' => 'api'], function()
+Route::group(['prefix' => 'api/v1/'], function()
 {
-	Route::resource('satellite', 'SatelliteController');
-	Route::resource('spaceport', 'SpaceportController');
-	Route::resource('component', 'ComponentController');
-	Route::resource('vendor', 'VendorController');
-	Route::resource('mission', 'MissionController');
-
+	Route::resource('satellite','Api\SatelliteController');
 });
 
-
-Route::get('satellite/', 'SatelliteController@home');
-Route::get('satellite/{id}', 'SatelliteController@single');
-Route::get('satellite/{id}/modify', 'SatelliteController@modify');
+Route::resource('satellite', 'SatelliteController');
 Route::get('satellite/{id}/history', 'SatelliteController@history');
 
+
+Route::resource('spaceport', 'SpaceportController');
+Route::resource('component', 'ComponentController');
+Route::resource('vendor', 'VendorController');
+Route::resource('mission', 'MissionController');
 
 Route::get('spaceport/', 'SpaceportController@home');
 Route::get('spaceport/{id}', 'SpaceportController@single');

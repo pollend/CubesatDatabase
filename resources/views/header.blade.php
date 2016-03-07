@@ -11,11 +11,11 @@
 			<li>
 				<a data-toggle="dropdown" class="dropdown-toggle" href="">Reports <span class="caret"></span></a> 
 				<ul class="dropdown-menu" >
-					<li><a href="{{action("SatelliteController@home")}}">satellite</a></li>
-					<li><a href="{{action("VendorController@home")}}">vendor</a></li>
-					<li><a href="{{action("ComponentController@home")}}">component</a></li>
-					<li><a href="{{action("MissionController@home")}}">mission</a></li>
-					<li><a href="{{action("SpaceportController@home")}}">spaceport</a></li>
+					<li><a href="{{action("SatelliteController@index")}}">satellite</a></li>
+					<li><a href="{{action("VendorController@index")}}">vendor</a></li>
+					<li><a href="{{action("ComponentController@index")}}">component</a></li>
+					<li><a href="{{action("MissionController@index")}}">mission</a></li>
+					<li><a href="{{action("SpaceportController@index")}}">spaceport</a></li>
 				</ul>
 			</li>
 			<li>

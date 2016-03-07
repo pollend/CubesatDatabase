@@ -13,7 +13,7 @@
 
 @section('content')
 	<div ng-controller="satellite_modify">
-		@include("database_view.header")
+		{{-- @include("database_view.header") --}}
 		<form ng-init="id='{{$id}}';init();">
 			<div class="form-group">
 				<label>Name*</label>
@@ -48,7 +48,14 @@
 				</div>
 				<div id="compoent-@{{component.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="@{{component.id}}">
 					<div class="panel-body">
-						<input type="text" ng-model="component.description" class="form-control"></input>
+						<div class="form-group">
+							<label>formal_specification*</label>
+							<input type="text" ng-model="component.formal_specification" class="form-control"></input>
+						</div>
+						<div class="form-group">
+							<label>Description*</label>
+							<textarea  ng-model="component.description" data-provide="markdown" rows="15" ></textarea>
+						</div>
 					</div>
 				</div>
 			</div>
