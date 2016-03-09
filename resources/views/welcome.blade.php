@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <base href="/">
         <title>Laravel</title>
  
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -13,7 +14,8 @@
           <script src="systemjs/dist/system.src.js"></script>
           <script src="rxjs/bundles/Rx.js"></script>
           <script src="angular2/bundles/angular2.dev.js"></script>
- 
+
+          
   <!-- 2. Configure SystemJS -->
   <script>
     System.config({

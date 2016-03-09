@@ -1,7 +1,8 @@
-var elixir = require('laravel-elixir');
- 
+var gulp = require("gulp");
+var shell = require("gulp-shell");
+var elixir = require("laravel-elixir");
 var elixirTypscript = require('elixir-typescript');
- 
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -14,7 +15,6 @@ var elixirTypscript = require('elixir-typescript');
  */
 
 
-
 elixir(function(mix) {
     mix.sass('app.scss');
  
@@ -24,7 +24,8 @@ elixir(function(mix) {
     mix.copy('node_modules/es6-promise', 'public/es6-promise');
     mix.copy('node_modules/es6-shim', 'public/es6-shim');
     mix.copy('node_modules/zone.js', 'public/zone.js');
- 
+
+
      mix.typescript('app.js','public/','/**/*.ts',{
                   "target": "ES5",
                   "module": "system",
