@@ -5,8 +5,11 @@ Homestead.yaml
 Homestead.json
 /public/css
 /public/js
-/public/fonts
-/public/images
-/public/javascripts
-/public/stylesheets
+/public/angular2
+/public/es6-promise
+/public/es6-shim
+/public/rxjs/
+/public/systemjs/
+/public/typescript/
+/public/zone.js/
 .env
