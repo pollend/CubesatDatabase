@@ -24,6 +24,8 @@ elixir(function(mix) {
     mix.copy('node_modules/es6-promise', 'public/es6-promise');
     mix.copy('node_modules/es6-shim', 'public/es6-shim');
     mix.copy('node_modules/zone.js', 'public/zone.js');
+    mix.copy('node_modules/jquery/dist/', 'public/jquery');
+
 
 
      mix.typescript('app.js','public/','/**/*.ts',{

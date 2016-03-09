@@ -13,4 +13,5 @@ Homestead.json
 /public/typescript/
 /public/zone.js/
 /public/semantic/
+/public/jquery/
 .env

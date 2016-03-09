@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+Route::any('{all}', function ($page) {
     return view('welcome');
-});
+})->where('all', '(?!api/)(?!_debugbar)(.*)');
+
 
 Route::group(['prefix' => 'api/v1/'], function()
 {
