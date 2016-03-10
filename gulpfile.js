@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var shell = require("gulp-shell");
 var elixir = require("laravel-elixir");
 var elixirTypscript = require('elixir-typescript');
+var elixirhtml = require('laravel-elixir-html-minify');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,7 +15,6 @@ var elixirTypscript = require('elixir-typescript');
  |
  */
 
-
 elixir(function(mix) {
     mix.sass('app.scss');
  
@@ -26,6 +26,11 @@ elixir(function(mix) {
     mix.copy('node_modules/zone.js', 'public/zone.js');
     mix.copy('node_modules/jquery/dist/', 'public/jquery');
 
+    mix.copy('resources/assets/templates/**/**.html', 'public/templates');
+
+     mix.html('templates/**/*.html', 'public/templates', 'resources/assets', {quotes: true, loose: true, empty: true});
+
+    mix.scripts("**/*.js");
 
 
      mix.typescript('app.js','public/','/**/*.ts',{

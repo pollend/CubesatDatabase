@@ -11,8 +11,8 @@
 |
 */
 
-Route::any('{all}', function ($page) {
-    return view('welcome');
+Route::get('{all}', function ($page) {
+    return view('index');
 })->where('all', '(?!api/)(?!_debugbar)(.*)');
 
 
@@ -21,6 +21,7 @@ Route::group(['prefix' => 'api/v1/'], function()
 	Route::resource('satellite','Api\SatelliteController');
 });
 
+/*
 Route::resource('satellite', 'SatelliteController');
 Route::get('satellite/{id}/history', 'SatelliteController@history');
 
@@ -51,7 +52,7 @@ Route::get('mission/', 'MissionController@home');
 Route::get('mission/{id}', 'MissionController@single');
 Route::get('mission/{id}/modify', 'MissionController@modify');
 Route::get('mission/{id}/history', 'MissionController@history');
-
+*/
 
 /*
 |--------------------------------------------------------------------------
