@@ -1,9 +1,14 @@
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-body{
-	margin: 0px;
-}
-
 @import "node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
 @import "./header";
-@import "./main";
+@import "./table";
+
+
+$dark-gray: #333 !default;
+
+
+body{
+	margin: 0px;
+	font-family: $helvetica;
+}

@@ -1,0 +1,30 @@
+table.table{
+	$table-divider-color: pink;
+
+	width:100%;
+	max-width:100%;
+	border-spacing: 0.5rem;
+	border-collapse: collapse;
+
+	tbody{
+
+	}
+
+	thead th{
+	 @include border-width(0 0 2px 0);
+	 @include border-color(null null $table-divider-color null);
+	 @include border-style(null null solid);
+	  @include padding(.2em null .2em null);
+
+	}
+
+	tbody td
+	{
+
+	 @include border-width(0 0 1px 0);
+	 @include border-color(null null $table-divider-color null);
+	 @include border-style(null null solid);
+	 @include padding(.2em null .2em null);
+
+	}
+}
