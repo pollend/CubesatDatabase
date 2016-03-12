@@ -1,8 +1,13 @@
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
+
+@import "./button";
+
 @import "./header";
 @import "./table";
+@import "./pagination";
+
 
 
 $dark-gray: #333 !default;

@@ -28,8 +28,6 @@
                 }
               }
             });
-         
-         
             System.import('typescript/boot')
                   .then(null, console.error.bind(console));
           </script>

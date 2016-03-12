@@ -1,5 +1,5 @@
 table.table{
-	$table-divider-color: pink;
+	$table-divider-color: gainsboro;
 
 	width:100%;
 	max-width:100%;
@@ -14,7 +14,7 @@ table.table{
 	 @include border-width(0 0 2px 0);
 	 @include border-color(null null $table-divider-color null);
 	 @include border-style(null null solid);
-	  @include padding(.2em null .2em null);
+	 @include padding(.2em null .2em null);
 
 	}
 
