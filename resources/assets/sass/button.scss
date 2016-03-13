@@ -1,7 +1,4 @@
-@mixin cubesat-button-small() {
-	$base-color: gainsboro !default;
-	$base-font-color: #333 !default;
-
+@mixin cubesat-button-small($font-size: 1em) {
 	@include transition (all 0.2s ease-in-out);
 	
 	background: lighten($base-color, 10);
@@ -11,6 +8,7 @@
 	outline: none;
 	padding: (1.5em / 4) ($gutter / 2);
 	text-decoration: none;
+	font-size: $font-size;
 
 	&:hover,
 	&:focus {
@@ -22,4 +20,19 @@
 		background: $base-color;
 	}
 
+}
+
+.cubesat-button-small
+{
+	@include cubesat-button-small(1em);
+}
+
+.cubesat-button-medium
+{
+	@include cubesat-button-small(1.2em);
+}
+
+.cubesat-button-large
+{
+	@include cubesat-button-small(2em);
 }

@@ -1,30 +1,33 @@
 table.table{
 	$table-divider-color: gainsboro;
-
+	@include margin(0.5em 0em);
 	width:100%;
 	max-width:100%;
 	border-spacing: 0.5rem;
 	border-collapse: collapse;
+	@include padding(0em 1em);
 
-	tbody{
-
+	&.stripped tbody{
+		tr {
+			background-color:lighten($base-color,10);
+		}
+		tr:nth-child(even) {
+			background-color: lighten($base-color,8);
+		}
 	}
 
-	thead th{
-	 @include border-width(0 0 2px 0);
-	 @include border-color(null null $table-divider-color null);
-	 @include border-style(null null solid);
-	 @include padding(.2em null .2em null);
-
+	&.hover tbody>tr:hover
+	{
+		background-color:lighten($base-color,3);
 	}
 
-	tbody td
+	td , th
 	{
 
-	 @include border-width(0 0 1px 0);
-	 @include border-color(null null $table-divider-color null);
-	 @include border-style(null null solid);
-	 @include padding(.2em null .2em null);
+		 @include border-width(1px);
+		 @include border-color($base-color);
+		 @include border-style(solid solid solid solid);
+		 @include padding(.6em .5em .6em .9em);
 
 	}
 }
