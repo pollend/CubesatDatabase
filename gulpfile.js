@@ -25,10 +25,11 @@ elixir(function(mix) {
     mix.copy('node_modules/es6-shim', 'public/es6-shim');
     mix.copy('node_modules/zone.js', 'public/zone.js');
     mix.copy('node_modules/jquery/dist/', 'public/jquery');
+    mix.copy('node_modules/bootstrap-sass/assets/*','public/bootstrap');
 
-    mix.copy('resources/assets/templates/**/**.html', 'public/templates');
+    mix.copy('resources/assets/templates/', 'public/templates');
 
-     mix.html('templates/**/*.html', 'public/templates', 'resources/assets', {quotes: true, loose: true, empty: true});
+    //mix.html('templates/**/*.html', 'public/templates', 'resources/assets', {quotes: true, loose: true, empty: true});
 
     mix.scripts("**/*.js");
 

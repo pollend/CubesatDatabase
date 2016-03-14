@@ -17,7 +17,8 @@
           <script src="angular2/bundles/angular2.dev.js"></script>
           <script src="angular2/bundles/router.dev.js"></script>
           <script src="jquery/jquery.min.js"></script>
-          <script type="js/all.js"></script>
+          <script src="js/all.js"></script>
+          <script src="bootstrap/javascripts/bootstrap.min.js"></script>
           <script>
             System.config({
               "defaultJSExtensions": true,

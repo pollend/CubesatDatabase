@@ -15,4 +15,5 @@ Homestead.json
 /public/semantic/
 /public/jquery/
 /public/templates/
+/public/bootstrap
 .env
