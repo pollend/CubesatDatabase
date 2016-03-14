@@ -1,26 +1,24 @@
-
 //this is the base colors used for all the elements
-$base-color: gainsboro !default;
-$base-font-color: #333 !default;
+// $base-color: gainsboro !default;
+// $base-font-color: #333 !default;
+// $grid-columns: 12 !default;
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// @import "node_modules/bourbon/app/assets/stylesheets/bourbon";
+// @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
+
+// @import "./button";
+// @import "./header";
+// @import "./table";
+// @import "./pagination";
 
 
-//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "node_modules/bourbon/app/assets/stylesheets/bourbon";
-@import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
 
-@import "./button";
-
-@import "./header";
-@import "./table";
-@import "./pagination";
+// $dark-gray: #333 !default;
 
 
-
-$dark-gray: #333 !default;
-
-
-body{
-	margin: 0px;
-	//use a readable font
-	font-family: $helvetica;
-}
+// body{
+// 	margin: 0px;
+// 	//use a readable font
+// 	font-family: $helvetica;
+// }

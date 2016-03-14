@@ -17,7 +17,6 @@ header.navigation {
   $navigation-active-link-color: transparentize(white, 0.5);
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 12em;
-  $horizontal-bar-mode: $large-screen;
 
   background-color: $navigation-background;
   border-bottom: 1px solid darken($navigation-background, 10);
@@ -56,7 +55,7 @@ header.navigation {
     text-decoration: none;
     text-transform: uppercase;
 
-    @include media ($horizontal-bar-mode) {
+    @include media ($large-screen) {
       display: none;
     }
 
@@ -73,7 +72,7 @@ header.navigation {
     min-height: $navigation-height;
     z-index: 9999999;
 
-    @include media ($horizontal-bar-mode) {
+    @include media ($large-screen) {
       float: left;
     }
   }
@@ -91,7 +90,7 @@ header.navigation {
       display: block;
     }
 
-    @include media ($horizontal-bar-mode) {
+    @include media ($large-screen) {
       display: inline;
       margin: 0;
       padding: 0;
@@ -110,7 +109,7 @@ header.navigation {
     width: 100%;
     z-index: 9999;
 
-    @include media ($horizontal-bar-mode) {
+    @include media ($large-screen) {
       background: transparent;
       display: inline;
       line-height: $navigation-height;
@@ -123,7 +122,7 @@ header.navigation {
       display: inline-block;
       text-decoration: none;
 
-      @include media ($horizontal-bar-mode) {
+      @include media ($large-screen) {
         padding-right: 1em;
       }
 
@@ -144,7 +143,7 @@ header.navigation {
   li.more.nav-link {
     padding-right: 0;
 
-    @include media($horizontal-bar-mode) {
+    @include media($large-screen) {
       padding-right: $navigation-submenu-padding;
     }
 
@@ -179,7 +178,7 @@ header.navigation {
       padding-right: 1.6em;
       position: relative;
 
-      @include media($horizontal-bar-mode) {
+      @include media($large-screen) {
         margin-right: $navigation-submenu-padding;
       }
 
@@ -196,7 +195,7 @@ header.navigation {
       display: block;
     }
 
-    @include media($horizontal-bar-mode) {
+    @include media($large-screen) {
       padding-right: 0.8em;
       position: relative;
     }
@@ -206,14 +205,14 @@ header.navigation {
     display: none;
     padding-left: 0;
 
-    @include media($horizontal-bar-mode) {
+    @include media($large-screen) {
       left: -$navigation-submenu-padding;
       position: absolute;
       top: 1.5em;
     }
 
     .submenu {
-      @include media($horizontal-bar-mode) {
+      @include media($large-screen) {
         left: $navigation-submenu-width - 0.2em;
         top: 0;
       }
@@ -223,7 +222,7 @@ header.navigation {
       display: block;
       padding-right: 0;
 
-      @include media($horizontal-bar-mode) {
+      @include media($large-screen) {
         line-height: $navigation-height / 1.3;
 
         &:first-child > a {
@@ -244,7 +243,7 @@ header.navigation {
         text-align: right;
         width: 100%;
 
-        @include media($horizontal-bar-mode) {
+        @include media($large-screen) {
           background-color: $navigation-background;
           padding-left: $navigation-submenu-padding;
           text-align: left;
@@ -256,78 +255,24 @@ header.navigation {
 
   // Elements on the far right
 
-  .navigation-tools {
+  .right-bar {
+     @include border-width(4px null null null);
+     @include border-color($base-border-color);
+     @include border-style(solid null null null);
+
     background: #505050;
     clear: both;
     display: block;
     height: $navigation-height;
 
-    @include media($horizontal-bar-mode) {
+    @include media($large-screen) {
+      @include border-width(0px null null null);
+
       background: transparent;
       clear: none;
       float: right;
     }
   }
 
-  // Search bar
 
-  .search-bar {
-    $search-bar-border-color: $base-border-color;
-    $search-bar-border: 1px solid $search-bar-border-color;
-    $search-bar-background: lighten($search-bar-border-color, 10%);
-
-    float: left;
-    padding: 0.85em 0.85em 0.7em 0.6em;
-    width: 60%;
-
-    form {
-      position: relative;
-
-      input[type=search] {
-        background: $navigation-search-background;
-        border: $navigation-search-border;
-        border-radius: $base-border-radius * 2;
-        box-sizing: border-box;
-        color: $navigation-color;
-        font-size: 0.9em;
-        font-style: italic;
-        margin: 0;
-        padding: 0.5em 0.8em;
-        width: 100%;
-
-        @include media($horizontal-bar-mode) {
-          width: 100%;
-        }
-      }
-
-      button[type=submit] {
-        background: $navigation-search-background;
-        border: none;
-        bottom: 0.3em;
-        left: auto;
-        outline: none;
-        padding: 0 9px;
-        position: absolute;
-        right: 0.3em;
-        top: 0.3em;
-
-        img {
-          height: 12px;
-          opacity: 0.7;
-          padding: 1px;
-        }
-      }
-    }
-
-    @include media($horizontal-bar-mode) {
-      display: inline-block;
-      position: relative;
-      width: 16em;
-
-      input {
-        box-sizing: border-box;
-        display: block;
-      }
-    }
-  }
 }
