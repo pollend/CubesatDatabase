@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'cubesat_list',
+    selector: 'register--component',
     templateUrl: 'templates/register.component.html'
 })
 

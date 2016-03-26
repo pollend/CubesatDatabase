@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'part_list',
+    selector: 'part-list-component',
     template: `
     <h1>Parts</h1>
     `

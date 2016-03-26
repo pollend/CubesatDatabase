@@ -16,6 +16,8 @@
           <script src="rxjs/bundles/Rx.js"></script>
           <script src="angular2/bundles/angular2.dev.js"></script>
           <script src="angular2/bundles/router.dev.js"></script>
+          <script src="angular2/bundles/http.dev.js"></script>
+
           <script src="jquery/jquery.min.js"></script>
           <script src="js/all.js"></script>
           <script src="bootstrap/javascripts/bootstrap.min.js"></script>

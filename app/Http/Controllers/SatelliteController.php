@@ -34,7 +34,7 @@ class SatelliteController extends Controller
             break;
        }
 
-       $sats =  \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
+       return \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
         {
             if($request->has("search"))
             {
@@ -46,7 +46,6 @@ class SatelliteController extends Controller
             }
         })->paginate($request->input("count",15))->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
         
-        return view('database_list.satellite',["items" => $sats]);
     }
 
     /**

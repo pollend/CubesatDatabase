@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'cubesat_list',
+    selector: 'login-component',
     templateUrl: 'templates/login.component.html'
 })
 

@@ -18,23 +18,35 @@ class SatelliteController extends Controller
      */
     public function index(Request $request)
     {
-        $number_entires  =$request->input("num_entires",100);
-        $offset  =$request->input("offset",0);
-        $response =[];
-        $satellites =  \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->limit($number_entires)->offset($offset*$number_entires)->get();
-        foreach ($satellites as $satellite) {
-           $response[] =
-           [
-                "id" => $satellite->id,
-                "updated_at" => $satellite->updated_at->toDateTimeString(),
-                "created_at" => $satellite->created_at->toDateTimeString(),
-                "name" => $satellite->name,
-                "COSPAR" => $satellite->COSPAR,
-                "status" => $satellite->status,
-                "tle" => $satellite->tle,
-                "orbit" => $satellite->orbit
-           ];
-        }
+
+        $column = "";
+       switch ($request->input("column")) {
+            case "name":
+                $column = "name";
+            break;
+            case "orbit":
+                $column = "orbit";
+            break;
+            case "tle":
+                $column = "tle";
+            break;
+            default:
+                $column = "name";
+            break;
+       }
+
+       return \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
+        {
+            if($request->has("search"))
+            {
+                $query->where($column,"LIKE","%".$request->input("search")."%");
+            }
+            if($request->has("status") && $request->input("status") != "all")
+            {
+                 $query->where("status",$request->input("status"));
+            }
+        })->paginate($request->input("count",15))->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
+        
         return $response;
     }
 
