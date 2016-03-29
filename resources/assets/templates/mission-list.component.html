@@ -1,0 +1,26 @@
+ <h1>Cubesat</h1>
+<div *ngIf="sat_pageination" >
+	
+<table class="table">
+  <thead>
+    <tr>
+		<th>id</th>
+		<th>name</th>
+		<th>orbit</th>
+		<th>status</th>
+		<th>tle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="sat_pageination" *ngFor="#row of sat_pageination.data">
+    	<th scope="row">{{row?.id}}</th>
+    	<td>{{row?.name}}</td>
+		  <td>{{row?.orbit}}</td>
+		  <td>{{row?.status}}</td>
+		  <td>{{row?.tle}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+<pagination [pageinator]="sat_pageination" (page_change)="onPageChange($event)" ></pagination>

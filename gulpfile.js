@@ -34,7 +34,7 @@ elixir(function(mix) {
     mix.scripts("**/*.js");
 
 
-     mix.typescript('app.js','public/','/**/*.ts',{
+     mix.typescript('/**/*.ts','public/typescript/',{
                   "target": "ES5",
                   "module": "system",
                   "moduleResolution": "node",
