@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 class MissionController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,8 @@ class MissionController extends Controller
      */
     public function index(Request $request)
     {
-       $column = "";
+
+        $column = "";
        switch ($request->input("column")) {
             case "name":
                 $column = "name";
@@ -36,18 +39,11 @@ class MissionController extends Controller
                 $query->where($column,"LIKE","%".$request->input("search")."%");
             }
 
-        })->paginate(15)->appends([]);
+        })->paginate(15)->appends([
+        "column" => $column , 
+        "search"=> $request->input("search")]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -68,20 +64,9 @@ class MissionController extends Controller
      */
     public function show($id)
     {
-        return \App\Mission::where("id","=",$id)->firstOrFail();
+       return \App\Mission::where("id","=",$id)->firstOrFail();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $mission = $this->show($id);
-        return view('database_view.mission',['id' =>$id,'item' => $mission]);
-    }
 
     /**
      * Update the specified resource in storage.
@@ -106,28 +91,7 @@ class MissionController extends Controller
         //
     }
 
-    public function home(Request $request)
-    {
-        $missions = $this->index($request);
-        return view('database_list.mission',["missions" => $missions]);
-    }
 
-    public function single($id)
-    {
-        $mission = $this->show($id);
-         return view('database_view.mission',['id' =>$id,'item' => $mission]);
-    }
 
-       public function modify($id)
-    {
-        $mission = $this->show($id);
-         return view('database_view.mission.modify',['id' =>$id,'item' => $mission]);
-    }
-
-    public function history($id)
-    {
-        $mission = $this->show($id);
-       return view('database_view.mission',['id' =>$id,'item' => $mission]);
-    }
-
+    
 }

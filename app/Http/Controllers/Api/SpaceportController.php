@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SatelliteController extends Controller
+class SpaceportController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -18,34 +16,15 @@ class SatelliteController extends Controller
      */
     public function index(Request $request)
     {
-        $column = "";
-       switch ($request->input("column")) {
-            case "name":
-                $column = "name";
-            break;
-            case "orbit":
-                $column = "orbit";
-            break;
-            case "tle":
-                $column = "tle";
-            break;
-            default:
-                $column = "name";
-            break;
-       }
-
-       return \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
+        return \App\Spaceport::select('id','latlong','url_website','url_googlemap','address1','address2','name','state','country','city','zip')->where(function($query) use ($request)
         {
             if($request->has("search"))
             {
-                $query->where($column,"LIKE","%".$request->input("search")."%");
+               $query->where("name","LIKE","%".$request->input("search")."%");
             }
-            if($request->has("status") && $request->input("status") != "all")
-            {
-                 $query->where("status",$request->input("status"));
-            }
-        })->paginate($request->input("count",15))->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
-        
+
+        })->paginate(15)->appends(["search" => $request->input("search")]);
+
     }
 
     /**
@@ -77,14 +56,7 @@ class SatelliteController extends Controller
      */
     public function show($id)
     {
-       $sat = \App\Satellite::where("id","=",$id)->firstOrFail();
-       return view('database_view.satellite.single',['id' =>$id,'item' => $sat]);
-    }
-
-    public function history($id)
-    {
-        $sat = \App\Satellite::where("id","=",$id)->firstOrFail();
-       return view('database_view.satellite.history',['id' =>$id,'item' => $sat]);
+        return \App\Spaceport::where("id","=",$id)->firstOrFail();
     }
 
     /**
@@ -95,8 +67,6 @@ class SatelliteController extends Controller
      */
     public function edit($id)
     {
-        $sat = \App\Satellite::where("id","=",$id)->firstOrFail();
-       return view('database_view.satellite.modify',['id' =>$id,'item' => $sat]);
     }
 
     /**
@@ -122,7 +92,20 @@ class SatelliteController extends Controller
         //
     }
 
+    public function home(Request $request)
+    {
+    }
 
+    public function modify($id)
+    {
+    }
 
-    
+    public function single($id)
+    {
+    }
+
+    public function history($id)
+    {
+    }
+
 }

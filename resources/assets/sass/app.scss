@@ -3,13 +3,14 @@
 // $base-font-color: #333 !default;
 // $grid-columns: 12 !default;
 
+
+@import "node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
+
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 .pagination li a{
 	cursor:pointer;
 }
-
-// @import "node_modules/bourbon/app/assets/stylesheets/bourbon";
-// @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
 
 // @import "./button";
 // @import "./header";

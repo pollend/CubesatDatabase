@@ -8,15 +8,15 @@ import {Observable}     from 'rxjs/Rx';
 
 
 @Injectable()
-export class MissionService {
+export class ComponentService {
 	constructor(private http: Http ) { 
 
 	}
 
-	private _mission_url = '/api/v1/mission';
+	private _component_url = '/api/v1/component';
 
 	getMissions(page:number){
-		return this.http.get(this._mission_url + "?page=" + page)
+		return this.http.get(this._component_url + "?page=" + page)
 			.map(request => <Pagination<Mission>>request.json())
 			.catch(this.handleError);
 	}

@@ -1,14 +1,15 @@
 import {Injectable} from 'angular2/core';
 
 @Injectable()
-export class Vendor {
+export class User {
 	public id: number;
 	public name : string;
-	public vendor_website : string;
-	public contact_info : string;
 	public type : string;
-
+	public email : string;
+	
 	constructor() {
 		// code...
 	}
+
+
 }

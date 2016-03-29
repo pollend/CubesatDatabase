@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
@@ -80,8 +80,6 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        $vendor = $this->show($id);
-        return view('database_view.vendor',['item'=> $vendor,'id' => $id]);
     }
 
     /**
@@ -110,26 +108,18 @@ class VendorController extends Controller
 
     public function home(Request $request)
     {
-        $vendors = $this->index($request);
-        return view('database_list.vendor',["vendors"=>$vendors]);
     }
 
     public function modify($id)
     {
-        $sat = $this->show($id);
-         return view('database_view.vendor.modify',['id' =>$id,'item' => $sat]);
     }
 
     public function single($id)
     {
         
-        $vendor = $this->show($id);
-         return view('database_view.vendor.single',['item'=> $vendor,'id' => $id]);
     }
 
     public function history($id)
     {
-        $vendor = $this->show($id);
-       return view('database_view.vendor.history',['item'=> $vendor,'id' => $id]);
     }
 }

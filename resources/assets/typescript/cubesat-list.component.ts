@@ -1,13 +1,17 @@
-import {Component, OnInit} from 'angular2/core';
 
-import {SatelliteService} from "./services/satellite-service";
+//angular 2 core
+import {Component, OnInit} from 'angular2/core';
+import {Router, RouteParams} from 'angular2/router';
+
+//models
 import {Satellite} from "./models/satellite";
 import {Pagination} from "./models/pagination";
 
+//components
 import {PaginationComponent} from './pagination.component';
 
-import {Router, RouteParams} from 'angular2/router';
-
+//services
+import {SatelliteService} from "./services/satellite-service";
 
 @Component({
     selector: 'cubesat-list',
@@ -31,8 +35,11 @@ export class CubesatListComponent implements OnInit {
 
 	ngOnInit()
 	{ 
-	
-		this.getSatellites(this.page); 
+
+		//retrieve satellites
+		this._satellite_service.getSatellites(this.page).subscribe(
+			sats => this.sat_pageination = sats,
+			error => this.errorMessage = <any>error);
 	}
 
 	private onPageChange(page: number)
@@ -46,15 +53,4 @@ export class CubesatListComponent implements OnInit {
 		this._route.navigate(['CubesatList', { page: this.page }]);
 	}
 	
-	private getSatellites(page: number)
-	{
-
-		this._satellite_service.getSatellites(page).subscribe(
-			sats => this.sat_pageination = sats,
-			error => this.errorMessage = <any>error);
-		
-	}
-
-
-
 }
