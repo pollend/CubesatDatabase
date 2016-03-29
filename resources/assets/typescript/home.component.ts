@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
  
 @Component({
-    selector: 'home-component',
+    selector: 'home',
     template: `
     <h1>derp</h1>
     <a class="button-sm">small</a>

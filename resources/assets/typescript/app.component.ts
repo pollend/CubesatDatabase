@@ -5,10 +5,10 @@ import {SampleComponent} from './sample.component';
 import {RegisterComponent} from './register.component';
 import {LoginComponent} from './login.component';
 
-import {CubesatListComponent} from "./cubesat_list.component";
-import {MissionListComponent} from "./mission_list.component";
-import {PartListComponent} from "./part_list.component";
-import {VendorListComponent} from "./vendor_list.component";
+import {CubesatListComponent} from "./cubesat-list.component";
+import {MissionListComponent} from "./mission-list.component";
+import {PartListComponent} from "./part-list.component";
+import {VendorListComponent} from "./vendor-list.component";
 
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 

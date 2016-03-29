@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'login-component',
+    selector: 'login',
     templateUrl: 'templates/login.component.html'
 })
 

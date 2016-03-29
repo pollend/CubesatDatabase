@@ -1,16 +1,16 @@
-<nav *ngIf="pagination">
+<nav *ngIf="pageinator">
   <ul class="pagination">
-    <li [class.disabled]="pagination.prev_page_url == null">
-      <a aria-label="Previous" (click)="onPageChange(pagination.current_page-1)">
+    <li [class.disabled]="pageinator.prev_page_url == null">
+      <a aria-label="Previous" (click)="onPageChange(pageinator.current_page-1)">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-      <li  *ngFor="#p of _starting_range" [class.active]="p == pagination.current_page">
+      <li  *ngFor="#p of _starting_range" [class.active]="p == pageinator.current_page">
         <a *ngIf="p != -1" (click)="onPageChange(p)">{{p}}</a>
         <a *ngIf="p == -1">...</a>
       </li>
-    <li [class.disabled]="pagination.next_page_url == null">
-      <a  aria-label="Next" (click)="onPageChange(pagination.current_page+1)">
+    <li [class.disabled]="pageinator.next_page_url == null">
+      <a  aria-label="Next" (click)="onPageChange(pageinator.current_page+1)">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

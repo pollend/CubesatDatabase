@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 
-import {SatelliteService} from "./services/satellite_service";
+import {SatelliteService} from "./services/satellite-service";
 import {Satellite} from "./models/satellite";
 import {Pagination} from "./models/pagination";
 
@@ -10,8 +10,8 @@ import {Router, RouteParams} from 'angular2/router';
 
 
 @Component({
-    selector: 'cubesat-list-component',
-	templateUrl: 'templates/cubesat_list.component.html',
+    selector: 'cubesat-list',
+	templateUrl: 'templates/cubesat-list.component.html',
     providers: [SatelliteService],
     directives: [PaginationComponent]
 })
@@ -38,6 +38,7 @@ export class CubesatListComponent implements OnInit {
 	private onPageChange(page: number)
 	{
 		this.page = page;
+		this.updateList();
 	}
 
 	private updateList()

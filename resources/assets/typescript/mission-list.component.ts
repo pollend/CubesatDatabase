@@ -1,10 +1,8 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'mission-list-component',
-    template: `
-    <h1>Missions</h1>
-    `
+    selector: 'mission-list',
+    templateUrl: 'templates/mission-list.component.html',
 })
 
 

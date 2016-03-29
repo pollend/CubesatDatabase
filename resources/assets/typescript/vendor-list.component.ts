@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'vendor_list',
+    selector: 'vendor-list',
     template: `
     <h1>Vendors</h1>
     `
