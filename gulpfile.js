@@ -26,6 +26,7 @@ elixir(function(mix) {
     mix.copy('node_modules/zone.js', 'public/zone.js');
     mix.copy('node_modules/jquery/dist/', 'public/jquery');
     mix.copy('node_modules/bootstrap-sass/assets/*','public/bootstrap');
+  mix.copy('node_modules/bootstrap-sass/assets/fonts/*','public/fonts');
 
     mix.copy('resources/assets/templates/', 'public/templates');
 

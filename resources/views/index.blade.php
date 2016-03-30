@@ -7,7 +7,6 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <!-- 1. Load libraries -->
 
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
          <script src="es6-shim/es6-shim.min.js"></script>
          <script src="systemjs/dist/system-polyfills.js"></script>
          
@@ -20,7 +19,10 @@
 
           <script src="jquery/jquery.min.js"></script>
           <script src="js/all.js"></script>
+
+          <link rel="stylesheet" type="text/css" href="/css/app.css">
           <script src="bootstrap/javascripts/bootstrap.min.js"></script>
+          
           <script>
             System.config({
               "defaultJSExtensions": true,
