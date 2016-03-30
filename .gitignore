@@ -16,4 +16,5 @@ Homestead.json
 /public/jquery/
 /public/templates/
 /public/bootstrap
+/public/fonts
 .env
