@@ -22,19 +22,19 @@ import {MissionService} from "./services/mission-service";
 
 
 export class MissionListComponent implements OnInit{
-	mission_pageination: Pagination<Mission>;
+	pageination: Pagination<Mission>;
 	errorMessage: string;
 	private page: number = 1;
 
 	constructor(private _mission_service: MissionService, private _route: Router, routeParams : RouteParams) { 
-		this.mission_pageination = null;
+		this.pageination = null;
 		this.page = +routeParams.get('page');
 	}
 
 	ngOnInit()
 	{ 
 		this._mission_service.getMissions(this.page).subscribe(
-			missions => this.mission_pageination = missions,
+			missions => this.pageination = missions,
 			error => this.errorMessage = <any>error);
 	}
 

@@ -41,7 +41,7 @@ elixir(function(mix) {
                   "sourceMap": true,
                   "emitDecoratorMetadata": true,
                   "experimentalDecorators": true,
-                  "removeComments": false,
+                  "removeComments": true,
                   "noImplicitAny": false,
     });
 });
