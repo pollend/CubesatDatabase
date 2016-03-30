@@ -1,40 +1,38 @@
-
 //angular 2 core
 import {Component, OnInit} from 'angular2/core';
 import {Router, RouteParams} from 'angular2/router';
 
 //models
-import {Satellite} from "./models/satellite";
 import {Pagination} from "./models/pagination";
+import {SatComponent} from "./models/sat_component";
 
-//components
+//component
 import {PaginationComponent} from './pagination.component';
 
 //services
-import {SatelliteService} from "./services/satellite-service";
+import {ComponentService} from "./services/component-service";
 
 @Component({
-    selector: 'cubesat-list',
-	templateUrl: 'templates/cubesat-list.component.html',
-    providers: [SatelliteService],
+    selector: 'component-list',
+    templateUrl: 'templates/component-list.component.html',
+    providers: [ComponentService],
     directives: [PaginationComponent]
 })
 
+export class ComponentListComponent { 
 
-export class CubesatListComponent implements OnInit { 
-
-	pagination: Pagination<Satellite>;
+	pagination: Pagination<SatComponent>;
 	errorMessage: string;
 	private page: number = 0;
 
-	constructor(private _satellite_service: SatelliteService, private _route: Router, routeParams : RouteParams) { 
+	constructor(private _component_service: ComponentService, private _route: Router, routeParams: RouteParams) {
 		this.pagination = null;
 		this.page = +routeParams.get('page');
 	}
 
-	ngOnInit() { 
+	ngOnInit() {
 		//retrieve satellites
-		this._satellite_service.getSatellites(this.page).subscribe(
+		this._component_service.getComponent(this.page).subscribe(
 			sats => this.pagination = sats,
 			error => this.errorMessage = <any>error);
 	}
@@ -45,7 +43,6 @@ export class CubesatListComponent implements OnInit {
 	}
 
 	private updateList() {
-		this._route.navigate(['CubesatList', { page: this.page }]);
+		this._route.navigate(['ComponentList', { page: this.page }]);
 	}
-	
 }

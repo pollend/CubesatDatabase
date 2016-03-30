@@ -39,8 +39,8 @@ declare var System:any;
   new AsyncRoute(
     { 
       path: '/component',
-      name: 'PartList',
-      loader: () => System.import('./typescript/part-list.component').then(m => m.PartListComponent)
+      name: 'ComponentList',
+      loader: () => System.import('./typescript/component-list.component').then(m => m.ComponentListComponent)
     }),
   new AsyncRoute(
     { 

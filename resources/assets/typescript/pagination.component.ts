@@ -31,13 +31,15 @@ export class PaginationComponent<T>  {
 			for (var i = this.pageinator.current_page - 3; i < this.pageinator.current_page + 5; i++) {
 				if (i > 0 && i <= max_range)
 					this._starting_range.push(i);
-				if (i >= max_range)
+				if (i >= max_range-1)
 					hit_max = true;
 			}
 			if (!hit_max) {
 				this._starting_range.push(-1)
+				this._starting_range.push(max_range-1);
 				this._starting_range.push(max_range);
 			}
+
 			if (this.pageinator.data.length == 0)
 			{
 				this.page_change.emit(max_range);

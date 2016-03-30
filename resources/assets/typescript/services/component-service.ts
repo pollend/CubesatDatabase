@@ -2,7 +2,8 @@ import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 
 import {Pagination} from "./../models/pagination";
-import {Mission} from "./../models/mission";
+import {SatComponent} from "./../models/sat_component";
+
 
 import {Observable}     from 'rxjs/Rx';
 
@@ -15,9 +16,9 @@ export class ComponentService {
 
 	private _component_url = '/api/v1/component';
 
-	getMissions(page:number){
+	getComponent(page:number){
 		return this.http.get(this._component_url + "?page=" + page)
-			.map(request => <Pagination<Mission>>request.json())
+			.map(request => <Pagination<SatComponent>>request.json())
 			.catch(this.handleError);
 	}
 

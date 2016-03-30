@@ -1,23 +1,17 @@
- <h1>Cubesat</h1>
+ <h1>component</h1>
 <div *ngIf="pagination" >
 	
 <table class="table">
   <thead>
     <tr>
-		<th>id</th>
-		<th>name</th>
-		<th>orbit</th>
-		<th>status</th>
-		<th>tle</th>
+  		<th>id</th>
+  		<th>formal-specification</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngIf="pagination" *ngFor="#row of pagination.data">
     	<th scope="row">{{row?.id}}</th>
-    	<td>{{row?.name}}</td>
-		  <td>{{row?.orbit}}</td>
-		  <td>{{row?.status}}</td>
-		  <td>{{row?.tle}}</td>
+		  <td>{{row?.formal_specification}}</td>
     </tr>
   </tbody>
 </table>
