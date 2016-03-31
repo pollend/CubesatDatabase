@@ -1,7 +1,7 @@
  <h1>component</h1>
 <div *ngIf="pagination" >
 	
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
   		<th>id</th>
@@ -10,8 +10,8 @@
   </thead>
   <tbody>
     <tr *ngIf="pagination" *ngFor="#row of pagination.data">
-    	<th scope="row">{{row?.id}}</th>
-		  <td>{{row?.formal_specification}}</td>
+    	<th scope="row" (click)="selectComponent(row)">{{row?.id}}</th>
+		  <td (click)="selectComponent(row)">{{row?.formal_specification}}</td>
     </tr>
   </tbody>
 </table>

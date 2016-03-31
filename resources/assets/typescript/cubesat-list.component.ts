@@ -47,5 +47,11 @@ export class CubesatListComponent implements OnInit {
 	private updateList() {
 		this._route.navigate(['CubesatList', { page: this.page }]);
 	}
+
+	//navigate to the single Cubesat
+	private selectCubesat(satellite: Satellite)
+	{
+		this._route.navigate(['CubesatSingle', { id: satellite.id }]);
+	}
 	
 }

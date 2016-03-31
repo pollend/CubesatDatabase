@@ -8,9 +8,19 @@
 @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
 
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-.pagination li a{
+a{
 	cursor:pointer;
 }
+
+.table-hover tr th,.table-hover tr td
+{
+	cursor: pointer;
+}
+
+.main-container{
+	margin: 0px 15px;
+}
+
 
 // @import "./button";
 // @import "./header";

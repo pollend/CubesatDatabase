@@ -45,4 +45,9 @@ export class ComponentListComponent {
 	private updateList() {
 		this._route.navigate(['ComponentList', { page: this.page }]);
 	}
+
+	private selectComponent(component : SatComponent)
+	{
+		this._route.navigate(['ComponentSingle', { id: component.id }]);
+	}
 }

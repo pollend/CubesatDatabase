@@ -48,8 +48,13 @@ export class VendorListComponent {
 		this.updateList();
 	}
 
+	private vendorSelect(vendor: Vendor) {
+		this._route.navigate(['VendorSingle', { id: vendor.id }]);
+	}
+
 	private updateList()
 	{
 		this._route.navigate(['VendorList', { page: this.page }]);
 	}
 }
+

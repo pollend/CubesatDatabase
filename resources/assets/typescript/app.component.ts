@@ -38,7 +38,7 @@ declare var System:any;
       name: 'CubesatSingle',
       loader: () => System.import('./typescript/cubesat-single.component').then(m => m.CubesatSingleComponent) 
     }),
-  //MISSIONS
+  //missions
   new AsyncRoute(
     { 
       path: '/mission',
@@ -51,12 +51,18 @@ declare var System:any;
       name: 'MissionSingle',
       loader: () => System.import('./typescript/mission-single.component').then(m => m.MissionSingleComponent)
     }),
-
+  //component
   new AsyncRoute(
     { 
       path: '/component',
       name: 'ComponentList',
       loader: () => System.import('./typescript/component-list.component').then(m => m.ComponentListComponent)
+    }),
+  new AsyncRoute(
+    {
+      path: '/component/:id',
+      name: 'ComponentSingle',
+      loader: () => System.import('./typescript/component-single.component').then(m => m.ComponentSingleComponent)
     }),
   //vendor
     new AsyncRoute(
@@ -69,7 +75,7 @@ declare var System:any;
     { 
       path: '/vendor/:id',
       name: 'VendorSingle',
-      loader: () => System.import('./typescript/vendor-single.component').then(m => m.VendorListComponent)
+      loader: () => System.import('./typescript/vendor-single.component').then(m => m.VendorSingleComponent)
     }),
 
   new AsyncRoute(
@@ -87,7 +93,14 @@ declare var System:any;
     path: '/login', 
     name:'Login',  
     loader: () => System.import('./typescript/login.component').then(m => m.LoginComponent)
-  })])
+  }),
+  new AsyncRoute({
+    path: '/user',
+    name: 'User',
+    loader: () => System.import('./typescript/user-home.component').then(m => m.LoginComponent)
+  })
+
+  ])
 
 export class AppComponent { }
 

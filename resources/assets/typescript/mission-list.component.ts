@@ -49,4 +49,9 @@ export class MissionListComponent implements OnInit{
 		this._route.navigate(['MissionList', { page: this.page }]);
 	}
 
+	private missionSelect(mission : Mission)
+	{
+		this._route.navigate(['MissionSingle', { id: mission.id }]);
+	}
+
 }

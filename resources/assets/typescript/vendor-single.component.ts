@@ -17,7 +17,7 @@ import {Router, RouteParams} from 'angular2/router';
 })
 
 
-export class MissionSingleComponent implements OnInit { 
+export class VendorSingleComponent implements OnInit { 
 
 
 	constructor( private _route: Router, routeParams : RouteParams) { 
