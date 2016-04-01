@@ -1,0 +1,8 @@
+.state-list
+{
+	@include pad(10px 0px);
+	@include outer-container;
+	.state { @include span-columns(3); }
+	.state-description { @include span-columns(9); }
+}
+

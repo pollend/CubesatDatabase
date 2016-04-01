@@ -97,10 +97,22 @@ declare var System:any;
   new AsyncRoute({
     path: '/user',
     name: 'User',
-    loader: () => System.import('./typescript/user-home.component').then(m => m.LoginComponent)
+    loader: () => System.import('./typescript/user-home.component').then(m => m.UserHomeComponent)
   })
 
   ])
 
-export class AppComponent { }
+export class AppComponent { 
+  expand()
+  {
+    $(".navigation nav").each(function(index)
+    {
+      if($(this).hasClass("show"))
+        $(this).removeClass("show");
+      else
+        $(this).addClass("show");
+    });
+  }
+
+}
 

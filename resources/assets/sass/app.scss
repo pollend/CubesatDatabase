@@ -1,13 +1,14 @@
 //this is the base colors used for all the elements
-// $base-color: gainsboro !default;
-// $base-font-color: #333 !default;
-// $grid-columns: 12 !default;
+$base-color: gainsboro !default;
+$base-font-color: #333 !default;
+$grid-columns: 12 !default;
 
 
 @import "node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
 
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
 a{
 	cursor:pointer;
 }
@@ -18,22 +19,24 @@ a{
 }
 
 .main-container{
-	margin: 0px 15px;
+	width: 80%;
+    margin: 0 auto;
 }
 
 
-// @import "./button";
-// @import "./header";
-// @import "./table";
-// @import "./pagination";
+@import "./button";
+@import "./header";
+@import "./table";
+@import "./pagination";
+@import "./state-list";
+@import "./vertical-tab-container";
+
+$dark-gray: #333 !default;
 
 
-
-// $dark-gray: #333 !default;
-
-
-// body{
-// 	margin: 0px;
-// 	//use a readable font
-// 	font-family: $helvetica;
-// }
+body{
+ 	margin: 0px;
+ 	//use a readable font
+ 	font-size: 12px;
+ 	font-family: $helvetica;
+}

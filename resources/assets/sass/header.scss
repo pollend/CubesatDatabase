@@ -29,6 +29,10 @@ header.navigation {
     @include outer-container;
     position: relative;
     z-index: 9999;
+    @include media ($large-screen) {
+      padding: 0px 30px;
+    }
+
   }
 
   .logo {
@@ -72,6 +76,11 @@ header.navigation {
     min-height: $navigation-height;
     z-index: 9999999;
 
+    &.show ul{
+      display: block;
+    
+    }
+
     @include media ($large-screen) {
       float: left;
     }
@@ -86,9 +95,7 @@ header.navigation {
     width: 100%;
     z-index: 9999;
 
-    &.show {
-      display: block;
-    }
+
 
     @include media ($large-screen) {
       display: inline;
@@ -100,6 +107,7 @@ header.navigation {
   // The nav items
 
   ul li.nav-link {
+
     background: $navigation-background;
     display: block;
     line-height: $navigation-height;
@@ -256,18 +264,23 @@ header.navigation {
   // Elements on the far right
 
   .right-bar {
-     @include border-width(4px null null null);
-     @include border-color($base-border-color);
-     @include border-style(solid null null null);
+     //@include border-width(4px null null null);
+     //@include border-color($base-border-color);
+     //@include border-style(solid null null null);
 
-    background: #505050;
-    clear: both;
-    display: block;
+   // background: #505050;
+    &.show {
+      display: block;
+    }
+
+    clear: none;
+    display: none;
     height: $navigation-height;
 
     @include media($large-screen) {
       @include border-width(0px null null null);
 
+      display: block;
       background: transparent;
       clear: none;
       float: right;
