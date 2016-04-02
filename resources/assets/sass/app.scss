@@ -1,11 +1,13 @@
 //this is the base colors used for all the elements
-$base-color: gainsboro !default;
-$base-font-color: #333 !default;
 $grid-columns: 12 !default;
 
 
 @import "node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "node_modules/bourbon-neat/app/assets/stylesheets/neat";
+
+$base-color: gainsboro !default;
+$base-color-2: #575665 !default;
+$base-font-color: #333 !default;
 
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -19,6 +21,7 @@ a{
 }
 
 .main-container{
+	padding:20px 0px;
 	width: 80%;
     margin: 0 auto;
 }
@@ -26,6 +29,7 @@ a{
 
 @import "./button";
 @import "./header";
+@import "./footer";
 @import "./table";
 @import "./pagination";
 @import "./state-list";
@@ -36,6 +40,8 @@ $dark-gray: #333 !default;
 
 body{
  	margin: 0px;
+ 	padding: 0px !important;
+ 	
  	//use a readable font
  	font-size: 12px;
  	font-family: $helvetica;
