@@ -1,4 +1,17 @@
-<h1>Cubesat</h1>
+<dir class="search-bar">
+  <div>
+    <ul class="search-nav">
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
+  </div>
+</dir>
+
+
+<div class="main-container">
+  <h1>Cubesat</h1>
   <div *ngIf="pagination" >
     <table class="table table-hover" >
       <thead>
@@ -22,3 +35,4 @@
     </table>
   </div>
   <pagination [pageinator]="pagination" (page_change)="onPageChange($event)" ></pagination>
+</div>

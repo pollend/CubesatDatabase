@@ -7,7 +7,10 @@ $grid-columns: 12 !default;
 
 $base-color: gainsboro !default;
 $base-color-2: #575665 !default;
+$base-border-color: gainsboro !default;
 $base-font-color: #333 !default;
+$base-border-radius: 3px !default;
+$large-screen: em(860) !default;
 
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -21,9 +24,13 @@ a{
 }
 
 .main-container{
+  @include media ($large-screen) {
 	padding:20px 0px;
-	width: 80%;
-    margin: 0 auto;
+	width: 90%;
+	margin: 0 auto;
+  }
+  padding:20px 10px;
+
 }
 
 
@@ -34,6 +41,8 @@ a{
 @import "./pagination";
 @import "./state-list";
 @import "./vertical-tab-container";
+@import "./well";
+@import "./search-bar";
 
 $dark-gray: #333 !default;
 

@@ -1,0 +1,42 @@
+.search-bar {
+    @include padding(0px);
+    @include margin(0px);
+
+    &>div{
+    	@include padding(10px 0px);
+    	@include media ($large-screen) {
+        width: 80%;
+        margin: 0 auto;
+   		}
+    }
+
+    background:red;
+    ul.search-nav {
+        clear: both;
+        display: none;
+        margin: 0 auto;
+        overflow: visible;
+        padding: 0;
+        width: 100%;
+        z-index: 9999;
+        li {
+            display: block;
+            overflow: hidden;
+            padding-right: 0.8em;
+            text-align: right;
+            width: 100%;
+            z-index: 9999;
+            @include media ($large-screen) {
+                background: transparent;
+                display: inline;
+                text-decoration: none;
+                width: auto;
+            }
+        }
+        @include media ($large-screen) {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
