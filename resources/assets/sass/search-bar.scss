@@ -2,15 +2,15 @@
     @include padding(0px);
     @include margin(0px);
 
-    &>div{
-    	@include padding(10px 0px);
-    	@include media ($large-screen) {
-        width: 80%;
-        margin: 0 auto;
-   		}
-    }
+    // &>div{
+    // 	@include padding(10px 0px);
+    // 	@include media ($large-screen) {
+    //         width: 80%;
+    //         margin: 0 auto;
+   	// 	}
+    // }
 
-    background:red;
+    @include padding(20px 0px);
     ul.search-nav {
         clear: both;
         display: none;
@@ -32,11 +32,49 @@
                 text-decoration: none;
                 width: auto;
             }
+            &>div{
+                display: inline;
+            }
         }
+
         @include media ($large-screen) {
             display: inline;
             margin: 0;
             padding: 0;
+        }
+    }
+}
+
+.search-dropdown{
+    position: relative;
+    .drop-down-button span{
+
+    }
+
+    .drop-down{
+        @include border-top-radius(2px);
+        @include border-right-radius(2px);
+        @include border-bottom-radius(2px);
+        @include border-left-radius(2px);
+
+        @include border-style(solid);
+        @include border-color(#DDD);
+
+        @include border-width(1px);
+
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+        position:  absolute;
+        top: 20px;
+        left: 0px;
+        background:white;
+
+        min-height: 200px;
+
+        &>input[type=text]{
+            @include margin(.2em);
         }
     }
 }

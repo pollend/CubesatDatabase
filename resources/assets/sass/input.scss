@@ -1,0 +1,24 @@
+.form-control{
+	&[type=text], textarea{
+		@include transition(border-color 0.1s ease-in-out);
+		@include transition(border-box 0.1s ease-in-out);
+
+		background-color: white;
+		box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+				
+		@include border-top-radius(3px);
+		@include border-right-radius(3px);
+		@include border-bottom-radius(3px);
+		@include border-left-radius(3px);
+
+
+		@include border-style(solid);
+		@include border-color(#DDD);
+		@include border-width(1px);
+
+		font-size: 1em;
+		@include margin(0em 0em 0em .75em)
+		@include padding(.4em .4em)
+
+	}
+}

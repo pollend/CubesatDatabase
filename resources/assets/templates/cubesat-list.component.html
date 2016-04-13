@@ -1,17 +1,32 @@
+<h1>Cubesat</h1>
+
 <dir class="search-bar">
   <div>
     <ul class="search-nav">
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
+      <li>
+        <input type="text" class="form-control" placeholder="Text input">
+      </li>
+      <li>
+        <div class="search-dropdown">
+          <button class="cubesat-button-medium drop-down-button" type="button">Some Term <span class="arrow"></span></button>
+          <div class="drop-down">
+            <input type="text" class="form-control" placeholder="Text input">
+            <div class="scroll-area">
+              <div> item 1</div>
+              <div> item 2</div>
+              <div> item 3</div>
+              <div> item 4</div>
+              <div> item 5</div>
+              <div> item 6 </div>
+              
+            </div>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </dir>
 
-
-<div class="main-container">
-  <h1>Cubesat</h1>
   <div *ngIf="pagination" >
     <table class="table table-hover" >
       <thead>
@@ -35,4 +50,3 @@
     </table>
   </div>
   <pagination [pageinator]="pagination" (page_change)="onPageChange($event)" ></pagination>
-</div>
