@@ -27,7 +27,6 @@ $factory->define(App\Satellite::class, function (Faker\Generator $faker) {
 		'content' => $faker->sentence($nbWords = 200, $variableNbWords = true),
 		'COSPAR' => str_random(10),
 		'wiki' => str_random(10),
-		'status' => $faker->randomElements($array = array("active","in-orbit","in-development","data-collection","data-analysis","inactive","de-orbited","entry-closed"), $count = 1)[0],
 		'tle' => str_random(10),
 		'orbit' => str_random(10)
     ];

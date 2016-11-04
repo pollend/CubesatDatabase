@@ -17,6 +17,9 @@ class CreateSatelliteStatusTable extends Migration
             $table->timestamps();
             $table->enum("status",array("active","in-orbit","in-development","data-collection","data-analysis","inactive","de-orbited","entry-closed"));
             $table->date("time");
+            $table->integer("satellite_id")->unsigned();
+
+            $table->foreign('satellite_id')->references('id')->on('satellites');
 
         });
     }

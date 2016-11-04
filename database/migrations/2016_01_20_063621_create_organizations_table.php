@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSpaceportsTable extends Migration
+class CreateOrganizationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateSpaceportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('spaceports', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string("latlong");
-            $table->string("url_website");
-            $table->binary("description");
+            $table->enum('type',["University","Military"]);
+            $table->string("name",60);
             $table->integer("address_id")->unsigned();
+
             $table->foreign('address_id')->references('id')->on('addresses');
         });
     }
@@ -30,6 +30,6 @@ class CreateSpaceportsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('spaceports');
+        Schema::drop('organizations');
     }
 }

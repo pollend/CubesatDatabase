@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrbitTable extends Migration
+class CreateSatelliteTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateOrbitTable extends Migration
      */
     public function up()
     {
-        Schema::create('orbit', function (Blueprint $table) {
+        Schema::create('satellite_types', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string("tle");
-            $table->string("orbit");
+            $table->string("name",60);
         });
     }
 
@@ -27,6 +26,6 @@ class CreateOrbitTable extends Migration
      */
     public function down()
     {
-        Schema::drop('orbit');
+        Schema::drop('satellite_types');
     }
 }

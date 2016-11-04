@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVendorSpaceportPivotTable extends Migration
+class CreateVendorsImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateVendorSpaceportPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendor_spaceports', function (Blueprint $table) {
+        Schema::create('vendors_images', function (Blueprint $table) {
             $table->integer('vendor_id')->unsigned();
-            $table->integer('spaceport_id')->unsigned();
-            
+            $table->integer('image_id')->unsigned();
+
             $table->foreign('vendor_id')->references('id')->on('vendors');
-            $table->foreign('spaceport_id')->references('id')->on('spaceports');
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateVendorSpaceportPivotTable extends Migration
      */
     public function down()
     {
-         Schema::drop('vendor_spaceports');
+        Schema::drop('vendors_images');
     }
 }

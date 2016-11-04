@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSatelliteFailureStates extends Migration
+class CreateMissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,16 @@ class CreateSatelliteFailureStates extends Migration
      */
     public function up()
     {
-        Schema::create('satellite_failure_states', function (Blueprint $table) {
+        Schema::create('missions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string("objective");
+            $table->string("wiki");
+            $table->string("name");
             $table->binary("content");
-            $table->dateTime("time_of_failure");
-            $table->integer("satellite_id")->unsigned();
+            $table->integer("organization_id")->unsigned();
 
-            $table->foreign('satellite_id')->references('id')->on('satellites');
-            
+            $table->foreign('organization_id')->references('id')->on('organizations');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateSatelliteFailureStates extends Migration
      */
     public function down()
     {
-        Schema::drop('satellite_failure_states');
+          Schema::drop('missions');
     }
 }

@@ -19,9 +19,15 @@ class CreateSatellitesTable extends Migration
             $table->binary("content");
             $table->string("COSPAR");
             $table->string("wiki");
-            $table->integer("mission_id")->unsigned();
+            $table->float("weight");
 
+            $table->integer("mission_id")->unsigned();
+            $table->integer("satellite_type_id")->unsigned();
+            $table->integer("satellite_orbit_id")->unsigned();
+
+            $table->foreign('satellite_type_id')->references('id')->on('satellite_types');
             $table->foreign('mission_id')->references('id')->on('missions');
+            $table->foreign('satellite_orbit_id')->references('id')->on('orbits');
             
         });
     }

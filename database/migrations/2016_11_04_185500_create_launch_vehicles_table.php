@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComponentTable extends Migration
+class CreateLaunchVehiclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,10 @@ class CreateComponentTable extends Migration
      */
     public function up()
     {
-        Schema::create('components', function (Blueprint $table) {
+        Schema::create('launch_vehicles', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->binary("description");
-            $table->string("formal_specification");
-            $table->integer("vendor_id")->unsigned();
-            $table->foreign('vendor_id')->references('id')->on('vendors');
-
+            $table->string("name",40);
         });
     }
 
@@ -30,6 +26,6 @@ class CreateComponentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('components');
+        Schema::drop('launch_vehicles');
     }
 }
