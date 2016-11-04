@@ -38,7 +38,7 @@ export class VendorListComponent {
 
 		//retrieve satellites
 		this._vendor_service.getSpaceports(this.page).subscribe(
-			vedors => this.pageination = vedors,
+			vedors => this.pageination = <Pagination<Vendor>>vedors,
 			error => this.errorMessage = <any>error);
 	}
 

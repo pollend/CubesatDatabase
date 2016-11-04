@@ -103,16 +103,16 @@ declare var System:any;
   ])
 
 export class AppComponent { 
-  expand()
-  {
-    $(".navigation nav").each(function(index)
-    {
-      if($(this).hasClass("show"))
-        $(this).removeClass("show");
-      else
-        $(this).addClass("show");
-    });
-  }
+  // expand()
+  // {
+  //   $(".navigation nav").each(function(index)
+  //   {
+  //     if($(this).hasClass("show"))
+  //       $(this).removeClass("show");
+  //     else
+  //       $(this).addClass("show");
+  //   });
+  // }
 
 }
 

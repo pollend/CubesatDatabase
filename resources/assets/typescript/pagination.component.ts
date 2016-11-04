@@ -16,7 +16,7 @@ export class PaginationComponent<T>  {
 
 
 	@Output() 
-	page_change: EventEmitter<number> = new EventEmitter();
+	page_change: EventEmitter<number> = new EventEmitter<number>();
 
 	private _starting_range: Array<number> = new Array<number>();
 

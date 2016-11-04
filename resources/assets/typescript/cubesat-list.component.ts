@@ -35,7 +35,7 @@ export class CubesatListComponent implements OnInit {
 	ngOnInit() { 
 		//retrieve satellites
 		this._satellite_service.getSatellites(this.page).subscribe(
-			sats => this.pagination = sats,
+			sats => this.pagination = <Pagination<Satellite>>sats,
 			error => this.errorMessage = <any>error);
 	}
 

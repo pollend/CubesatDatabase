@@ -24,7 +24,8 @@
           <script src="bootstrap/javascripts/bootstrap.min.js"></script>
           
           <script>
-            System.config({
+
+ System.config({
               "defaultJSExtensions": true,
               packages: {
                 app: {

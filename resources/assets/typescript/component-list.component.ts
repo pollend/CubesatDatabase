@@ -33,7 +33,7 @@ export class ComponentListComponent {
 	ngOnInit() {
 		//retrieve satellites
 		this._component_service.getComponent(this.page).subscribe(
-			sats => this.pagination = sats,
+			sats => this.pagination = <Pagination<SatComponent>>sats,
 			error => this.errorMessage = <any>error);
 	}
 

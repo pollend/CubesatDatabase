@@ -34,7 +34,7 @@ export class MissionListComponent implements OnInit{
 	ngOnInit()
 	{ 
 		this._mission_service.getMissions(this.page).subscribe(
-			missions => this.pageination = missions,
+			missions => this.pageination = <Pagination<Mission>>missions,
 			error => this.errorMessage = <any>error);
 	}
 
