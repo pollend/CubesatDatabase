@@ -16,7 +16,7 @@ class CreateSatelliteFailureStates extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->binary("content");
-            $table->dateTime("failure");
+            $table->dateTime("time_of_failure");
             
         });
     }

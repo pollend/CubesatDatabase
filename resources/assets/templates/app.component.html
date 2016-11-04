@@ -1,25 +1,29 @@
 <header class="navigation" role="banner">
-    <div class="navigation-wrapper">
-        <a (click)="expand()" class="navigation-menu-button">MENU</a>
-        <a class="logo">
-                        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="Logo image">
-                    </a>
-        <nav>
-            <ul class="navigation-menu">
-                <li class="nav-link"><a [routerLink]="['Home']">Home</a></li>
-                <li class="nav-link"><a [routerLink]="['CubesatList']">Cubesats</a></li>
-                <li class="nav-link"><a [routerLink]="['MissionList']">Missions</a></li>
-                <li class="nav-link"><a [routerLink]="['VendorList']">Vendors</a></li>
-                <li class="nav-link"><a [routerLink]="['ComponentList']">Components</a></li>
-            </ul>
-        </nav>
-        <nav class="right-bar">
-            <ul class="navigation-menu">
-                <li class="nav-link"><a [routerLink]="['Login']">Login</a></li>
-                <li class="nav-link"><a [routerLink]="['Register']">Register</a></li>
-            </ul>
-        </nav>
-    </div>
+      <nav class="uk-navbar ">
+        <div class="uk-width-medium-3-4 uk-container-center">
+          <a class="uk-navbar-brand">Cubesat Database</a>
+          <ul class="uk-navbar-nav">
+              <li><a [routerLink]="['Home']">Home</a></li>
+              <li><a [routerLink]="['CubesatList']">Cubesats</a></li>
+              <li><a [routerLink]="['MissionList']">Missions</a></li>
+              <li><a [routerLink]="['VendorList']">Vendors</a></li>
+              <li><a [routerLink]="['ComponentList']">Components</a></li>
+
+          </ul>
+          <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small">
+            <li class="uk-parent" data-uk-dropdown>
+                <a href=""> <img class="profile-img" src="./../assets/blank_profile.png"></a>
+                <div class="uk-dropdown uk-dropdown-navbar">
+                    <ul class="uk-nav uk-nav-navbar">
+                        <li><a href="">Profile</a></li>
+                         <li><a href="">Admin</a></li>
+                         <li><a href="">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
 </header>
 <div class="main-container">
     <router-outlet></router-outlet>
