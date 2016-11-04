@@ -17,8 +17,11 @@ class CreateVendorsTable extends Migration
             $table->timestamps();
             $table->string("name");
             $table->string("vendor_website");
-            $table->string("contact_info");
+            $table->integer("address_id")->unsigned();
             $table->string("type");
+            
+            $table->foreign('address_id')->references('id')->on('addresses');
+            
         });
     }
 

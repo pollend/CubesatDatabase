@@ -12,9 +12,11 @@ class CreateComponentSatellitePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('satellite_component', function (Blueprint $table) {
+        Schema::create('satellite_components', function (Blueprint $table) {
             $table->integer('satellite_id');
             $table->integer('component_id');
+            $table->foreign('satellite_id')->references('id')->on('satellites');
+            $table->foreign('component_id')->references('id')->on('components')
         });
     }
 

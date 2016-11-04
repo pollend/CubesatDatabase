@@ -12,9 +12,12 @@ class CreateVendorSpaceportPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendor_spaceport', function (Blueprint $table) {
-            $table->integer('vendor_id');
-            $table->integer('spaceport_id');
+        Schema::create('vendor_spaceports', function (Blueprint $table) {
+            $table->integer('vendor_id')->unsigned();
+            $table->integer('spaceport_id')->unsigned();
+            
+            $table->foreign('vendor_id')->references('id')->on('vendors');
+            $table->foreign('spaceport_id')->references('id')->on('spaceports');
         });
     }
 

@@ -19,9 +19,10 @@ class CreateSatellitesTable extends Migration
             $table->binary("content");
             $table->string("COSPAR");
             $table->string("wiki");
-            $table->enum("status",array("active","in-orbit","in-development","data-collection","data-analysis","inactive","de-orbited","entry-closed"));
-            $table->string("tle");
-            $table->string("orbit");
+            $table->integer("mission_id")->unsigned();
+
+            $table->foreign('mission_id')->references('id')->on('missions');
+            
         });
     }
 
