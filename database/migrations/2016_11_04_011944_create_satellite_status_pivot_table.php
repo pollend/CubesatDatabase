@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSatelliteFailureStates extends Migration
+class CreateSatelliteStatusPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateSatelliteFailureStates extends Migration
      */
     public function up()
     {
-        Schema::create('satellite_failure_states', function (Blueprint $table) {
+        Schema::create('satellite_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->binary("content");
-            $table->dateTime("time_of_failure");
+            $table->enum("status",array("active","in-orbit","in-development","data-collection","data-analysis","inactive","de-orbited","entry-closed"));
+            $table->date("time");
             $table->integer("satellite_id")->unsigned();
 
             $table->foreign('satellite_id')->references('id')->on('satellites');
-            
+
         });
     }
 
@@ -31,6 +31,6 @@ class CreateSatelliteFailureStates extends Migration
      */
     public function down()
     {
-        Schema::drop('satellite_failure_states');
+        Schema::drop('satellite_statuses');
     }
 }

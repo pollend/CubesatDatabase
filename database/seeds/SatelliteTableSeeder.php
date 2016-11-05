@@ -11,12 +11,13 @@ class SatelliteTableSeeder extends Seeder
      */
     public function run()
     {
+
 		 factory(App\Satellite::class, 50)->create()->each(function($satellite) {
-            factory(App\Component::class, 5)->create()->each(function($component) use ($satellite)
-            {
-                $satellite->components()->attach($component->id);
+                $satellite->type()->associate(factory(App\SatelliteType::class)->create())->save();
+                $satellite->orbit()->associate(factory(App\Orbit::class)->create())->save();
+                $satellite->mission()->associate(App\Mission::inRandomOrder()->first())->save();
+                $satellite->launch()->associate(App\Launch::inRandomOrder()->first())->save();
+                $satellite->components()->attach(App\Mission::inRandomOrder()->limit(5)->get());
             });
-            
-		 });
     }
 }

@@ -13,12 +13,11 @@ class CreateLaunchsTable extends Migration
     public function up()
     {
         Schema::create('launches', function (Blueprint $table) {
-            $table->integer('satellite_id')->unsigned()->unique();
+            $table->increments('id');
             $table->integer('launch_vehicle_id')->unsigned();
             $table->timestamps();
             $table->date("launch_date");
 
-            $table->foreign('satellite_id')->references('id')->on('satellites');
             $table->foreign('launch_vehicle_id')->references('id')->on('launch_vehicles');
 
         });

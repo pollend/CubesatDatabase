@@ -12,11 +12,11 @@ class CreateComponentSatellitePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('satellites_components', function (Blueprint $table) {
+        Schema::create('component_satellite', function (Blueprint $table) {
             $table->integer('satellite_id')->unsigned();
             $table->integer('component_id')->unsigned();
-            $table->foreign('satellite_id')->references('id')->on('satellites');
-            $table->foreign('component_id')->references('id')->on('components');
+            $table->foreign('satellite_id')->references('id')->on('satellites')->onDelete('cascade');
+            $table->foreign('component_id')->references('id')->on('components')->onDelete('cascade');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateComponentSatellitePivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('satellites_components');
+        Schema::drop('component_satellite');
     }
 }

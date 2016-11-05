@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class VendorTableSeeder extends Seeder
+class OrganizationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,8 @@ class VendorTableSeeder extends Seeder
     public function run()
     {
 		factory(App\Address::class, 25)->create()->each(function($address) {
-		    factory(App\Vendor::class, 1)->create(['address_id' => $address->id])->each(function($vendor) {
-		    	factory(App\Component::class,20)->create(['vendor_id'=>$vendor->id]);
+		    factory(App\Organization::class)->create(['address_id' => $address->id])->each(function($organization) {
+		    	factory(App\Mission::class,5)->create(['organization_id'=>$organization->id]);
 		    });
 		});
 

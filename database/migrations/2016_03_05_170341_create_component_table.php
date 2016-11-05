@@ -18,6 +18,7 @@ class CreateComponentTable extends Migration
             $table->binary("description");
             $table->string("formal_specification");
             $table->integer("vendor_id")->unsigned();
+            
             $table->foreign('vendor_id')->references('id')->on('vendors');
 
         });

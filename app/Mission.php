@@ -17,5 +17,10 @@ class Mission extends Model
         return $this->attributes['url'] = url("/api/mission/".$this->attributes['id']);
     }
 
+    public function organization()
+    {
+    	return $this->belongsTo('App\Organization','organization_id','id');
+    }
+
     protected $appends = ['url'];
 }

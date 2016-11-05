@@ -12,7 +12,7 @@ class ComponentThumbnailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('components_thumbnails', function (Blueprint $table) {
+        Schema::create('component_thumbnail', function (Blueprint $table) {
             $table->integer('component_id')->unsigned();
             $table->integer('image_id')->unsigned();
 
@@ -21,7 +21,7 @@ class ComponentThumbnailsTable extends Migration
         });
 
         Schema::table('components', function ($table) {
-            $table->integer('main_thumbnail_image_id')->unsigned();
+            $table->integer('main_thumbnail_image_id')->unsigned()->nullable();
             $table->foreign('main_thumbnail_image_id')->references('id')->on('images');
 
         });
@@ -34,7 +34,7 @@ class ComponentThumbnailsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('components_thumbnails');
+        Schema::drop('component_thumbnail');
 
         Schema::table('components', function($table)
         {

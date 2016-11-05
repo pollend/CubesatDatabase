@@ -12,7 +12,7 @@ class CreateComponentsImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('components_images', function (Blueprint $table) {
+        Schema::create('component_image', function (Blueprint $table) {
             $table->integer('components_id')->unsigned();
             $table->integer('image_id')->unsigned();
 
@@ -28,6 +28,6 @@ class CreateComponentsImagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('components_images');
+        Schema::drop('component_image');
     }
 }

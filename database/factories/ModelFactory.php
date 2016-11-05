@@ -11,6 +11,49 @@
 |
 */
 
+$factory->define(App\Organization::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word
+    ];
+});
+
+
+$factory->define(App\Address::class, function (Faker\Generator $faker) {
+    return [
+        'city' => $faker->city,
+        'state' => $faker->state,
+        'zip' => $faker->postcode
+    ];
+});
+
+$factory->define(App\Orbit::class, function (Faker\Generator $faker) {
+    return [
+        'tle' => $faker->word,
+        'orbit' => $faker->word
+    ];
+});
+
+
+
+$factory->define(App\StreetAddress::class, function (Faker\Generator $faker) {
+    return [
+        'street' => $faker->streetName
+    ];
+});
+
+$factory->define(App\LaunchVehicle::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->isbn13
+    ];
+});
+
+$factory->define(App\Launch::class, function (Faker\Generator $faker) {
+    return [
+        'launch_date' => $faker->dateTimeThisYear($max = 'now')
+    ];
+});
+
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
@@ -27,8 +70,14 @@ $factory->define(App\Satellite::class, function (Faker\Generator $faker) {
 		'content' => $faker->sentence($nbWords = 200, $variableNbWords = true),
 		'COSPAR' => str_random(10),
 		'wiki' => str_random(10),
-		'tle' => str_random(10),
-		'orbit' => str_random(10)
+        'mass' => $faker->randomFloat(NULL,2,10)
+    ];
+});
+
+
+$factory->define(App\SatelliteType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => str_random(10)
     ];
 });
 
@@ -37,23 +86,15 @@ $factory->define(App\Spaceport::class, function (Faker\Generator $faker) {
     return [
         'latlong' => str_random(10),
         'url_website' => str_random(10),
-        'description' => str_random(10),
-        'url_googlemap' => str_random(10),
-        'address1' => str_random(10),
-        'address2' => str_random(10),
-        'name' => str_random(10),
-        'state' => str_random(10),
-        'country' => str_random(10),
-        'city' => str_random(10),
-        'zip' => str_random(10)
+        'description' => str_random(10)
     ];
 });
 
 
 $factory->define(App\Component::class, function (Faker\Generator $faker) {
     return [
-        'description' => str_random(10),
-        'formal_specification' => str_random(10),
+        'description' => $faker->sentence($nbWords = 200, $variableNbWords = true),
+        'formal_specification' => str_random(10)
     ];
 });
 
@@ -71,7 +112,6 @@ $factory->define(App\Vendor::class, function (Faker\Generator $faker) {
     return [
         'name' => str_random(10),
         'vendor_website' => str_random(10),
-        'contact_info' => str_random(10),
         'type' => str_random(10)
     ];
 });

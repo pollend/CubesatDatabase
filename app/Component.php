@@ -20,7 +20,7 @@ class Component extends Model
 
    	public function satellites()
    	{
-   		return $this->belongsToMany('App\Satellite', 'satellite_component');
+   		return $this->belongsToMany('App\Satellite', 'satellites_components',"component_id","satellite_id");
    	}
 
     protected $appends = ['url'];
