@@ -18,25 +18,28 @@ var elixirhtml = require('laravel-elixir-html-minify');
 elixir(function(mix) {
     mix.sass('app.scss');
 
-    mix.copy('node_modules/angular2', 'public/angular2');
+    mix.copy('node_modules/@angular', 'public/@angular');
+    mix.copy('node_modules/@types', 'public/@types');
+    
+
+    mix.copy('node_modules/core-js', 'public/core-js');
+    mix.copy('node_modules/reflect-metadata', 'public/reflect-metadata');
     mix.copy('node_modules/rxjs', 'public/rxjs');
     mix.copy('node_modules/systemjs', 'public/systemjs');
     mix.copy('node_modules/es6-promise', 'public/es6-promise');
     mix.copy('node_modules/es6-shim', 'public/es6-shim');
     mix.copy('node_modules/zone.js', 'public/zone.js');
-    mix.copy('node_modules/jquery/dist/', 'public/jquery');
+    mix.copy('node_modules/jquery/dist', 'public/jquery');
     mix.copy('node_modules/bootstrap-sass/assets/*','public/bootstrap');
     mix.copy('node_modules/bootstrap-sass/assets/fonts/*','public/fonts');
 
     mix.copy('bower_components/uikit', 'public/uikit');
+    mix.copy('bower_components/uikit/fonts/*', 'public/fonts');
 
-    mix.copy('resources/assets/templates/', 'public/templates');
-
-    //mix.html('templates/**/*.html', 'public/templates', 'resources/assets', {quotes: true, loose: true, empty: true});
+    // mix.copy('resources/assets/templates/', 'public/templates');
+    // mix.html('templates/**/*.html', 'public/templates', 'resources/assets', {quotes: true, loose: true, empty: true});
 
     mix.scripts("**/*.js");
-
-
      mix.typescript('/**/*.ts','public/typescript/',{
                   "target": "ES5",
                   "module": "system",

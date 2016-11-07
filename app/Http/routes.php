@@ -18,12 +18,15 @@ Route::get('{all}', function ($page) {
 
 Route::group(['prefix' => 'api/v1/'], function()
 {
+
 	Route::resource('satellite','Api\SatelliteController');
 	Route::resource('mission','Api\MissionController');
 	Route::resource('vendor','Api\VendorController');
 	Route::resource('component','Api\ComponentController');
 	Route::resource('spaceport','Api\SpaceportController');
 });
+
+Route::get('auth/register','AuthController@postRegister');
 
 /*
 Route::resource('satellite', 'SatelliteController');

@@ -1,9 +1,11 @@
-import {Component} from 'angular2/core';
+import { Component, OnInit }      from '@angular/core';
 
 @Component({
-    selector: 'register-component',
-    templateUrl: 'templates/register.component.html'
+  selector: 'register',
+  templateUrl: 'templates/register.component.html'
 })
+export class RegisterComponent {
+
+}
 
 
-export class RegisterComponent { }

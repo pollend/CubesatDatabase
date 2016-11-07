@@ -4,39 +4,25 @@
         <base href="/">
         <title>Laravel</title>
  
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <!-- 1. Load libraries -->
+          <script type="text/javascript" src="jquery/jquery.min.js"></script>
+          
+          <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+          
+          <!-- 1. Load libraries -->
+          <!-- Polyfill(s) for older browsers -->
+          <script src="core-js/client/shim.min.js"></script>
 
-         <script src="es6-shim/es6-shim.min.js"></script>
-         <script src="systemjs/dist/system-polyfills.js"></script>
-         
-          <script src="angular2/bundles/angular2-polyfills.js"></script>
+          <script src="zone.js/dist/zone.js"></script>
+          <script src="reflect-metadata/Reflect.js"></script>
           <script src="systemjs/dist/system.src.js"></script>
-          <script src="rxjs/bundles/Rx.js"></script>
-          <script src="angular2/bundles/angular2.dev.js"></script>
-          <script src="angular2/bundles/router.dev.js"></script>
-          <script src="angular2/bundles/http.dev.js"></script>
-
-          <script src="jquery/jquery.min.js"></script>
-          <script src="js/all.js"></script>
 
           <link rel="stylesheet" type="text/css" href="/css/app.css">
           <script src="bootstrap/javascripts/bootstrap.min.js"></script>
           <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
-          
-          <script>
+          <script src="systemjs.config.js"></script>
 
- System.config({
-              "defaultJSExtensions": true,
-              packages: {
-                app: {
-                  format: 'register',
-                  defaultExtension: 'js'
-                }
-              }
-            });
-            System.import('typescript/boot')
-                  .then(null, console.error.bind(console));
+          <script>
+                  System.import('app').catch(function(err){ console.error(err); });
           </script>
     </head>
     <body>

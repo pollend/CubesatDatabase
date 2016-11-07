@@ -9,6 +9,10 @@ $grid-columns: 12 !default;
 @import "./../../../bower_components/uikit/scss/uikit.scss";
 @import "./../../../bower_components/uikit/scss/components/autocomplete.scss";
 
+
+.main-container{
+	margin-top:2em;
+}
 // $base-color: gainsboro !default;
 // $base-color-2: #575665 !default;
 // $base-border-color: gainsboro !default;

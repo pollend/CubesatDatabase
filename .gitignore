@@ -14,7 +14,8 @@ Homestead.json
 /public/zone.js/
 /public/semantic/
 /public/jquery/
-/public/templates/
 /public/bootstrap
 /public/fonts
+/public/uikit
+/bower_components
 .env

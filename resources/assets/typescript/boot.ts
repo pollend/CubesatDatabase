@@ -2,14 +2,7 @@
 // <reference path="../../../node_modules/typescript/lib/lib.es6.d.ts" />
 /// <reference path="../../../node_modules/angular2/typings/browser.d.ts"/>
 
-import {bootstrap}    from 'angular2/platform/browser';
 import {AppComponent} from './app.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
-import {HTTP_PROVIDERS}    from 'angular2/http';
-
-bootstrap(AppComponent,[
-ROUTER_PROVIDERS,
-	HTTP_PROVIDERS
-]);
+platformBrowserDynamic().bootstrapModule(AppComponent);
