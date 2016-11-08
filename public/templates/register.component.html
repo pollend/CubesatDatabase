@@ -1,29 +1,29 @@
 
 <div class="uk-width-medium-1-2  uk-container-center uk-panel uk-panel-box">
 	<h1>Register</h1>
-	<form class="uk-form uk-form-stacked">
+	<form class="uk-form uk-form-stacked" [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm.value)">
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Name</label>
 			<div class="uk-form-controls">
-				<input type="text" placeholder="" class="uk-form-width-large">
+				<input type="text" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['name']">
 			</div>
 		</div>
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Email Address</label>
 			<div class="uk-form-controls">
-				<input type="text" placeholder="" class="uk-form-width-large">
+				<input type="text" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['email-address']">
 			</div>
 		</div>
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Password</label>
 			<div class="uk-form-controls">
-				<input type="password" placeholder="" class="uk-form-width-large">
+				<input type="password" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['password']">
 			</div>
 		</div>
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Re-Typed Password</label>
 			<div class="uk-form-controls">
-				<input type="password" placeholder="" class="uk-form-width-large">
+				<input type="password" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['re-type-password']">
 			</div>
 		</div>
 		<div class="uk-form-row">

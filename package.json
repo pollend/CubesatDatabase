@@ -1,7 +1,7 @@
 {
   "private": true,
   "devDependencies": {
-    "concurrently": "^3.1.0",
+    "concurrently": "^3.0.0",
     "del": "^2.2.0",
     "gulp": "^3.8.8",
     "gulp-shell": "~0.5.2",
@@ -12,16 +12,6 @@
     "typescript": "^2.0.3"
   },
   "dependencies": {
-    "a2-in-memory-web-api": "^0.1.12",
-    "bootstrap-sass": "^3.0.0",
-    "bourbon-neat": "~1.8.0",
-    "elixir-typescript": "^2.0.0",
-    "es6-promise": "^4.0.5",
-    "es6-shim": "^0.35.0",
-    "jquery": "~3.1.1",
-    "laravel-elixir": "^6.0.0-13",
-    "reflect-metadata": "^0.1.2",
-
     "@angular/common": "~2.1.1",
     "@angular/compiler": "~2.1.1",
     "@angular/core": "~2.1.1",
@@ -34,8 +24,14 @@
     "angular-in-memory-web-api": "~0.1.13",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "~5.0.0-beta.12",
-    "systemjs": "0.19.40",
-    "zone.js": "^0.6.25"
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.6.25",
+    "a2-in-memory-web-api": "^0.1.12",
+    "elixir-typescript": "^2.0.0",
+    "es6-promise": "^4.0.5",
+    "es6-shim": "^0.35.0",
+    "jquery": "~3.1.1",
+    "laravel-elixir": "^6.0.0-13"
   }
 }

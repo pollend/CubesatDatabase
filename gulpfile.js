@@ -41,13 +41,13 @@ elixir(function(mix) {
 
     mix.scripts("**/*.js");
      mix.typescript('/**/*.ts','public/typescript/',{
-                  "target": "ES5",
+                  "target": "es2015",
                   "module": "system",
                   "moduleResolution": "node",
                   "sourceMap": true,
                   "emitDecoratorMetadata": true,
                   "experimentalDecorators": true,
                   "removeComments": true,
-                  "noImplicitAny": false,
+                  "noImplicitAny": false
     })
 });

@@ -46,8 +46,6 @@ class SatelliteController extends Controller
                  $query->where("status",$request->input("status"));
             }
         })->paginate($request->input("count",15))->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
-        
-        return $response;
     }
 
 

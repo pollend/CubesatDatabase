@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades
+use Illuminate\Support\Facades;
+use App\Logic\User\UserRepository;
+use App\
 
 class AuthController extends Controller
 {
@@ -23,23 +25,28 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers
+    {
+        getLogout as authLogout;
+    }
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
+
+    protected $auth;
+    protected $userRepository;
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth, UserRepository $userRepository)
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'resendEmail', 'activateAccount']]);
+
+        
+        $this->auth = $auth;
+        $this->userRepository = $userRepository;
     }
 
 
@@ -60,7 +67,8 @@ class AuthController extends Controller
         ]);
     }
 
-    public function postRegister(Request $request)
+
+    public function postLogin(Request $request)
     {
         $validator = $this->validator($request->all());
         if ($validator->fails()) {
@@ -68,6 +76,30 @@ class AuthController extends Controller
                 $request, $validator
             );
         }
+
+        
+    }
+
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = new User;
+        $user->name = $request->input("name");
+        $user->name = $request->input("email");
+        $user->password =  bcrypt($request->input("password"));
+        if($user->save())
+        {
+
+            return response()->json(['result' => 'success']);
+        }
+         return response()->json(['result' => 'failed']);
 
     }
 
