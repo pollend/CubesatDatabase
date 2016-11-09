@@ -10,7 +10,7 @@
         "spec": ">=0.6.25 <0.7.0",
         "type": "range"
       },
-      "/var/www/html/CubesatDatabase"
+      "/home/michaelpollind/html/CubesatDatabase"
     ]
   ],
   "_from": "zone.js@>=0.6.25 <0.7.0",
@@ -44,7 +44,7 @@
   "_shasum": "067c13b8b80223a89b62e9dc82680f09762c4636",
   "_shrinkwrap": null,
   "_spec": "zone.js@^0.6.25",
-  "_where": "/var/www/html/CubesatDatabase",
+  "_where": "/home/michaelpollind/html/CubesatDatabase",
   "author": {
     "name": "Brian Ford"
   },

@@ -2,17 +2,17 @@ import { Component, OnInit }      from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+import {UserService} from "./services/user-service";
+
 @Component({
   selector: 'register',
-  templateUrl: 'templates/register.component.html'
+  templateUrl: 'templates/register.component.html',
+  providers: []
 })
 export class RegisterComponent {
 	registerForm : FormGroup;
 
-	private _user_url = '/auth/';
-
-
-	constructor(fb: FormBuilder){
+	constructor(private userService: UserService, fb: FormBuilder){
 		this.registerForm = fb.group({
 			'name' :'',
 			'email-address' : '',
@@ -21,7 +21,8 @@ export class RegisterComponent {
 		});
 	}
 
-	submitForm(value: any):void{
+	submitForm():void{
+		this.userService.register(this.registerForm.value);
 		console.log('test');
 	}
 }
