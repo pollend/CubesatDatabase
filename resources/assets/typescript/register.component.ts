@@ -11,19 +11,23 @@ import {UserService} from "./services/user-service";
 })
 export class RegisterComponent {
 	registerForm : FormGroup;
-
+	errors:  any;
 	constructor(private userService: UserService, fb: FormBuilder){
 		this.registerForm = fb.group({
 			'name' :'',
-			'email-address' : '',
+			'email' : '',
 			'password' : '',
-			're-type-password' : ''
-		});
+			'password_confirmation' : ''
+		});	
 	}
 
 	submitForm():void{
-		this.userService.register(this.registerForm.value);
-		console.log('test');
+		let a;
+		let b;
+		this.userService.register(this.registerForm.value)
+		.subscribe(
+                       heroes => a = heroes,
+                       error =>  this.errors = <any>error);
 	}
 }
 

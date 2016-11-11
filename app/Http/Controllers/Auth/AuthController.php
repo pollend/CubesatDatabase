@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
-use App\Logic\User\UserRepository;
-use App\
+use Illuminate\Auth\Events\Registered;
+use App\Models\User;
+use Illuminate\Support\Facades\Response;
 
 class AuthController extends Controller
 {
@@ -25,39 +27,31 @@ class AuthController extends Controller
     |
     */
 
+    //use AuthenticatesUsers;
+    use RegistersUsers;
     use ThrottlesLogins;
-    use AuthenticatesAndRegistersUsers
-    {
-        getLogout as authLogout;
-    }
-
 
     protected $auth;
-    protected $userRepository;
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct(Guard $auth, UserRepository $userRepository)
+    public function __construct()
     {
         $this->middleware('guest', ['except' => ['getLogout', 'resendEmail', 'activateAccount']]);
-
-        
-        $this->auth = $auth;
-        $this->userRepository = $userRepository;
     }
 
 
 
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    * Get a validator for an incoming registration request.
+    *
+    * @param  array  $data
+    * @return \Illuminate\Contracts\Validation\Validator
+    */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -67,41 +61,62 @@ class AuthController extends Controller
         ]);
     }
 
-
-    public function postLogin(Request $request)
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
     {
-        $validator = $this->validator($request->all());
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
+         $validator = $this->validator($request->all());
+
+        if ($validator->fails())
+        {
+            return Response::json($validator->messages(), 400);
         }
+        $user = $this->create($request->all());
+        $this->guard()->login($user);
+
+         return Response::json();
+    }
+
+
+
+    // public function postLogin(Request $request)
+    // {
+    //     $validator = $this->validator($request->all());
+    //     if ($validator->fails()) {
+    //         $this->throwValidationException(
+    //             $request, $validator
+    //         );
+    //     }
 
         
-    }
+    // }
 
-    public function postRegister(Request $request)
-    {
-        $validator = $this->validator($request->all());
+    // public function postRegister(Request $request)
+    // {
+    //     $validator = $this->validator($request->all());
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
+    //     if ($validator->fails()) {
+    //         $this->throwValidationException(
+    //             $request, $validator
+    //         );
+    //     }
 
-        $user = new User;
-        $user->name = $request->input("name");
-        $user->name = $request->input("email");
-        $user->password =  bcrypt($request->input("password"));
-        if($user->save())
-        {
+    //     $user = new User;
+    //     $user->name = $request->input("name");
+    //     $user->name = $request->input("email");
+    //     $user->password =  bcrypt($request->input("password"));
+    //     if($user->save())
+    //     {
 
-            return response()->json(['result' => 'success']);
-        }
-         return response()->json(['result' => 'failed']);
+    //         return response()->json(['result' => 'success']);
+    //     }
+    //      return response()->json(['result' => 'failed']);
 
-    }
+    // }
 
     /**
      * Create a new user instance after a valid registration.

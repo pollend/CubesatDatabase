@@ -34,7 +34,7 @@ elixir(function(mix) {
     mix.copy('node_modules/bootstrap-sass/assets/fonts/*','public/fonts');
 
     mix.copy('bower_components/uikit', 'public/uikit');
-    mix.copy('bower_components/uikit/fonts/*', 'public/fonts');
+    mix.copy('bower_components/uikit/fonts', 'public/fonts');
 
     // mix.copy('resources/assets/templates/', 'public/templates');
     // mix.html('templates/**/*.html', 'public/templates', 'resources/assets', {quotes: true, loose: true, empty: true});

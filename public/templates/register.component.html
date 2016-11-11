@@ -2,30 +2,39 @@
 <div class="uk-width-medium-1-2  uk-container-center uk-panel uk-panel-box">
 	<h1>Register</h1>
 	<form class="uk-form uk-form-stacked" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+		
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Name</label>
 			<div class="uk-form-controls">
-				<input type="text" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['name']">
+				<input type="text" placeholder="" class="uk-width-1-1" [formControl]="registerForm.controls['name']">
 			</div>
+			<error-collection [errors]="errors" [item]="'name'"></error-collection>
 		</div>
+	
+
+
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Email Address</label>
 			<div class="uk-form-controls">
-				<input type="text" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['email-address']">
+				<input type="text" placeholder="" class="uk-width-1-1" [formControl]="registerForm.controls['email']">
 			</div>
+			<error-collection [errors]="errors" [item]="'email'"></error-collection>
 		</div>
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Password</label>
 			<div class="uk-form-controls">
-				<input type="password" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['password']">
-			</div>
+				<input type="password" placeholder="" class="uk-width-1-1" [formControl]="registerForm.controls['password']">
+			</div> 
 		</div>
 		<div class="uk-form-row">
 			<label class="uk-form-label" for="form-s-ip">Re-Typed Password</label>
 			<div class="uk-form-controls">
-				<input type="password" placeholder="" class="uk-form-width-large" [formControl]="registerForm.controls['re-type-password']">
+				<input type="password" placeholder="" class="uk-width-1-1" [formControl]="registerForm.controls['password_confirmation']">
 			</div>
 		</div>
+
+		<error-collection [errors]="errors" [item]="'password'"></error-collection>
+		
 		<div class="uk-form-row">
 			<input  type="submit" value="Login" class="uk-button">
 		</div>

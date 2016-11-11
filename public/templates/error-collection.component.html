@@ -1,0 +1,9 @@
+<div class="uk-form-row">
+
+	<div *ngIf="errors && errors[item]">
+		<div *ngFor="let el of  errors[item]" class="uk-alert uk-alert-danger" data-uk-alert>
+			<a href="" class="uk-alert-close uk-close"></a>
+			<p>{{el}}</p>
+		</div>
+	</div>
+</div>

@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('{all}', function ($page) {
+Route::get('{any?}', function ($page) {
     return view('index');
-})->where('all', '(?!api/)(?!_debugbar)(.*)');
+});//->where('all', '(?!api/)(?!_debugbar)(.*)');
+
 
 
 Route::group(['prefix' => 'api/v1/'], function()
@@ -24,9 +25,17 @@ Route::group(['prefix' => 'api/v1/'], function()
 	Route::resource('vendor','Api\VendorController');
 	Route::resource('component','Api\ComponentController');
 	Route::resource('spaceport','Api\SpaceportController');
+
+	Route::post('login', 'Auth\AuthController@postLogin');
+	Route::post('register', 'Auth\AuthController@register');
 });
 
-Route::get('auth/register','AuthController@postRegister');
+
+
+
+
+
+//Route::get('auth/register','AuthController@postRegister');
 
 /*
 Route::resource('satellite', 'SatelliteController');

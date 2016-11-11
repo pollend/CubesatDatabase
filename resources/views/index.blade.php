@@ -19,6 +19,7 @@
           <link rel="stylesheet" type="text/css" href="/css/app.css">
           
           <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
+          <script type="text/javascript" src="uikit/js/core/alert.min.js"></script>
           <script src="systemjs.config.js"></script>
 
           <script>
