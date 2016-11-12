@@ -13,6 +13,13 @@ use Illuminate\Support\Facades;
 use Illuminate\Auth\Events\Registered;
 use App\Models\User;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Session;
+
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class AuthController extends Controller
 {
@@ -27,11 +34,8 @@ class AuthController extends Controller
     |
     */
 
-    //use AuthenticatesUsers;
-    use RegistersUsers;
+    //use RegistersUsers;
     use ThrottlesLogins;
-
-    protected $auth;
 
     /**
      * Create a new authentication controller instance.
@@ -45,91 +49,100 @@ class AuthController extends Controller
 
 
 
-
-    /**
-    * Get a validator for an incoming registration request.
-    *
-    * @param  array  $data
-    * @return \Illuminate\Contracts\Validation\Validator
-    */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
-    }
-
     /**
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+    public function postRegiser(Request $request)
     {
-         $validator = $this->validator($request->all());
+        $validator = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|confirmed|min:6',
+        ]);
 
         if ($validator->fails())
         {
             return Response::json($validator->messages(), 400);
         }
-        $user = $this->create($request->all());
-        $this->guard()->login($user);
 
-         return Response::json();
-    }
-
-
-
-    // public function postLogin(Request $request)
-    // {
-    //     $validator = $this->validator($request->all());
-    //     if ($validator->fails()) {
-    //         $this->throwValidationException(
-    //             $request, $validator
-    //         );
-    //     }
-
-        
-    // }
-
-    // public function postRegister(Request $request)
-    // {
-    //     $validator = $this->validator($request->all());
-
-    //     if ($validator->fails()) {
-    //         $this->throwValidationException(
-    //             $request, $validator
-    //         );
-    //     }
-
-    //     $user = new User;
-    //     $user->name = $request->input("name");
-    //     $user->name = $request->input("email");
-    //     $user->password =  bcrypt($request->input("password"));
-    //     if($user->save())
-    //     {
-
-    //         return response()->json(['result' => 'success']);
-    //     }
-    //      return response()->json(['result' => 'failed']);
-
-    // }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $user  = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
         ]);
+
+        event(new Registered($user));
+
+        $token = JWTAuth::fromUser($user);
+        return response()->json(['token' => $token,'user'=> $user]);
     }
+
+    public function postLogin(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [ 'email' => 'required', 'password' => 'required' ]);
+        
+
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        if ($this->hasTooManyLoginAttempts($request)) {
+            //event(new Lockout($request));
+
+            $seconds = $this->limiter()->availableIn(
+                $this->throttleKey($request)
+            );
+
+            $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
+
+            return Response::json(['timeout' =>  $message],410);
+        }
+
+        if ($validator->fails())
+        {
+            return Response::json($validator->messages(), 401);
+        }
+
+        try {
+            $credentials = $request->only('email', 'password');
+            // attempt to verify the credentials and create a token for the user
+            if (! $token = JWTAuth::attempt($credentials)) {
+                $this->incrementLoginAttempts($request);
+
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+             $this->incrementLoginAttempts($request);
+
+            // something went wrong whilst attempting to encode the token
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+       return response()->json(['token' => $token,'user'=> JWTAuth::toUser($token)]);
+    }
+
+    public function postValidate(Request $request)
+    {
+        try{
+            return response()->json(JWTAuth::toUser($request->input('token')));
+        }catch(JWTException $e){
+            return response()->json(['error' => 'token error'], 500);
+        }
+    }
+
+    public function postLogout(Request $request)
+    {
+        return response()->json(['result' => JWTAuth::invalidate($request->input('token'))]);
+    }
+
+    public function username()
+    {
+        return "email";
+    }
+
+
+
 }

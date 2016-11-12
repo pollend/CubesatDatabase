@@ -8,6 +8,6 @@ class Launch extends Model
 {
 	public function launchVehicles()
 	{
-		 return $this->belongsTo("App\LaunchVehicle","launch_vehicle_id","id");
+		 return $this->belongsTo("App\Models\LaunchVehicle","launch_vehicle_id","id");
 	}
 }

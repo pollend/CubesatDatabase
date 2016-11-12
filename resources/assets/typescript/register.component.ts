@@ -1,4 +1,5 @@
 import { Component, OnInit }      from '@angular/core';
+import { Router } from '@angular/router';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -12,7 +13,9 @@ import {UserService} from "./services/user-service";
 export class RegisterComponent {
 	registerForm : FormGroup;
 	errors:  any;
-	constructor(private userService: UserService, fb: FormBuilder){
+	constructor(private userService: UserService,private router: Router, fb: FormBuilder){
+		
+
 		this.registerForm = fb.group({
 			'name' :'',
 			'email' : '',
@@ -21,13 +24,13 @@ export class RegisterComponent {
 		});	
 	}
 
-	submitForm():void{
-		let a;
-		let b;
-		this.userService.register(this.registerForm.value)
-		.subscribe(
-                       heroes => a = heroes,
-                       error =>  this.errors = <any>error);
+	register():void{
+		let temp;
+		this.userService.register(this.registerForm.value).subscribe(t => temp,error =>  this.errors = <any>error);
+		if(this.errors == null)
+		{
+			this.router.navigate(['/']);
+		}
 	}
 }
 

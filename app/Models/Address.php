@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
@@ -10,6 +9,6 @@ class Address extends Model
 
     public function streetAddresses()
     {
-        return $this->hasMany('App\StreetAddress',"address_id","id");
+        return $this->hasMany('App\Models\StreetAddress',"address_id","id");
     }
 }

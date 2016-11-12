@@ -9,7 +9,9 @@
         "laravel/framework": "5.3.*",
         "venturecraft/revisionable": "1.*",
         "barryvdh/laravel-debugbar": "^2.2",
-        "graham-campbell/markdown": "^7.0"
+        "graham-campbell/markdown": "^7.0",
+        "laravel/passport": "^1.0",
+         "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

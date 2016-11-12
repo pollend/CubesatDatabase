@@ -8,7 +8,7 @@ class Organization extends Model
 {
 	public function missions()
 	{
-		return $this->hasMany('App\Mission', 'organization_id','id');
+		return $this->hasMany('App\Models\Mission', 'organization_id','id');
 	}
 
 }

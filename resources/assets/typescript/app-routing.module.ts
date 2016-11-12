@@ -11,7 +11,8 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'profile' , loadChildren: 'typescript/profile/user.module#UserModule' }
 ];
 
 @NgModule({

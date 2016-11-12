@@ -10,19 +10,19 @@
                   <li><a routerLink="/home">Components</a></li>
               </ul>
 
-              <ul class="uk-navbar-nav">
+              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user == null">
                   <li><a routerLink="/login">Login</a></li>
                   <li><a routerLink="/register">Register</a></li>
               </ul>
 
-              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small">
+              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user" >
                 <li class="uk-parent" data-uk-dropdown>
                     <a href=""> <img class="profile-img" src="./../assets/blank_profile.png"></a>
                     <div class="uk-dropdown uk-dropdown-navbar">
                         <ul class="uk-nav uk-nav-navbar">
                             <li><a  routerLink="/profile">Profile</a></li>
-                             <li><a routerLink="/admin">Admin</a></li>
-                             <li><a >Logout</a></li>
+                             <li *ngIf="userService.user && userService.user.admin == 'Admin'"><a routerLink="/admin">Admin</a></li>
+                             <li><a (click)="userService.logout()">Logout</a></li>
                         </ul>
                     </div>
                 </li>

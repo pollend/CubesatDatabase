@@ -11,9 +11,9 @@ class OrganizationTableSeeder extends Seeder
      */
     public function run()
     {
-		factory(App\Address::class, 25)->create()->each(function($address) {
-		    factory(App\Organization::class)->create(['address_id' => $address->id])->each(function($organization) {
-		    	factory(App\Mission::class,5)->create(['organization_id'=>$organization->id]);
+		factory(App\Models\Address::class, 25)->create()->each(function($address) {
+		    factory(App\Models\Organization::class)->create(['address_id' => $address->id])->each(function($organization) {
+		    	factory(App\Models\Mission::class,5)->create(['organization_id'=>$organization->id]);
 		    });
 		});
 

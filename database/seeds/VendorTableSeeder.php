@@ -11,9 +11,9 @@ class VendorTableSeeder extends Seeder
      */
     public function run()
     {
-		factory(App\Address::class, 25)->create()->each(function($address) {
-		    factory(App\Vendor::class, 1)->create(['address_id' => $address->id])->each(function($vendor) {
-		    	factory(App\Component::class,20)->create(['vendor_id'=>$vendor->id]);
+		factory(App\Models\Address::class, 25)->create()->each(function($address) {
+		    factory(App\Models\Vendor::class, 1)->create(['address_id' => $address->id])->each(function($vendor) {
+		    	factory(App\Models\Component::class,20)->create(['vendor_id'=>$vendor->id]);
 		    });
 		});
 

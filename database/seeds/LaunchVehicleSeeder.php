@@ -11,8 +11,8 @@ class LaunchVehicleSeeder extends Seeder
      */
     public function run()
     {
-		factory(App\LaunchVehicle::class, 50)->create()->each(function($launchVehicle) {
-			factory(App\Launch::class,20)->create([
+		factory(App\Models\LaunchVehicle::class, 50)->create()->each(function($launchVehicle) {
+			factory(App\Models\Launch::class,20)->create([
 				'launch_vehicle_id' => $launchVehicle->id
 			]);
 		});

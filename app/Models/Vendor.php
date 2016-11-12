@@ -17,7 +17,7 @@ class Vendor extends Model
 
     public function vendors()
     {
-        return $this->belongsToMany('App\Spaceport', 'vendor_spaceport');
+        return $this->belongsToMany('App\Models\Spaceport', 'vendor_spaceport');
     }
 
     protected $appends = ['url'];

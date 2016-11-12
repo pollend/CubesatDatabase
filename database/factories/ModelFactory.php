@@ -11,14 +11,14 @@
 |
 */
 
-$factory->define(App\Organization::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Organization::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word
     ];
 });
 
 
-$factory->define(App\Address::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Address::class, function (Faker\Generator $faker) {
     return [
         'city' => $faker->city,
         'state' => $faker->state,
@@ -26,7 +26,7 @@ $factory->define(App\Address::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Orbit::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Orbit::class, function (Faker\Generator $faker) {
     return [
         'tle' => $faker->word,
         'orbit' => $faker->word
@@ -35,26 +35,26 @@ $factory->define(App\Orbit::class, function (Faker\Generator $faker) {
 
 
 
-$factory->define(App\StreetAddress::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\StreetAddress::class, function (Faker\Generator $faker) {
     return [
         'street' => $faker->streetName
     ];
 });
 
-$factory->define(App\LaunchVehicle::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\LaunchVehicle::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->isbn13
     ];
 });
 
-$factory->define(App\Launch::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Launch::class, function (Faker\Generator $faker) {
     return [
         'launch_date' => $faker->dateTimeThisYear($max = 'now')
     ];
 });
 
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
@@ -64,7 +64,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Satellite::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Satellite::class, function (Faker\Generator $faker) {
     return [
 		'name' => str_random(10),
 		'content' => $faker->sentence($nbWords = 200, $variableNbWords = true),
@@ -75,14 +75,14 @@ $factory->define(App\Satellite::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\SatelliteType::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\SatelliteType::class, function (Faker\Generator $faker) {
     return [
         'name' => str_random(10)
     ];
 });
 
 
-$factory->define(App\Spaceport::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Spaceport::class, function (Faker\Generator $faker) {
     return [
         'latlong' => str_random(10),
         'url_website' => str_random(10),
@@ -91,7 +91,7 @@ $factory->define(App\Spaceport::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Component::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Component::class, function (Faker\Generator $faker) {
     return [
         'description' => $faker->sentence($nbWords = 200, $variableNbWords = true),
         'formal_specification' => str_random(10)
@@ -99,7 +99,7 @@ $factory->define(App\Component::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Mission::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Mission::class, function (Faker\Generator $faker) {
     return [
         'wiki' => str_random(10),
         'name' => str_random(10),
@@ -108,7 +108,7 @@ $factory->define(App\Mission::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Vendor::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Vendor::class, function (Faker\Generator $faker) {
     return [
         'name' => str_random(10),
         'vendor_website' => str_random(10),

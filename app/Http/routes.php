@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('{any?}', function ($page) {
+Route::get('{any?}', function () {
     return view('index');
 });//->where('all', '(?!api/)(?!_debugbar)(.*)');
 
@@ -20,15 +20,24 @@ Route::get('{any?}', function ($page) {
 Route::group(['prefix' => 'api/v1/'], function()
 {
 
-	Route::resource('satellite','Api\SatelliteController');
-	Route::resource('mission','Api\MissionController');
-	Route::resource('vendor','Api\VendorController');
-	Route::resource('component','Api\ComponentController');
-	Route::resource('spaceport','Api\SpaceportController');
+	//Route::group(['middleware'=>['web']],function()
+	//{
 
-	Route::post('login', 'Auth\AuthController@postLogin');
-	Route::post('register', 'Auth\AuthController@register');
+		Route::resource('satellite','Api\SatelliteController');
+		Route::resource('mission','Api\MissionController');
+		Route::resource('vendor','Api\VendorController');
+		Route::resource('component','Api\ComponentController');
+		Route::resource('spaceport','Api\SpaceportController');
+
+		Route::post('login', 'Auth\AuthController@postLogin');
+		Route::post('register', 'Auth\AuthController@postRegiser');
+		Route::post('verify', 'Auth\AuthController@postValidate');
+		Route::post('logout', 'Auth\AuthController@postLogout');
+	//});
+
+
 });
+
 
 
 
