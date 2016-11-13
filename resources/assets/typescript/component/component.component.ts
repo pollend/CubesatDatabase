@@ -2,10 +2,10 @@
 import { Component, OnInit }      from '@angular/core';
 
 @Component({
-  selector: 'satellite-component',
-  templateUrl: 'templates/satellite.component.html'
+  selector: 'app-contact',
+  templateUrl: 'templates/component.component.html'
 })
-export class SatelliteComponent {
+export class ComponentComponent {
 }
 
 

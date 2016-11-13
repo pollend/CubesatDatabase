@@ -12,7 +12,9 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'profile' , loadChildren: 'typescript/profile/user.module#UserModule' }
+  { path: 'profile' , loadChildren: 'typescript/profile/user.module#UserModule' },
+  { path: 'satellite' , loadChildren: 'typescript/satellite/satellite.module#SatelliteModule' }
+  
 ];
 
 @NgModule({

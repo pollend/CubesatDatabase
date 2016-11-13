@@ -3,9 +3,9 @@ import { Component, OnInit }      from '@angular/core';
 
 @Component({
   selector: 'satellite-component',
-  templateUrl: 'templates/satellite.component.html'
+  templateUrl: 'templates/satellite-single.component.html'
 })
-export class SatelliteComponent {
+export class SatelliteSingleComponent {
 }
 
 

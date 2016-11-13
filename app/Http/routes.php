@@ -13,15 +13,12 @@
 
 Route::get('{any?}', function () {
     return view('index');
-});//->where('all', '(?!api/)(?!_debugbar)(.*)');
+})->where('any', '(?!api/)(?!_debugbar)(.*)');
 
 
 
 Route::group(['prefix' => 'api/v1/'], function()
 {
-
-	//Route::group(['middleware'=>['web']],function()
-	//{
 
 		Route::resource('satellite','Api\SatelliteController');
 		Route::resource('mission','Api\MissionController');
@@ -33,8 +30,6 @@ Route::group(['prefix' => 'api/v1/'], function()
 		Route::post('register', 'Auth\AuthController@postRegiser');
 		Route::post('verify', 'Auth\AuthController@postValidate');
 		Route::post('logout', 'Auth\AuthController@postLogout');
-	//});
-
 
 });
 
