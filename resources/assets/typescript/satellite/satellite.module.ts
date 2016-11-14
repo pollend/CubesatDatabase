@@ -1,10 +1,13 @@
+//Modules
 import { NgModule }           from '@angular/core';
-
-import {SatelliteComponent} from "./satellite.component"
 import {SatelliteRoutingModule} from "./satellite-routing.module";
 
+// components
+import {SatelliteComponent} from "./satellite.component"
 import { SatelliteListComponent } from "./satellite-list.component"
 
+
+import {SatelliteService} from "./../services/satellite-service";
 
 @NgModule({
   imports:      [ SatelliteRoutingModule ],
@@ -12,6 +15,6 @@ import { SatelliteListComponent } from "./satellite-list.component"
     SatelliteListComponent,
     SatelliteComponent
   ],
-  providers:    [  ]
+  providers:    [SatelliteService ]
 })
 export class SatelliteModule { }

@@ -32,6 +32,10 @@ export class UserService extends ApiService{
 		return  this._user;
 	}
 
+	get token(): string{
+		let token = localStorage.getItem("token");
+		return token;
+	}
 
 	get user():User{
 		return this._user;

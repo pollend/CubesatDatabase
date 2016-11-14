@@ -161,10 +161,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /**
-        *DEBUGGER
-        */
-        Barryvdh\Debugbar\ServiceProvider::class,
 
         /**
         *Markdown

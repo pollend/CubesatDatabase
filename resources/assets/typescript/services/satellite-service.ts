@@ -5,27 +5,33 @@ import {Pagination} from "./../models/pagination";
 import {Satellite} from "./../models/satellite";
 
 import {Observable}     from 'rxjs/Rx';
-
-
+import {ApiService} from "./api-service";
+import { Headers, RequestOptions } from '@angular/http';
 @Injectable()
-export class SatelliteService {
-	constructor(private http: Http ) { 
+export class SatelliteService extends ApiService{
+	constructor( http: Http ) { 
+		super(http);
 
 	}
 
-	private _satellite_url = '/api/v1/satellite';
+	getSatellites(payload:any){
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
 
-	getSatellites(page:number){
-		return this.http.get(this._satellite_url + "?page=" + page)
+		return this.http.get(SatelliteService.API + "/",payload)
 			.map(request => <Pagination<Satellite>>request.json())
 			.catch(this.handleError);
 	}
+	getSatellite(satellite_id:number){
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		
+		return this.http.get(SatelliteService.API + "/id=" + satellite_id)
+			.map(request => <Pagination<Satellite>>request.json())
+			.catch(this.handleError);
+	
 
-	private handleError(error: Response) {
-		// in a real world app, we may send the error to some remote logging infrastructure
-		// instead of just logging it to the console
-		console.error(error);
-		return Observable.throw(error.json().error || 'Server error');
 	}
+
 }
 
