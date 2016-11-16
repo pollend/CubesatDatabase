@@ -1,38 +1,43 @@
-<form class="uk-form">
-
+<form class="uk-form"  [formGroup]="searchForm" (ngSubmit)="search()"> 
     <fieldset data-uk-margin>
-        <input type="text" placeholder="Search">
-        <select>
+        <input type="text" placeholder="Search" [formControl]="searchForm.controls['search']">
+        <select [formControl]="searchForm.controls['column']">
             <option>Mission</option>
             <option>Satellite</option>
+            <option>Organization</option>
+            <option>Mission</option>
+            <option>Type</option>
+            <option>Launch Vehicle</option>
         </select>
         <button class="uk-button">Search</button>
     </fieldset>
+
+    <div class="uk-overflow-container">
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Organization</th>
+                    <th>Mission</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Mass</th>
+                    <th>Launch Vehicle</th>
+                </tr>
+            </thead>
+    <!--         <tfoot>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </tfoot> -->
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- <pagination></pagination> -->
+
 </form>
-
-<div class="uk-overflow-container">
-    <table class="uk-table uk-table-hover">
-        <thead>
-            <tr>
-                <th>Organization</th>
-                <th>Mission</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Mass</th>
-                <th>Launch Vehicle</th>
-            </tr>
-        </thead>
-<!--         <tfoot>
-            <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-        </tfoot> -->
-        <tbody>
-
-        </tbody>
-    </table>
-</div>

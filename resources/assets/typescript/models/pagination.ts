@@ -1,6 +1,3 @@
-import {Injectable} from 'angular2/core';
-
-@Injectable()
 export class Pagination<T> {
 	public total: number;
 	public per_page: number;
@@ -10,10 +7,7 @@ export class Pagination<T> {
 	public from: number;
 	public to: number;
 	public data: T[];
-
-
 	public id : number;
-
 	constructor() {
 		// code...
 	}

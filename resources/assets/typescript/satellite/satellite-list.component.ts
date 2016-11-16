@@ -10,16 +10,20 @@ import {UserService} from "./../services/user-service";
   selector: 'satellite-list',
   templateUrl: 'templates/satellite-list.component.html'
 })
+
 export class SatelliteListComponent {
 	searchForm : FormGroup;
+	value : number;
 
 	constructor(private userService: UserService,private router: Router, fb: FormBuilder){
-		
-
 		this.searchForm = fb.group({
 			'search' :'',
 			'column' :''
 		});	
+	}
+
+	search():void{
+		
 	}
 }
 

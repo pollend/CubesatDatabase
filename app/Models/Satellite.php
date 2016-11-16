@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 class Satellite extends Model
 {
 	use \Venturecraft\Revisionable\RevisionableTrait;
@@ -16,10 +17,10 @@ class Satellite extends Model
         return $this->attributes['url'] = url("/api/satellite/".$this->attributes['id']);
     }
 
-    public function getComponentAttribute()
+    /*public function getComponentAttribute()
     {
         return $this->attributes['component'] = $this->components;
-    }
+    }*/
 
 
    	public function components()
@@ -44,9 +45,9 @@ class Satellite extends Model
 
     public function launch()
     {
-      return $this->belongsTo("App\Models\Mission","launch_id","id");
+      return $this->belongsTo("App\Models\Launch","launch_id","id");
     }
 
 
-    protected $appends = ['url','component'];
+    protected $appends = ['url'];
 }

@@ -1,12 +1,14 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+import {Observable}     from 'rxjs/Rx';
+
+import {ApiService} from "./api-service";
 
 import {Pagination} from "./../models/pagination";
+import {SatelliteFlat} from "./../models/satellite_flat";
 import {Satellite} from "./../models/satellite";
 
-import {Observable}     from 'rxjs/Rx';
-import {ApiService} from "./api-service";
-import { Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class SatelliteService extends ApiService{
 	constructor( http: Http ) { 
@@ -14,22 +16,21 @@ export class SatelliteService extends ApiService{
 
 	}
 
-	getSatellites(payload:any){
+	getSatellites(payload:any) : Observable<Pagination<SatelliteFlat>> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.get(SatelliteService.API + "/",payload)
-			.map(request => <Pagination<Satellite>>request.json())
-			.catch(this.handleError);
+		return this.http.get(SatelliteService.API + "/satellite",payload)
+		.map(this.extractData);
 	}
-	getSatellite(satellite_id:number){
+
+	getSatellite(satellite_id:number) : Observable<Satellite> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
+		let payload = {'id' : satellite_id };
 		
-		return this.http.get(SatelliteService.API + "/id=" + satellite_id)
-			.map(request => <Pagination<Satellite>>request.json())
-			.catch(this.handleError);
-	
+		return this.http.get(SatelliteService.API + "/satellite",payload )
+		.map(this.extractData);
 
 	}
 

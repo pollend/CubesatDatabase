@@ -19,8 +19,12 @@ Route::get('{any?}', function () {
 
 Route::group(['prefix' => 'api/v1/'], function()
 {
+		Route::group(['prefix' => 'satellite'],function()
+		{
+			Route::get('','Api\SatelliteController@getSatellites');
+			Route::get('{id}','Api\SatelliteController@getSatellite');
+		});
 
-		Route::resource('satellite','Api\SatelliteController');
 		Route::resource('mission','Api\MissionController');
 		Route::resource('vendor','Api\VendorController');
 		Route::resource('component','Api\ComponentController');

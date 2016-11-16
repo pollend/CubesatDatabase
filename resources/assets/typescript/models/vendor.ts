@@ -1,6 +1,3 @@
-import {Injectable} from 'angular2/core';
-
-@Injectable()
 export class Vendor {
 	public id: number;
 	public name : string;

@@ -1,6 +1,3 @@
-import {Injectable} from 'angular2/core';
-
-@Injectable()
 export class Mission {
 	public id: number;
 	public objective : string;

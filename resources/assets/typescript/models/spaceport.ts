@@ -1,6 +1,3 @@
-import {Injectable} from 'angular2/core';
-
-@Injectable()
 export class Spaceport {
 	public id: number;
 	public latlong : string;

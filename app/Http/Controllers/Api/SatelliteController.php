@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Models;
+use Illuminate\Support\Facades\DB;
+
 class SatelliteController extends Controller
 {
 
@@ -16,38 +19,79 @@ class SatelliteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function getSatellites(Request $request)
     {
 
         $column = "";
        switch ($request->input("column")) {
-            case "name":
+            case "organization":
                 $column = "name";
             break;
-            case "orbit":
+            case "mission":
                 $column = "orbit";
             break;
-            case "tle":
+            case "name":
                 $column = "tle";
+            break;
+            case "type":
+                $column = "satellite_types.name";
+            break;
+            case "launchVehicle":
+                $column = "satellite_types.name";
             break;
             default:
                 $column = "name";
             break;
        }
 
-       return \App\Satellite::select('updated_at','created_at','id','name','COSPAR','status','tle','orbit')->where(function($query) use ($request , $column)
+
+       return Models\Satellite::select(
+        "missions.name as mission_name",
+        "organizations.id as organization_id",
+        "organizations.name as organization_name",
+        "satellite_types.name as satellite_type",
+        "satellites.created_at",
+        "satellites.updated_at",
+        "satellites.name",
+        "satellites.COSPAR",
+        "satellites.wiki",
+        "satellites.mass",
+        "satellites.id",
+        "satellites.mission_id",
+        "satellites.satellite_type_id",
+        "satellites.orbit_id",
+        "satellites.launch_id",
+        "launches.launch_date",
+        "launch_vehicles.name as launch_vehicle")->
+       leftJoin("missions","satellites.mission_id","=","missions.id")->
+       leftJoin("organizations","missions.organization_id","=","organizations.id")->
+       leftjoin("satellite_types","satellites.satellite_type_id","=","satellite_types.id")->
+       leftJoin("launches","satellites.launch_id", "=","launches.id")->
+       leftJoin("launch_vehicles","launches.launch_vehicle_id", "=","launch_vehicles.id")->
+       where(function($query) use ($request , $column)
         {
             if($request->has("search"))
             {
                 $query->where($column,"LIKE","%".$request->input("search")."%");
             }
-            if($request->has("status") && $request->input("status") != "all")
-            {
-                 $query->where("status",$request->input("status"));
-            }
-        })->paginate($request->input("count",15))->appends(["column" => $column , "search"=> $request->input("search"), "status" => $request->input("status")]);
+        })->paginate($request->input("count",15));
     }
 
+    public function getSatellite(Request $request,$id)
+    {
+        $satellite = Models\Satellite::select("*")->where('id', '=',$id)->firstOrFail();
+        $satellite["mission"] = $satellite->mission()->first();
+        $satellite["type"] = $satellite->type()->first();
+        $satellite["orbit"] = $satellite->orbit()->first();
+        
+        $launch = $satellite->launch()->first();
+        if($launch != null)
+        {
+            $satellite["launch"] = $launch;
+            $satellite["launch"]["vehicle"] = $launch->launchVehicle()->first(); 
+        }
+        return $satellite;
+    }
 
     /**
      * Store a newly created resource in storage.
