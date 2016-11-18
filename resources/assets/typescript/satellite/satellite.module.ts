@@ -8,14 +8,14 @@ import { SatelliteListComponent } from "./satellite-list.component"
 
 import {PaginationComponent} from "./../share/pagination.component";
 import {SatelliteService} from "./../services/satellite-service";
-import {  ReactiveFormsModule }   from '@angular/forms';
 
+import {  ReactiveFormsModule }   from '@angular/forms';
 
 @NgModule({
   imports:      [ 
    CommonModule,
   SatelliteRoutingModule,
-  ReactiveFormsModule,
+  ReactiveFormsModule
   
   ],
   declarations: [ 

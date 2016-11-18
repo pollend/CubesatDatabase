@@ -44,37 +44,44 @@ class SatelliteController extends Controller
             break;
        }
 
-
-       return Models\Satellite::select(
-        "missions.name as mission_name",
-        "organizations.id as organization_id",
-        "organizations.name as organization_name",
-        "satellite_types.name as satellite_type",
-        "satellites.created_at",
-        "satellites.updated_at",
-        "satellites.name",
-        "satellites.COSPAR",
-        "satellites.wiki",
-        "satellites.mass",
-        "satellites.id",
-        "satellites.mission_id",
-        "satellites.satellite_type_id",
-        "satellites.orbit_id",
-        "satellites.launch_id",
-        "launches.launch_date",
-        "launch_vehicles.name as launch_vehicle")->
-       leftJoin("missions","satellites.mission_id","=","missions.id")->
-       leftJoin("organizations","missions.organization_id","=","organizations.id")->
-       leftjoin("satellite_types","satellites.satellite_type_id","=","satellite_types.id")->
-       leftJoin("launches","satellites.launch_id", "=","launches.id")->
-       leftJoin("launch_vehicles","launches.launch_vehicle_id", "=","launch_vehicles.id")->
-       where(function($query) use ($request , $column)
+       return Models\SatelliteFlat::select("*")->where(function($query) use ($request , $column)
         {
             if($request->has("search"))
             {
                 $query->where($column,"LIKE","%".$request->input("search")."%");
             }
         })->paginate($request->input("count",15));
+
+       // return Models\Satellite::select(
+       //  "missions.name as mission_name",
+       //  "organizations.id as organization_id",
+       //  "organizations.name as organization_name",
+       //  "satellite_types.name as satellite_type",
+       //  "satellites.created_at",
+       //  "satellites.updated_at",
+       //  "satellites.name",
+       //  "satellites.COSPAR",
+       //  "satellites.wiki",
+       //  "satellites.mass",
+       //  "satellites.id",
+       //  "satellites.mission_id",
+       //  "satellites.satellite_type_id",
+       //  "satellites.orbit_id",
+       //  "satellites.launch_id",
+       //  "launches.launch_date",
+       //  "launch_vehicles.name as launch_vehicle")->
+       // leftJoin("missions","satellites.mission_id","=","missions.id")->
+       // leftJoin("organizations","missions.organization_id","=","organizations.id")->
+       // leftjoin("satellite_types","satellites.satellite_type_id","=","satellite_types.id")->
+       // leftJoin("launches","satellites.launch_id", "=","launches.id")->
+       // leftJoin("launch_vehicles","launches.launch_vehicle_id", "=","launch_vehicles.id")->
+       // where(function($query) use ($request , $column)
+       //  {
+       //      if($request->has("search"))
+       //      {
+       //          $query->where($column,"LIKE","%".$request->input("search")."%");
+       //      }
+       //  })->paginate($request->input("count",15));
     }
 
     public function getSatellite(Request $request,$id)

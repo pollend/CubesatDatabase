@@ -98,7 +98,7 @@ class AuthController extends Controller
 
             $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
 
-            return Response::json(['timeout' =>  $message],410);
+            return Response::json(['error' =>  [$message]],410);
         }
 
         if ($validator->fails())
@@ -112,13 +112,13 @@ class AuthController extends Controller
             if (! $token = JWTAuth::attempt($credentials)) {
                 $this->incrementLoginAttempts($request);
 
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(['error' => ['invalid_credentials']], 401);
             }
         } catch (JWTException $e) {
              $this->incrementLoginAttempts($request);
 
             // something went wrong whilst attempting to encode the token
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return response()->json(['error' => 'could_not_create_token'], 401);
         }
 
        return response()->json(['token' => $token,'user'=> JWTAuth::toUser($token)]);
@@ -129,7 +129,7 @@ class AuthController extends Controller
         try{
             return response()->json(JWTAuth::toUser($request->input('token')));
         }catch(JWTException $e){
-            return response()->json(['error' => 'token error'], 500);
+            return response()->json(['error' => 'token error'], 401);
         }
     }
 

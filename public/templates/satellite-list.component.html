@@ -1,16 +1,59 @@
-<form class="uk-form"  [formGroup]="searchForm" (ngSubmit)="search()"> 
-    <fieldset data-uk-margin>
-        <input type="text" placeholder="Search" [formControl]="searchForm.controls['search']">
-        <select [formControl]="searchForm.controls['column']">
-            <option>Mission</option>
-            <option>Satellite</option>
-            <option>Organization</option>
-            <option>Mission</option>
-            <option>Type</option>
-            <option>Launch Vehicle</option>
-        </select>
-        <button class="uk-button">Search</button>
-    </fieldset>
+<!-- <form class="uk-form"  [formGroup]="searchForm" (ngSubmit)="search()"> 
+ -->
+    <ul class="uk-tab" data-uk-tab="{connect:'#my-id'}">
+        <li><a href="">Simple Search</a></li>
+        <li><a href="">Advance Search</a></li>
+    </ul>
+
+    <ul id="my-id" class="uk-switcher uk-margin">
+        <li>
+            <form [formGroup]="simpleSearchForm" (ngSubmit)="simpleSearch()" class="uk-form">
+               <div class="uk-form-row">
+                    <input class="uk-form-width-large" type="text" placeholder="Search" [formControl]="simpleSearchForm.controls['search']">
+                    <select [formControl]="simpleSearchForm.controls['column']">
+                        <option value="organization">Organization</option>
+                        <option value="mission">Mission</option>
+                        <option value="name">Name</option>
+                        <option value="type">Type</option>
+                        <option value="mass">Mass</option>
+                        <option value="launch_vehicle">Launch Vehicle</option>
+                    </select>
+               </div>
+               <div class="uk-form-row">
+                    <button class="uk-button">Search</button>
+                </div>
+            </form>
+        </li>
+        <li>
+            <form [formGroup]="advanceSearchForm" (ngSubmit)="advanceSearch()" class="uk-form">
+               <div class="uk-form-row" *ngFor="let entry of advanceSearchForm.controls['search_entry'].controls; let i = index;">
+                    <select [formControl]="entry.controls['column']">
+                        <option value="organization">Organization</option>
+                        <option value="mission">Mission</option>
+                        <option value="name">Name</option>
+                        <option value="type">Type</option>
+                        <option value="mass">Mass</option>
+                        <option value="launch_vehicle">Launch Vehicle</option>
+                    </select>
+
+                    <select >
+                        <option value="Contains">Contains</option>
+                        <option value="Equals">Equals</option>
+                    </select>
+                    <input class="uk-form-width-large" type="text" placeholder="Search" [formControl]="entry.controls['search']">
+
+                    <a  class="uk-button" (^click)="removeEntry(i)"><i class="uk-icon-plus"></i> Remove Field</a>
+               </div>
+
+               <div class="uk-form-row">
+                    <a  class="uk-button" (^click)="addSearchEntry()"><i class="uk-icon-plus"></i> Add Field</a>
+               </div>
+               <div class="uk-form-row">
+                    <button class="uk-button">Search</button>
+                </div>
+            </form>
+        </li>
+    </ul>
 
     <div class="uk-overflow-container">
         <table class="uk-table uk-table-hover">
@@ -38,6 +81,6 @@
             </tbody>
         </table>
     </div>
-    <!-- <pagination></pagination> -->
+    <pagination  ></pagination> 
 
-</form>
+<!-- </form> -->

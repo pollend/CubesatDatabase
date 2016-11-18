@@ -1,0 +1,26 @@
+
+
+<!-- <form> -->
+	<ul class="uk-tab" data-uk-tab="{connect:'#my-id'}">
+	    <li><a href="">Simple Search</a></li>
+	    <li><a href="">Advance Search</a></li>
+	</ul>
+
+	<ul id="my-id" class="uk-switcher uk-margin">
+		<li>
+			<form>
+				<fieldset data-uk-margin>
+					<input type="text" placeholder="Search" [formControl]="searchForm.controls['search']">
+					<select [formControl]="searchForm.controls['column']">
+						<option *ngFor="let el of  columns">{{el}}</option>
+					</select>
+					<button class="uk-button">Search</button>
+				</fieldset>
+			</form>
+		</li>
+		<li>
+			Two
+		</li>
+	</ul>
+
+<!-- </form> -->

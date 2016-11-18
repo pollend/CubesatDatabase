@@ -25,12 +25,20 @@ export class RegisterComponent {
 	}
 
 	register():void{
-		let temp;
-		this.userService.register(this.registerForm.value).subscribe(t => temp,error =>  this.errors = <any>error);
-		if(this.errors == null)
-		{
-			this.router.navigate(['/']);
-		}
+		let temp = this.errors;
+		this.userService.register(this.registerForm.value).subscribe(
+			function(result:any){},(e : any) => {
+				this.errors = <any>e;
+				if(this.errors == undefined)
+				{
+					this.router.navigate(['/']);
+				}
+			}
+		);
+		// if(this.errors == undefined)
+		// {
+		// 	this.router.navigate(['/']);
+		// }
 	}
 }
 
