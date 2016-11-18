@@ -14,7 +14,7 @@ class CreateLaunchsTable extends Migration
     {
         Schema::create('launches', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('launch_vehicle_id')->unsigned();
+            $table->integer('launch_vehicle_id')->unsigned()->nullable();
             $table->timestamps();
             $table->date("launch_date");
 

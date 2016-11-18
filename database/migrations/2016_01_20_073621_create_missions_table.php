@@ -19,7 +19,7 @@ class CreateMissionsTable extends Migration
             $table->string("wiki");
             $table->string("name");
             $table->binary("content");
-            $table->integer("organization_id")->unsigned();
+            $table->integer("organization_id")->unsigned()->nullable();
 
             $table->foreign('organization_id')->references('id')->on('organizations');
         });

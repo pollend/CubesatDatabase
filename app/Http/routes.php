@@ -16,7 +16,6 @@ Route::get('{any?}', function () {
 })->where('any', '(?!api/)(?!_debugbar)(.*)');
 
 
-
 Route::group(['prefix' => 'api/v1/'], function()
 {
 		Route::group(['prefix' => 'satellite'],function()
