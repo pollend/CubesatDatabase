@@ -20,7 +20,7 @@ export class SatelliteService extends ApiService{
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.get(SatelliteService.API + "/satellite",payload)
+		return this.http.post(SatelliteService.API + "/satellite",payload,options)
 		.map(this.extractData);
 	}
 

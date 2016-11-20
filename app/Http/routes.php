@@ -20,8 +20,8 @@ Route::group(['prefix' => 'api/v1/'], function()
 {
 		Route::group(['prefix' => 'satellite'],function()
 		{
-			Route::get('','Api\SatelliteController@getSatellites');
-			Route::get('{id}','Api\SatelliteController@getSatellite');
+			Route::post('','Api\SatelliteController@postSatellites');
+			Route::post('{id}','Api\SatelliteController@postSatellite');
 		});
 
 		Route::resource('mission','Api\MissionController');

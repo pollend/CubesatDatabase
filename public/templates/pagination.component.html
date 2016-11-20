@@ -1,25 +1,37 @@
 
-<nav *ngIf="pageinator">
-    <div class="pagination">
-        <ul class="uk-pagination">
-        
-            <li [class.uk-disabled]="pageinator.prev_page_url == null">
-                <a (click)="onPageChange(pageinator.current_page-1)">
-                    <i class="uk-icon-angle-double-left"></i>
-                </a>
-            </li>
 
-            <li *ngFor="let p of _starting_range" [class.uk-active]="p == pageinator.current_page">
-                <a *ngIf="p != -1" (click)="onPageChange(p)">{{p}}</a>
-                <a *ngIf="p == -1">...</a>
-            </li>
+<ul class="uk-pagination" *ngIf="pageinator">
 
-            <li [class.uk-disabled]="pageinator.next_page_url == null">
-                <a (click)="onPageChange(pageinator.current_page+1)">
-                    <i class="uk-icon-angle-double-right"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <li *ngIf="pageinator.prev_page_url != null" >
+        <a (click)="onPageChange(pageinator.current_page-1)">
+            <i class="uk-icon-angle-double-left"></i>
+        </a>
+    </li>
+
+    <li *ngIf="pageinator.prev_page_url == null" class="uk-disabled">
+        <span>
+            <i class="uk-icon-angle-double-left"></i>
+        </span>
+    </li>
+
+
+    <li *ngFor="let p of _starting_range" [class.uk-active]="p == pageinator.current_page">
+        <span *ngIf="p == pageinator.current_page">{{p}}</span>
+        <a *ngIf="p != pageinator.current_page && p != -1" (click)="onPageChange(p)">{{p}}</a>
+        <span *ngIf="p == -1">...</span>
+    </li>
+
+    <li *ngIf="pageinator.next_page_url != null">
+        <a (click)="onPageChange(pageinator.current_page+1)">
+            <i class="uk-icon-angle-double-right"></i>
+        </a>
+    </li>
+
+    <li class="uk-disabled" *ngIf="pageinator.next_page_url == null" >
+        <span >
+            <i class="uk-icon-angle-double-right"></i>
+        </span>
+    </li>
+
+</ul>
 

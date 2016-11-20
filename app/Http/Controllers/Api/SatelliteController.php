@@ -19,8 +19,39 @@ class SatelliteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSatellites(Request $request)
+    public function postSatellites(Request $request)
     {
+
+        if($request->has('search_entry'))
+        {
+           return Models\SatelliteFlat::select("*")->where(function($query) use ($request )
+            {
+              foreach ($request->input("search_entry") as $entry) {
+                if($entry["search"] && $entry["column"] )
+                {
+                    if($entry['search_type'] == "Contains")
+                    {
+                      $query->where($entry["column"],"LIKE","%".$entry["search"]."%");
+                    }
+                    else
+                    {
+                      $query->where($entry["column"],"=",$entry["search"]);
+                    }
+                    
+                }
+              }
+            })->paginate($request->input("count",15));
+        }
+        else
+        {
+            return Models\SatelliteFlat::select("*")->where(function($query) use ($request)
+            {
+                if($request->has("search") &&  $request->has("column"))
+                {
+                    $query->where($request->input("column"),"LIKE","%".$request->input("search")."%");
+                }
+            })->paginate($request->input("count",15));
+        }
 
         $column = "";
        switch ($request->input("column")) {
@@ -44,13 +75,7 @@ class SatelliteController extends Controller
             break;
        }
 
-       return Models\SatelliteFlat::select("*")->where(function($query) use ($request , $column)
-        {
-            if($request->has("search"))
-            {
-                $query->where($column,"LIKE","%".$request->input("search")."%");
-            }
-        })->paginate($request->input("count",15));
+
 
        // return Models\Satellite::select(
        //  "missions.name as mission_name",
@@ -84,7 +109,7 @@ class SatelliteController extends Controller
        //  })->paginate($request->input("count",15));
     }
 
-    public function getSatellite(Request $request,$id)
+    public function postSatellite(Request $request,$id)
     {
         $satellite = Models\Satellite::select("*")->where('id', '=',$id)->firstOrFail();
         $satellite["mission"] = $satellite->mission()->first();

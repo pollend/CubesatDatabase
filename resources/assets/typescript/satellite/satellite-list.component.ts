@@ -17,9 +17,11 @@ import {SatelliteFlat} from "./../models/satellite_flat";
 })
 
 export class SatelliteListComponent {
-	simpleSearchForm : FormGroup;
-	advanceSearchForm : FormGroup;
-	payload: Pagination<SatelliteFlat>;
+	private simpleSearchForm : FormGroup;
+	private advanceSearchForm : FormGroup;
+	private payload: Pagination<SatelliteFlat>;
+	private previousSearch : any;
+	private page : number;
 
 	constructor(private userService: UserService,private satelliteService: SatelliteService,private router: Router,private  fb: FormBuilder){
 
@@ -28,21 +30,31 @@ export class SatelliteListComponent {
 
 		this.advanceSearchForm = fb.group({
 			'search_entry' : fb.array([
-				this.initSearchEntry()
+				this.initAdvanceSearchEntry()
 			])
 		});
+
+		this.simpleSearch();
 	}
 
 	initSearchEntry(){
 		return  this.fb.group({
-			'search' :'',
+			'search' :'Name',
+			'column' :''
+		});
+	}
+
+	initAdvanceSearchEntry(){
+		return  this.fb.group({
+			'search' :'Name',
+			'search_type':'Equals',
 			'column' :''
 		});
 	}
 
 	addSearchEntry(){
 		const control = <FormArray>this.advanceSearchForm.controls['search_entry'];
-		control.push(this.initSearchEntry());
+		control.push(this.initAdvanceSearchEntry());
 	}
 
 	removeEntry(index : number): void
@@ -53,15 +65,29 @@ export class SatelliteListComponent {
 
 	simpleSearch():void{
 		let t = this.simpleSearchForm.value;
+		this.search(t);
 	}
 
 	advanceSearch(): void{
 		let t = this.advanceSearchForm.value;
+		this.search(t);
 	}
 
-	search():void{
+	onPageChange(page)
+	{
+		this.page = page;
+		this.search(undefined);
+	}
 
-		let payload = {pages : 0};
+	search(payload : any):void{
+
+		if(payload == undefined)
+		{
+			payload = this.previousSearch;
+		}
+		payload['page'] = this.page;
+
+		this.previousSearch = payload;
 		this.satelliteService.getSatellites(payload).subscribe((resp: Pagination<SatelliteFlat>) => {
 			this.payload = resp;
 		}, (errors:any) => {
