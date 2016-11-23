@@ -17,7 +17,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {UserService} from "./services/user-service";
 
-
 @NgModule({
   imports: [
       HttpModule,

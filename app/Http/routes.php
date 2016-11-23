@@ -22,12 +22,23 @@ Route::group(['prefix' => 'api/v1/'], function()
 		{
 			Route::post('','Api\SatelliteController@postSatellites');
 			Route::post('{id}','Api\SatelliteController@postSatellite');
+			Route::get('organization/{id}','Api\SatelliteController@getSatellitesByOrganization');
 		});
 
-		Route::resource('mission','Api\MissionController');
-		Route::resource('vendor','Api\VendorController');
-		Route::resource('component','Api\ComponentController');
-		Route::resource('spaceport','Api\SpaceportController');
+		Route::group(['prefix' => 'mission'],function()
+		{
+			Route::post('','Api\MissionController@postMissions');
+		});
+
+		Route::group(['prefix' => 'vendor'],function()
+		{
+			Route::get('','Api\VendorController@getVendors');
+		});
+
+		// Route::resource('mission','Api\MissionController');
+		// Route::resource('vendor','Api\VendorController');
+		// Route::resource('component','Api\ComponentController');
+		// Route::resource('spaceport','Api\SpaceportController');
 
 		Route::post('login', 'Auth\AuthController@postLogin');
 		Route::post('register', 'Auth\AuthController@postRegiser');

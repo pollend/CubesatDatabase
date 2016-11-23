@@ -2,47 +2,57 @@
 
 namespace App\Http\Controllers\Api;
 
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models;
 
 class MissionController extends Controller
 {
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    public function postMissions(Request $request)
     {
-
-        $column = "";
-       switch ($request->input("column")) {
-            case "name":
-                $column = "name";
-            break;
-            case "objective":
-                $column = "objective";
-            break;
-            default:
-                $column = "name";
-            break;
-       }
-
-        return \App\Mission::select('id','objective','wiki','name')->where(function($query) use ($request,$column)
-        {
-            if($request->has("search"))
-            {
-                $query->where($column,"LIKE","%".$request->input("search")."%");
-            }
-
-        })->paginate(15)->appends([
-        "column" => $column , 
-        "search"=> $request->input("search")]);
+        return Models\MissionFlat::select('*')->paginate(15);
     }
+
+    
+
+
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function index(Request $request)
+    // {
+
+    //     $column = "";
+    //    switch ($request->input("column")) {
+    //         case "name":
+    //             $column = "name";
+    //         break;
+    //         case "objective":
+    //             $column = "objective";
+    //         break;
+    //         default:
+    //             $column = "name";
+    //         break;
+    //    }
+
+    //     return \App\Mission::select('id','objective','wiki','name')->where(function($query) use ($request,$column)
+    //     {
+    //         if($request->has("search"))
+    //         {
+    //             $query->where($column,"LIKE","%".$request->input("search")."%");
+    //         }
+
+    //     })->paginate(15)->appends([
+    //     "column" => $column , 
+    //     "search"=> $request->input("search")]);
+    // }
 
 
     /**

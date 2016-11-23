@@ -37,7 +37,7 @@ class CreateSatelliteFlatView extends Migration
           LEFT JOIN satellite_types ON satellites.satellite_type_id = satellite_types.id
           LEFT JOIN launches ON satellites.launch_id = launches.id
           LEFT JOIN launch_vehicles ON launches.launch_vehicle_id = launch_vehicles.id
-" );
+        " );
     }
 
     /**

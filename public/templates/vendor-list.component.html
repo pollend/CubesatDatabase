@@ -1,22 +1,12 @@
- <h1>Vendor</h1>
-<div *ngIf="pageination" >
-	
-<table class="table table-hover">
-  <thead>
-    <tr>
-		  <th>id</th>
-		  <th>name</th>
-		  <th>type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf="pageination" *ngFor="#row of pageination.data">
-    	<th scope="row" (click)="vendorSelect(row)">{{row?.id}}</th>
-		  <td (click)="vendorSelect(row)">{{row?.name}}</td>
-		  <td (click)="vendorSelect(row)">{{row?.type}}</td>
-		</tr>
-  </tbody>
-</table>
+<div class="uk-grid" *ngIf="vendors">
+    <div class="uk-width-small-1-2 uk-width-medium-1-4" *ngFor="let vendor of vendors">
+      <a class="uk-thumbnail vendor-item" href="">
+        <img src=" http://placehold.it/350x150" width="800" height="280" alt="">
+        <div class="uk-thumbnail-caption">
+          <h3>{{vendor.name}}</h3>
+        </div>
+      </a>
+    </div>
+
 
 </div>
-<pagination [pageinator]="pageination" (page_change)="onPageChange($event)" ></pagination>

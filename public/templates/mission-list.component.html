@@ -1,22 +1,39 @@
- <h1>Mission</h1>
-<div *ngIf="pageination" >
-	
-<table class="table table-hover">
-  <thead>
-    <tr>
-		<th>id</th>
-		<th>objective</th>
-		<th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf="pageination" *ngFor="#row of pageination.data">
-    	<th scope="row" (click)="missionSelect(row)">{{row?.id}}</th>
-		  <td (click)="missionSelect(row)">{{row?.objective}}</td>
-		  <td (click)="missionSelect(row)">{{row?.name}}</td>
-		</tr>
-  </tbody>
-</table>
+<div *ngIf="payload">
 
+  <div class="mission-entry" *ngFor="let mission_entry of payload.data">
+      <a><h3>{{mission_entry.name}}</h3></a>
+      <div class="mission-subsection">
+        <div>{{mission_entry.organization_type}} - {{mission_entry.organization_name}}</div>
+        
+        <a (click)="toggleSatelliteList(mission_entry)">
+          <i [ngClass]="{'uk-icon-plus-square-o': mission_entry['satellite_visible'], 'uk-icon-minus-square-o' :  !mission_entry['satellite_visible']}"></i> 
+          Satellites
+        </a>
+     
+        <div *ngIf="mission_entry['satellite_visible'] && mission_entry['satellites']">
+          <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+            <thead>
+              <tr>
+                <td>name</td>
+                <td>type</td>
+                <td>mass</td>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let satellite_entry of mission_entry['satellites'].data">
+                    <td>{{satellite_entry.name}}</td>
+                    <td>{{satellite_entry.satellite_type}}</td>
+                    <td>{{satellite_entry.mass}}</td>
+                </tr>
+            </tbody>
+          </table>
+           <pagination  [pageinator]="mission_entry['satellites']" (page_change)="onSatellitePageChange($event,satellite_entry)" ></pagination> 
+        </div>
+
+         <div class="uk-text-center" *ngIf="mission_entry['satellite_visible'] && !mission_entry['satellites']">
+            <i class="uk-icon-refresh uk-icon-spin"></i> Loading Satellites ...
+         </div>
+      </div>
+  </div>
+  <pagination  [pageinator]='payload' (page_change)='onMissionPageChange($event)'></pagination> 
 </div>
-<pagination [pageinator]="pageination" (page_change)="onPageChange($event)" ></pagination>

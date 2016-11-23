@@ -13,7 +13,8 @@
 
 $factory->define(App\Models\Organization::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->word
+        'name' => $faker->word,
+        'type' =>  $faker->randomElement(['University' ,'Military'])
     ];
 });
 

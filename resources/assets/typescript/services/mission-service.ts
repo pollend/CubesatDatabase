@@ -1,31 +1,33 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
 
-import {Pagination} from "./../models/pagination";
-import {Mission} from "./../models/mission";
+
 
 import {Observable}     from 'rxjs/Rx';
+import {ApiService} from "./api-service";
 
+import {Pagination} from "./../models/pagination";
+import {MissionFlat} from "../models/mission_flat";
 
 @Injectable()
-export class MissionService {
-	constructor(private http: Http ) { 
-
+export class MissionService extends ApiService{
+	constructor(http: Http ) { 
+		super(http);
 	}
 
-	private _mission_url = '/api/v1/mission';
+	getMissions(payload:any) : Observable<Pagination<MissionFlat>>{
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
 
-	getMissions(page:number){
-		return this.http.get(this._mission_url + "?page=" + page)
-			.map(request => <Pagination<Mission>>request.json())
-			.catch(this.handleError);
+
+		return this.http.post(MissionService.API + "/mission",payload,options)
+			.map(this.extractData);
+
+		// return this.http.get(this._mission_url + "?page=" + page)
+		// 	.map(request => <Pagination<Mission>>request.json())
+		// 	.catch(this.handleError);
 	}
 
-	private handleError(error: Response) {
-		// in a real world app, we may send the error to some remote logging infrastructure
-		// instead of just logging it to the console
-		console.error(error);
-		return Observable.throw(error.json().error || 'Server error');
-	}
 }
 

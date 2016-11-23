@@ -20,6 +20,7 @@
           
           <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
           <script type="text/javascript" src="uikit/js/core/alert.min.js"></script>
+          <script type="text/javascript" src="uikit/js/components/grid.min.js"></script>
           <script src="systemjs.config.js"></script>
 
           <script>

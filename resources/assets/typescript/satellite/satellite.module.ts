@@ -1,27 +1,31 @@
 //Modules
 import { NgModule }       from '@angular/core';
-import {SatelliteRoutingModule} from "./satellite-routing.module";
 import { CommonModule }   from '@angular/common';
+import {  ReactiveFormsModule }   from '@angular/forms';
+
+import {SatelliteRoutingModule} from "./satellite-routing.module";
+
+
 // components
 import {SatelliteComponent} from "./satellite.component"
 import { SatelliteListComponent } from "./satellite-list.component"
 
-import {PaginationComponent} from "./../share/pagination.component";
 import {SatelliteService} from "./../services/satellite-service";
 
-import {  ReactiveFormsModule }   from '@angular/forms';
+import {ShareModule} from "./../share/share.module";
+
+
 
 @NgModule({
   imports:      [ 
-   CommonModule,
-  SatelliteRoutingModule,
-  ReactiveFormsModule
-  
+     ShareModule,
+     CommonModule,
+     SatelliteRoutingModule,
+     ReactiveFormsModule,
   ],
   declarations: [ 
     SatelliteListComponent,
-    SatelliteComponent,
-    PaginationComponent
+    SatelliteComponent
   ],
   providers:    [SatelliteService ]
 })

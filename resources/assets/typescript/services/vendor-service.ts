@@ -6,25 +6,19 @@ import {Vendor} from "./../models/vendor";
 import {Observable}     from 'rxjs/Rx';
 
 
+import {ApiService} from "./api-service";
+
 @Injectable()
-export class VendorService {
-	constructor(private http: Http ) { 
-
+export class VendorService extends ApiService {
+	constructor( http: Http ) { 
+		super(http);
 	}
 
-	private _spaceport_url = '/api/v1/vendor';
-
-	getSpaceports(page:number){
-		return this.http.get(this._spaceport_url + "?page=" + page)
-			.map(request => <Pagination<Vendor>>request.json())
-			.catch(this.handleError);
+	getVendors() : Observable<Vendor[]>
+	{
+		return this.http.get(VendorService.API + "/vendor")
+			.map(this.extractData);
 	}
 
-	private handleError(error: Response) {
-		// in a real world app, we may send the error to some remote logging infrastructure
-		// instead of just logging it to the console
-		console.error(error);
-		return Observable.throw(error.json().error || 'Server error');
-	}
 }
 

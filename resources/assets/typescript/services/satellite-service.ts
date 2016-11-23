@@ -24,6 +24,12 @@ export class SatelliteService extends ApiService{
 		.map(this.extractData);
 	}
 
+	getSatellitesByOrganization(organization_id:number) : Observable<Pagination<SatelliteFlat>>
+	{
+		return this.http.get(SatelliteService.API + "/satellite/organization/" + organization_id)
+		.map(this.extractData);
+	}
+
 	getSatellite(satellite_id:number) : Observable<Satellite> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
@@ -31,7 +37,6 @@ export class SatelliteService extends ApiService{
 		
 		return this.http.get(SatelliteService.API + "/satellite",payload )
 		.map(this.extractData);
-
 	}
 
 }
