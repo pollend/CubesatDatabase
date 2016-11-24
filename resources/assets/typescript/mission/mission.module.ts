@@ -12,8 +12,6 @@ import {SatelliteService} from "../services/satellite-service";
 import {ShareModule} from "./../share/share.module";
 
 
-
-
 import {MissionRoutingModule} from "./mission-routing.module";
 
 @NgModule({

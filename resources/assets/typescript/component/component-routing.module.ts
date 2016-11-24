@@ -1,13 +1,16 @@
 import { NgModule }            from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import {ComponentComponent} from './component.component';
+import {ComponentListComponent} from './component-list.component';
+
 
 export const routes: Routes = [
-	// {path:'',component:UserComponent,
-	// 	children: [
-	// 	]
-	// }
-
+	{path:'',component:ComponentComponent,
+		children: [
+			{ path:'' , component: ComponentListComponent }
+		]
+	}
 ];
 
 

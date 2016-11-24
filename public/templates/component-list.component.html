@@ -1,20 +1,42 @@
- <h1>component</h1>
-<div *ngIf="pagination" >
-	
-<table class="table table-hover">
-  <thead>
-    <tr>
-  		<th>id</th>
-  		<th>formal-specification</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf="pagination" *ngFor="#row of pagination.data">
-    	<th scope="row" (click)="selectComponent(row)">{{row?.id}}</th>
-		  <td (click)="selectComponent(row)">{{row?.formal_specification}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="uk-grid">
+  <div class="uk-width-1-4">
+    <form class="uk-form" [formGroup]="componentSearchForm"> 
+      <input class="uk-search-field " type="search" placeholder="">
 
+      <div class="uk-panel uk-panel-box">
+          <h3 class="uk-panel-title">Vendor</h3>
+          <ul class="uk-list">
+              <li>
+                <input type="checkbox"> Vendor 1
+              </li>
+              <li>
+                <input type="checkbox"> Vendor 2
+              </li>
+              <li>
+                <input type="checkbox"> Vendor 3
+              </li>
+          </ul>
+      </div>
+
+      <div class="uk-panel uk-panel-box">
+          <h3 class="uk-panel-title">Category</h3>
+          <ul class="uk-list">
+              <li>
+                <input type="checkbox"> Vendor 1
+              </li>
+              <li>
+                <input type="checkbox"> Vendor 2
+              </li>
+              <li>
+                <input type="checkbox"> Vendor 3
+              </li>
+          </ul>
+      </div>
+
+
+    </form>
+  </div>
+  <div class="uk-width-3-4">
+    
+  </div>
 </div>
-<pagination [pageinator]="pagination" (page_change)="onPageChange($event)" ></pagination>

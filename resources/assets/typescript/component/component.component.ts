@@ -2,7 +2,7 @@
 import { Component, OnInit }      from '@angular/core';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'component.component',
   templateUrl: 'templates/component.component.html'
 })
 export class ComponentComponent {
