@@ -59,10 +59,14 @@ class SatelliteController extends Controller
        return Models\SatelliteFlat::select("*")->where("organization_id", "=",$id)->paginate(15);
     }
 
-    public function postSatellite(Request $request,$id)
+    public function getSatellite(Request $request,$id)
     {
         $satellite = Models\Satellite::select("*")->where('id', '=',$id)->firstOrFail();
         $satellite["mission"] = $satellite->mission()->first();
+        if($satellite["mission"] != null)
+        {
+            $satellite["mission"]["organization"] =  $satellite["mission"]->organization()->first();
+        }
         $satellite["type"] = $satellite->type()->first();
         $satellite["orbit"] = $satellite->orbit()->first();
         
@@ -74,58 +78,6 @@ class SatelliteController extends Controller
         }
         return $satellite;
     }
-
-    public function getSatellitesAssignedToMission(Request $request,$mission_id)
-    {
-      
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-       return \App\Satellite::where("id","=",$id)->firstOrFail();
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
 
 
     

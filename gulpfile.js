@@ -32,6 +32,7 @@ elixir(function(mix) {
     mix.copy('node_modules/jquery/dist', 'public/jquery');
     mix.copy('node_modules/bootstrap-sass/assets/*','public/bootstrap');
     mix.copy('node_modules/bootstrap-sass/assets/fonts/*','public/fonts');
+    mix.copy('node_modules/marked/lib','public/marked/')
 
     mix.copy('bower_components/uikit', 'public/uikit');
     mix.copy('bower_components/uikit/fonts', 'public/fonts');

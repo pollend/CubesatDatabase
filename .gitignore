@@ -21,7 +21,7 @@ Homestead.json
 /public/@types
 /public/core-js
 /public/reflect-metadata
-
+/public/marked
 
 
 /bower_components

@@ -21,17 +21,18 @@
     "@angular/platform-browser-dynamic": "~2.1.1",
     "@angular/router": "~3.1.1",
     "@angular/upgrade": "~2.1.1",
+    "a2-in-memory-web-api": "^0.1.12",
     "angular-in-memory-web-api": "~0.1.13",
     "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
-    "systemjs": "0.19.39",
-    "zone.js": "^0.6.25",
-    "a2-in-memory-web-api": "^0.1.12",
     "elixir-typescript": "^2.0.0",
     "es6-promise": "^4.0.5",
     "es6-shim": "^0.35.0",
     "jquery": "~3.1.1",
-    "laravel-elixir": "^6.0.0-13"
+    "laravel-elixir": "^6.0.0-13",
+    "marked": "^0.3.6",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.6.25"
   }
 }

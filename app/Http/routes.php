@@ -21,8 +21,8 @@ Route::group(['prefix' => 'api/v1/'], function()
 		Route::group(['prefix' => 'satellite'],function()
 		{
 			Route::post('','Api\SatelliteController@postSatellites');
-			Route::post('{id}','Api\SatelliteController@postSatellite');
 			Route::get('organization/{id}','Api\SatelliteController@getSatellitesByOrganization');
+			Route::get('{id}','Api\SatelliteController@getSatellite');
 		});
 
 		Route::group(['prefix' => 'mission'],function()

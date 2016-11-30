@@ -17,10 +17,24 @@
           <script src="systemjs/dist/system.src.js"></script>
 
           <link rel="stylesheet" type="text/css" href="/css/app.css">
+         
+        <!-- uikit depndencies  -->
+        <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
+        <script type="text/javascript" src="uikit/js/core/alert.min.js"></script>
+        <script type="text/javascript" src="uikit/js/components/grid.min.js"></script>
           
-          <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
-          <script type="text/javascript" src="uikit/js/core/alert.min.js"></script>
-          <script type="text/javascript" src="uikit/js/components/grid.min.js"></script>
+
+        <!-- Codemirror and marked dependencies -->
+        <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+        <script src="codemirror/lib/codemirror.js"></script>
+        <script src="codemirror/mode/markdown/markdown.js"></script>
+        <script src="codemirror/addon/mode/overlay.js"></script>
+        <script src="codemirror/mode/xml/xml.js"></script>
+        <script src="codemirror/mode/gfm/gfm.js"></script>
+        <script src="marked/marked.js"></script>
+
+
+
           <script src="systemjs.config.js"></script>
 
           <script>

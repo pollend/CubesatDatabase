@@ -1,0 +1,35 @@
+<div *ngIf="satellite">
+
+	<div class="uk-float-right uk-panel-box uk-panel uk-width-medium-1-3" >
+	    <h3 class="uk-panel-title">Properties</h3>
+
+		<ul class="uk-list uk-list-line">
+			<li>type: {{satellite.type.name}}</li>
+			<li>COSPAR: {{satellite.COSPAR}} </li>
+			<li>orbit: {{satellite.orbit.orbit}}</li>
+			<li>mass: {{satellite.mass}}</li>
+		</ul>
+
+		<h3 class="uk-panel-title">Launch</h3>
+
+		<ul class="uk-list uk-list-line">
+			<li>vehicle: {{satellite.launch.vehicle.name}}</li>
+			<li>launch date: {{satellite.launch.launch_date}}</li>
+			
+		</ul>
+
+		<h3 class="uk-panel-title">Mission</h3>
+
+		<ul class="uk-list uk-list-line">
+			<li>mission: {{satellite.mission.name}}</li>
+			<li>Organizatin Type: {{satellite.mission.organization.name}}</li>
+			<li>organization: {{ satellite.mission.organization.type }}</li>
+			
+		</ul>
+	</div>
+
+	<h1 class="uk-heading-large">{{ satellite.name}}</h1>
+
+	{{ satellite.content }}
+
+</div>

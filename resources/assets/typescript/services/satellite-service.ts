@@ -13,8 +13,9 @@ import {Satellite} from "./../models/satellite";
 export class SatelliteService extends ApiService{
 	constructor( http: Http ) { 
 		super(http);
-
+		
 	}
+
 
 	getSatellites(payload:any) : Observable<Pagination<SatelliteFlat>> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -31,11 +32,7 @@ export class SatelliteService extends ApiService{
 	}
 
 	getSatellite(satellite_id:number) : Observable<Satellite> {
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-		let payload = {'id' : satellite_id };
-		
-		return this.http.get(SatelliteService.API + "/satellite",payload )
+		return this.http.get(SatelliteService.API + "/satellite/" + satellite_id )
 		.map(this.extractData);
 	}
 
