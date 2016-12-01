@@ -23,6 +23,7 @@
     "@angular/upgrade": "~2.1.1",
     "a2-in-memory-web-api": "^0.1.12",
     "angular-in-memory-web-api": "~0.1.13",
+    "codemirror": "^5.21.0",
     "core-js": "^2.4.1",
     "elixir-typescript": "^2.0.0",
     "es6-promise": "^4.0.5",

@@ -10,6 +10,12 @@ import {SatelliteRoutingModule} from "./satellite-routing.module";
 import { SatelliteComponent } from "./satellite.component";
 import { SatelliteListComponent } from "./satellite-list.component";
 import { SatelliteSingleComponent } from "./satellite-single.component";
+import { SatelliteSingleContainerComponent } from "./satellite-single-container.component";
+import { SatelliteSingleEditComponent } from "./satellite-single-edit.component";
+import { SatelliteFormComponent } from "./satellite-form.component";
+
+
+
 
 import {SatelliteService} from "./../services/satellite-service";
 
@@ -27,8 +33,14 @@ import {ShareModule} from "./../share/share.module";
   declarations: [ 
     SatelliteListComponent,
     SatelliteComponent,
-    SatelliteSingleComponent
+    SatelliteSingleComponent,
+    SatelliteSingleContainerComponent,
+    SatelliteSingleEditComponent,
+    SatelliteFormComponent 
   ],
-  providers:    [SatelliteService ]
+  providers:    [SatelliteService ],
+  exports: [
+    // SatelliteFormComponent
+  ]
 })
 export class SatelliteModule { }

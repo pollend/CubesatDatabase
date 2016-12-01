@@ -1,0 +1,48 @@
+
+<form class="uk-form uk-form-stacked" [formGroup]="satellite_form">
+    <p></p>
+
+    <fieldset>
+        <legend>Content</legend>
+        <textarea data-uk-htmleditor="{markdown:true}" [formControl]="satellite_form.controls['content']"> </textarea>
+    </fieldset>
+  
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-s-ip">Mass:</label>
+        <input type="text" class="uk-form-width-large" [formControl]="satellite_form.controls['mass']" name="">
+    </div>
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-s-ip">Cubesat Type:</label>
+        <auto-complete source="/api/v1/satellite/type" formControl="satellite_form.controls['cubesat_type']" minLength="1" title="name" ></auto-complete>
+    </div>
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-s-ip">COSPAR:</label>
+        <input type="text" class="uk-form-width-large" name="" [formControl]="satellite_form.controls['COSPAR']">
+    </div>
+
+    <fieldset>
+        <legend>Launch Vehicle</legend>
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="form-s-ip">Launch Vehicle:</label>
+            <auto-complete source="/api/v1/launch_vehicle" formControl="satellite_form.controls['launch_vehicle']" minLength="1" title="name"></auto-complete>
+        </div>
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="form-s-ip">Launch Date:</label>
+            <input type="text" class="uk-form-width-large" data-uk-datepicker="{format:'DD/MM/YYYY'}">
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Orbit</legend>
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="form-s-ip">tle:</label>
+            <input type="text" class="uk-form-width-large" [formControl]="satellite_form.controls['tle']" name="">
+        </div> 
+
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="form-s-ip">oribt:</label>
+            <input type="text" class="uk-form-width-large" [formControl]="satellite_form.controls['orbit']" name="">
+        </div>   
+    </fieldset>
+</form>

@@ -23,7 +23,10 @@ Route::group(['prefix' => 'api/v1/'], function()
 			Route::post('','Api\SatelliteController@postSatellites');
 			Route::get('organization/{id}','Api\SatelliteController@getSatellitesByOrganization');
 			Route::get('{id}','Api\SatelliteController@getSatellite');
+			Route::post('type','Api\SatelliteController@postSatelliteType');
+		
 		});
+		Route::post('launch_vehicle','Api\SatelliteController@postLaunchVehcile');
 
 		Route::group(['prefix' => 'mission'],function()
 		{
@@ -35,11 +38,7 @@ Route::group(['prefix' => 'api/v1/'], function()
 			Route::get('','Api\VendorController@getVendors');
 		});
 
-		// Route::resource('mission','Api\MissionController');
-		// Route::resource('vendor','Api\VendorController');
-		// Route::resource('component','Api\ComponentController');
-		// Route::resource('spaceport','Api\SpaceportController');
-
+		// Authentication
 		Route::post('login', 'Auth\AuthController@postLogin');
 		Route::post('register', 'Auth\AuthController@postRegiser');
 		Route::post('verify', 'Auth\AuthController@postValidate');

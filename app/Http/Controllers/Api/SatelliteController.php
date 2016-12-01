@@ -79,6 +79,19 @@ class SatelliteController extends Controller
         return $satellite;
     }
 
+    public function postLaunchVehcile(Request $request)
+    {
+        $result = [];
+        $result["results"] =  Models\LaunchVehicle::select("name")->where('name','LIKE',"%".$request->input("search","")."%")->limit(15)->get();
+        return $result;
+    }   
 
+
+    public function postSatelliteType(Request $request)
+    {
+        $result = [];
+        $result["results"] = Models\SatelliteType::select("name")->where('name','LIKE',"%".$request->input("search","")."%")->limit(15)->get();
+        return $result;
+    }
     
 }

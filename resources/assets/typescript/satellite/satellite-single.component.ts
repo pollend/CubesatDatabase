@@ -23,6 +23,8 @@ export class SatelliteSingleComponent implements OnInit{
 		this.satelliteService.getSatellite(satellite_id).subscribe((satellite: Satellite)=>{
 			this.satellite = satellite;
 
+			console.log(marked('I am using __markdown__.'));
+
 		},(error : any) =>{
 
 		});

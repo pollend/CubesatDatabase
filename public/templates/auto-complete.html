@@ -1,0 +1,13 @@
+<div class="uk-autocomplete uk-form" [ngClass]="{'uk-open': value}" (blur)="clear()">
+    <input #input_value type="text" [formControl]="formControl"  class="uk-form-width-large" (keyup)="onEntryChange(input_value.value)" >  
+    <div class="uk-dropdown" *ngIf="value">
+	    <ul  class="uk-nav uk-nav-autocomplete uk-autocomplete-results"  >                                 
+	        <li *ngFor="let entry of value.results">
+	            <a (click)="onSubmit(entry[title],input_value)">
+	                {{ entry[title] }}
+	            </a>
+
+	        </li>
+	    </ul>
+    </div>
+</div>
