@@ -14,14 +14,16 @@ import { Satellite } from './../models/satellite';
   templateUrl: 'templates/satellite-single-edit.component.html'
 })
 export class SatelliteSingleEditComponent implements OnInit{
+	private satellite_id : number;
 
+	constructor( private route: ActivatedRoute,private router: Router){
 
-	constructor(){
-		
 	}
 
 	ngOnInit() {
-
+		this.route.parent.params.subscribe(params => {
+	       this.satellite_id = +params['id'];
+	     });
 	}
 }
 

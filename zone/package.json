@@ -1,21 +1,14 @@
 {
   "_args": [
     [
-      {
-        "raw": "zone.js@^0.6.25",
-        "scope": null,
-        "escapedName": "zone.js",
-        "name": "zone.js",
-        "rawSpec": "^0.6.25",
-        "spec": ">=0.6.25 <0.7.0",
-        "type": "range"
-      },
+      "zone.js@^0.6.25",
       "/home/michaelpollind/html/CubesatDatabase"
     ]
   ],
   "_from": "zone.js@>=0.6.25 <0.7.0",
   "_id": "zone.js@0.6.26",
   "_inCache": true,
+  "_installable": true,
   "_location": "/zone.js",
   "_nodeVersion": "6.8.1",
   "_npmOperationalInternal": {
@@ -23,17 +16,16 @@
     "tmp": "tmp/zone.js-0.6.26.tgz_1476823791628_0.07981128408573568"
   },
   "_npmUser": {
-    "name": "angularcore",
-    "email": "angular-core+npm@google.com"
+    "email": "angular-core+npm@google.com",
+    "name": "angularcore"
   },
   "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "zone.js@^0.6.25",
-    "scope": null,
-    "escapedName": "zone.js",
     "name": "zone.js",
+    "raw": "zone.js@^0.6.25",
     "rawSpec": "^0.6.25",
+    "scope": null,
     "spec": ">=0.6.25 <0.7.0",
     "type": "range"
   },
@@ -94,8 +86,8 @@
     "tarball": "https://registry.npmjs.org/zone.js/-/zone.js-0.6.26.tgz"
   },
   "files": [
-    "lib",
-    "dist"
+    "dist",
+    "lib"
   ],
   "gitHead": "21935e8edf65a4192268ebd1940575ceaa08c244",
   "homepage": "https://github.com/angular/zone.js#readme",

@@ -7,12 +7,15 @@ import {Observable}     from 'rxjs/Rx';
 
 @Component({
   selector: 'auto-complete',
-  templateUrl: 'templates/auto-complete.html'
+  templateUrl: 'templates/auto-complete.html',
+  host: {
+    '(document:click)': 'clear()',
+  }
 })
 export class AutoCompleteComponent{
 
 	@Input()
-	formControl: FormControl;
+	form_entry: FormControl;
 	@Input()
 	source : string;
 	@Input()

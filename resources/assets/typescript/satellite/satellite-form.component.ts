@@ -7,7 +7,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SatelliteService } from './../services/satellite-service';
 
 import { Satellite } from './../models/satellite';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 
@@ -23,35 +22,46 @@ export class SatelliteFormComponent implements OnInit{
 	@Input()
 	set satelliteId(id : number)
 	{
-		this._satellite_id = id;
-		this.setSatelliteForm();		
 
-		this.satelliteService.getSatellites(this._satellite_id).subscribe((satellite: Satellite)=>{
+		this.satelliteForm();
+		this._satellite_id = id;
+		this.satelliteService.getSatellite(this._satellite_id).subscribe((satellite:Satellite) =>{
+			this.satellite_form.setValue({
+					'content' : satellite.content,
+					'mass' : satellite.mass,
+					'cubesat_type' : satellite.satellite_type.name,
+					'COSPAR' : satellite.COSPAR,
+					'launch_vehicle' : satellite.launch.launch_vehicle.name,
+					'launch_date' :satellite.launch.launch_date,
+					'tle' : satellite.orbit.tle,
+					'orbit' : satellite.orbit.orbit,
+			});
+		},(error: any)=>{
 
 		});
 	}
 
 	@Output() 
 	result: EventEmitter<Satellite> = new EventEmitter<Satellite>();
-	constructor(private route: ActivatedRoute,private fb: FormBuilder, private satelliteService: SatelliteService){}
 
-	ngOnInit() {
-		this.setSatelliteForm();
+	constructor(private route: ActivatedRoute,private fb: FormBuilder, private satelliteService: SatelliteService){
 	}
 
-	private setSatelliteForm()
-	{
-		this.satellite_form = fb.group({
+	ngOnInit() {
+		this.satelliteForm();
+	}
+
+	satelliteForm() : void{
+		this.satellite_form = this.fb.group({
 			'content' :'',
 			'mass' :'',
 			'cubesat_type' : '',
 			'COSPAR' :'',
 			'launch_vehicle' :'',
 			'launch_date' :'',
-			'tle' :'tle',
-			'orbit' :'orbit',
+			'tle' :'',
+			'orbit' :'',
 		});
-
 	}
 }
 
