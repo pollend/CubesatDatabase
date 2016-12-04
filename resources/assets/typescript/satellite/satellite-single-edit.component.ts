@@ -25,16 +25,16 @@ export class SatelliteSingleEditComponent implements OnInit{
 	submit()
 	{
 
-
 		let codeMirror = $(<HTMLElement>this.codeView.nativeElement).find(".CodeMirror")[0]["CodeMirror"];
 
 		//var view = $(<HTMLElement>this.codeView.nativeElement).find(".code-view") ;
 		this.satellite_form.value["content"] = codeMirror.getValue();// CodeMirror.fromTextArea(<HTMLTextAreaElement>view.get(0)).getValue();
 
 		this.satelliteService.updateSatellite(this.satellite_id,this.satellite_form.value).subscribe((result:any) =>{
-
+			UIkit.notify('Satellite Updated');
 		},
 		(errors: any) =>{
+			UIkit.notify('Failed to Update');
 
 		});
 		

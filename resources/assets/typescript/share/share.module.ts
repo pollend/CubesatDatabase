@@ -1,6 +1,11 @@
-import {PaginationComponent} from "./pagination.component";
+
+import  { MarkdownEditorComponent } from "./markdown-editor.component";
+
+import { PaginationComponent } from "./pagination.component";
 import { AutoCompleteComponent } from "./auto-complete.component";
 import {  ReactiveFormsModule }   from '@angular/forms';
+
+
 
 
 import { CommonModule }   from '@angular/common';
@@ -16,11 +21,13 @@ import {NgModule}       from '@angular/core';
   ],
   	declarations: [ 
   	PaginationComponent, 
-  	AutoCompleteComponent
+  	AutoCompleteComponent,
+    MarkdownEditorComponent
   ],
   exports:      [ 
   	PaginationComponent,
-  	AutoCompleteComponent
+  	AutoCompleteComponent,
+    MarkdownEditorComponent
   ],
   providers:    [ ]
 })

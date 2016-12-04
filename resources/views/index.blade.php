@@ -23,6 +23,7 @@
           <script type="text/javascript" src="uikit/js/core/alert.min.js"></script>
           <script type="text/javascript" src="uikit/js/components/grid.min.js"></script>
           <script type="text/javascript" src="uikit/js/components/datepicker.min.js"></script>
+          <script type="text/javascript" src="uikit/js/components/notify.min.js"></script>
 
           <!-- Codemirror and marked dependencies -->
           <link rel="stylesheet" href="codemirror/lib/codemirror.css">
