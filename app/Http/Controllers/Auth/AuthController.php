@@ -45,6 +45,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => ['getLogout', 'resendEmail', 'activateAccount']]);
+        $this->middleware('jwt.authenticate',['except' => ['postLogout','postLogin', 'resendEmail', 'activateAccount','postRegiser']]);
     }
 
 
@@ -124,13 +125,11 @@ class AuthController extends Controller
        return response()->json(['token' => $token,'user'=> JWTAuth::toUser($token)]);
     }
 
-    public function postValidate(Request $request)
+    public function postValidate(Request $request,$user)
     {
-        try{
-            return response()->json(JWTAuth::toUser($request->input('token')));
-        }catch(JWTException $e){
-            return response()->json(['error' => 'token error'], 401);
-        }
+
+         return $user;
+
     }
 
     public function postLogout(Request $request)

@@ -12,7 +12,6 @@ import { SatelliteListComponent } from "./satellite-list.component";
 import { SatelliteSingleComponent } from "./satellite-single.component";
 import { SatelliteSingleContainerComponent } from "./satellite-single-container.component";
 import { SatelliteSingleEditComponent } from "./satellite-single-edit.component";
-import { SatelliteFormComponent } from "./satellite-form.component";
 
 
 
@@ -35,8 +34,7 @@ import {ShareModule} from "./../share/share.module";
     SatelliteComponent,
     SatelliteSingleComponent,
     SatelliteSingleContainerComponent,
-    SatelliteSingleEditComponent,
-    SatelliteFormComponent 
+    SatelliteSingleEditComponent
   ],
   providers:    [SatelliteService ],
   exports: [

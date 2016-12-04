@@ -22,8 +22,14 @@ Route::group(['prefix' => 'api/v1/'], function()
 		{
 			Route::post('','Api\SatelliteController@postSatellites');
 			Route::get('organization/{id}','Api\SatelliteController@getSatellitesByOrganization');
-			Route::get('{id}','Api\SatelliteController@getSatellite');
 			Route::post('type','Api\SatelliteController@postSatelliteType');
+			
+
+			Route::group(['prefix' => '{id}'],function()
+			{
+				Route::get('/','Api\SatelliteController@getSatellite');
+				Route::post('/edit','Api\SatelliteController@postEditSatellite')->middleware('jwt.authenticate');
+			});
 		
 		});
 		Route::post('launch_vehicle','Api\SatelliteController@postLaunchVehcile');

@@ -4,16 +4,31 @@ import { Headers, RequestOptions } from '@angular/http';
 import {Observable}     from 'rxjs/Rx';
 
 import {ApiService} from "./api-service";
+import {UserService} from "./user-service";
+
 
 import {Pagination} from "./../models/pagination";
 import {SatelliteFlat} from "./../models/satellite_flat";
 import {Satellite} from "./../models/satellite";
 
+
+
+
+
 @Injectable()
 export class SatelliteService extends ApiService{
-	constructor( http: Http ) { 
+	constructor( http: Http, private userservice: UserService) { 
 		super(http);
 		
+	}
+
+	updateSatellite(satellite_id : number,payload:any) : Observable<any>{
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+
+		this.userservice.ApplyTokenToHeader(options);
+
+		return this.http.post(SatelliteService.API + "/satellite/"+satellite_id +"/edit",payload,options).map(this.extractData);
 	}
 
 

@@ -72,6 +72,8 @@ export class MissionListComponent {
 
 	updateSatellites(entry:MissionFlat,page:number)
 	{
+		if(entry != undefined)
+		{
 
 			this.satelliteService.getSatellitesByOrganization(entry.organization_id).subscribe((resp : Pagination<SatelliteFlat> ) =>{
 				entry['satellites'] = resp
@@ -79,6 +81,7 @@ export class MissionListComponent {
 			},(errors: any) =>{
 
 			});
+		}
 	}
 
 }

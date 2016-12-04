@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SatelliteModifyRequest;
+
 
 use App\Models;
 use Illuminate\Support\Facades\DB;
 
 class SatelliteController extends Controller
 {
+
 
 
     /**
@@ -54,6 +57,53 @@ class SatelliteController extends Controller
         }
     }
 
+    public function postEditSatellite(SatelliteModifyRequest $request,$id,$user)
+    {
+        DB::beginTransaction();
+
+        $satellite = Models\Satellite::select("*")->where('id','=',$id)->firstOrFail();
+
+        //TODO: user logic 
+
+        $satellite->COSPAR = $request->input("COSPAR");
+        $satellite->content = $request->input("content");
+        $satellite->mass = $request->input("mass");
+        $satellite->orbit->orbit = $request->input("orbit");
+        $satellite->orbit->tle = $request->input("tle");
+
+
+        try {
+            if($request->input("cubesat_type") != "")
+            {
+                $satellite_type = Models\SatelliteType::firstOrCreate(["name" => $request->input("cubesat_type")]);;
+                $satellite->satellite_type_id = $satellite_type->id;
+            }
+
+
+            $launch = $satellite->launch();        
+            $launch->launch_date = $request->input("launch_date");
+            
+            
+            if($request->input("launch_vehicle") != "")
+            {
+                $launch_vehicle = Models\LaunchVehicle::firstOrCreate(["name" => $request->input("launch_vehicle")]);
+                $launch->launch_vehicle_id = $launch_vehicle->id;
+            }
+            $satellite->save();
+            
+            
+        }
+        catch (\Exception $e) {
+            DB::rollback();
+            // something went wrong
+
+             throw $e;
+        }
+        DB::commit();
+        return response()->json(['result' => "success"]);
+    }
+
+
     public function getSatellitesByOrganization(Request $request, $id)
     {
        return Models\SatelliteFlat::select("*")->where("organization_id", "=",$id)->paginate(15);
@@ -78,6 +128,8 @@ class SatelliteController extends Controller
         }
         return $satellite;
     }
+
+    
 
     public function postLaunchVehcile(Request $request)
     {

@@ -5,5 +5,5 @@ export class Launch {
 	public id: number;
 	public created_at: string;
 	public launch_date: string;
-	public launch_vehicle: LaunchVehicle;
+	public vehicle: LaunchVehicle;
 }

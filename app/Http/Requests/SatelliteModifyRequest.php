@@ -13,7 +13,7 @@ class SatelliteModifyRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,7 @@ class SatelliteModifyRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'content' => 'required',
-            'COSPAR' => 'required'
+            'launch_date' => 'date'
         ];
     }
 }

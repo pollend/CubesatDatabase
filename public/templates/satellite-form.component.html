@@ -1,5 +1,5 @@
 
-<form class="uk-form uk-form-stacked" [formGroup]="satellite_form">
+<form class="uk-form uk-form-stacked" [formGroup]="satellite_form" (ngSubmit)="submit()">
     <p></p>
 
     <fieldset>
@@ -28,7 +28,7 @@
         </div>
         <div class="uk-form-row">
             <label class="uk-form-label" for="form-s-ip">Launch Date:</label>
-            <input type="text" class="uk-form-width-large" data-uk-datepicker="{format:'DD/MM/YYYY'}">
+            <input type="text" class="uk-form-width-large" [formControl]="satellite_form.controls['launch_date']" data-uk-datepicker="{format:'YYYY-MM-DD'}">
         </div>
     </fieldset>
 
@@ -45,7 +45,12 @@
             <input type="text" class="uk-form-width-large" [formControl]="satellite_form.controls['orbit']" name="">
         </div>   
     </fieldset>
-
+    <p></p>
+    <fieldset>
+        <div class="uk-form-row">
+            <input  type="submit" value="Save" class="uk-button">
+        </div>
+     </fieldset>
 
     <p></p>
 </form>

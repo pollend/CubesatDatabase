@@ -18,7 +18,14 @@ export class UserService extends ApiService{
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		 this.http.post(UserService.API + "/verify", {'token':token},options).map(this.extractData).map((res) => this.updateToken(null,res)).subscribe();
+		this.ApplyTokenToHeader(options);
+
+		 this.http.post(UserService.API + "/verify",{},options).map(this.extractData).map((res) => this.updateToken(null,res)).subscribe();
+	}
+
+	public ApplyTokenToHeader(options: RequestOptions)
+	{
+		options.headers.append("Authorization","Bearer " + this.token);
 	}
 	
 

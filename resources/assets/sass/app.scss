@@ -8,7 +8,12 @@ $grid-columns: 12 !default;
 // your custom code goes here, e.g. mixins, variables
 
 @import "./../../../bower_components/uikit/scss/uikit.scss";
+
 @import "./../../../bower_components/uikit/scss/components/autocomplete.scss";
+@import "./../../../bower_components/uikit/scss/components/datepicker.scss";
+
+
+
 @import "./../../../bower_components/uikit/scss/core/dropdown.scss";
 @import "./../../../bower_components/uikit/scss/core/form.scss";
 @import "./../../../bower_components/uikit/scss/core/base.scss";
@@ -16,6 +21,10 @@ $grid-columns: 12 !default;
 @import "./../../../bower_components/uikit/scss/core/nav.scss";
 @import "./../../../bower_components/uikit/scss/core/navbar.scss";
 @import "./../../../bower_components/uikit/scss/core/table.scss";
+
+.uk-datepicker{
+	width: auto;
+}
 
 
 .error-collections{
