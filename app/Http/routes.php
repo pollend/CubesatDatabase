@@ -32,8 +32,16 @@ Route::group(['prefix' => 'api/v1/'], function()
 			});
 		
 		});
+
+		Route::group(['prefix' => 'profile'],function(){
+			Route::post('user_image','Api\ProfileController@postProfileImage');
+
+		});
+
+
 		Route::post('launch_vehicle','Api\SatelliteController@postLaunchVehcile');
 
+		
 		Route::group(['prefix' => 'mission'],function()
 		{
 			Route::post('','Api\MissionController@postMissions');

@@ -7,6 +7,8 @@ import {ApiService} from "./api-service";
 
 import { Headers, RequestOptions } from '@angular/http';
 
+import { FileUploader } from 'ng2-file-upload';
+
 @Injectable()
 export class UserService extends ApiService{
 	private _user: User;
@@ -28,6 +30,12 @@ export class UserService extends ApiService{
 		options.headers.append("Authorization","Bearer " + this.token);
 	}
 	
+	public getProfileImageUploader(): FileUploader
+	{
+		return  new FileUploader({url: UserService.API + "/profile/user_image",authToken: "Bearer " + this.token,
+		queueLimit: 1});
+	}
+
 
 	protected updateToken(token: any,user: User)
 	{

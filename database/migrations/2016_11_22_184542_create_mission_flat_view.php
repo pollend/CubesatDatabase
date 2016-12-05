@@ -35,6 +35,6 @@ class CreateMissionFlatView extends Migration
      */
     public function down()
     {
-        //
+        DB::statement( 'DROP VIEW mission_flat' );
     }
 }

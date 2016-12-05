@@ -41,6 +41,7 @@
       '@angular/router': '@angular/router/bundles/router.umd.js',
       '@angular/forms': '@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': '@angular/upgrade/bundles/upgrade.umd.js',
+      'ng2-file-upload' : 'ng2-file-upload',
 
       // other libraries
       'rxjs':                      'rxjs'
@@ -57,7 +58,12 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'ng2-file-upload':{
+         main:'ng2-file-upload',
+         defaultExtension: 'js'
       }
+
     }
   });
 
@@ -73,6 +79,7 @@
     Promise.all([
       System.import('@angular/platform-browser-dynamic'),
       System.import('app/app.module')
+
     ])
     .then(function (imports) {
       var platform = imports[0];

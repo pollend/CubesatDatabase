@@ -3,7 +3,7 @@
 
     <fieldset>
         <legend>Content</legend>
-    <textarea class="code-view" data-uk-htmleditor="{markdown:true}"  [formControl]="satellite_form.controls['content']"></textarea>
+        <markdown-editor [form_entry]="satellite_form.controls['content']"></markdown-editor>
     </fieldset>
   
     <div class="uk-form-row">

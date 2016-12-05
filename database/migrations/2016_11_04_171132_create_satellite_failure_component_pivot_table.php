@@ -19,8 +19,8 @@ class CreateSatelliteFailureComponentPivotTable extends Migration
             $table->integer("component_id")->unsigned();
             $table->binary("comments");
 
-             $table->foreign('satellite_failure_id')->references('id')->on('satellite_failures');
-              $table->foreign('component_id')->references('id')->on('components');
+            $table->foreign('satellite_failure_id')->references('id')->on('satellite_failures');
+            $table->foreign('component_id')->references('id')->on('components');
         });
     }
 

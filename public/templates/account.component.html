@@ -1,0 +1,24 @@
+
+<div class="uk-width-medium-3-4  uk-container-center">
+
+	<div class="uk-grid">
+	    <div class="uk-width-3-10">
+
+	    	<div class="uk-panel uk-panel-box">
+			    <h3 class="uk-panel-title">Personal Settings</h3>
+			    <ul class="uk-nav uk-nav-side">
+			    	 <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="./">Account</a></li>
+			    	 <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="./profile">Profile</a></li>
+			    	<li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="./ownership">Organizations</a></li>
+
+			    </ul>
+			</div>
+
+	    </div>
+	    <div class="uk-width-7-10">
+	    	<router-outlet></router-outlet>
+	    </div>
+	</div>
+</div>
+
+

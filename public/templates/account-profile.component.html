@@ -1,0 +1,55 @@
+<p></p>
+
+<div class="uk-panel uk-panel-box">
+    <h3 class="uk-panel-title">Public Profile</h3>
+
+    <form class="uk-form uk-form-stacked" [formGroup]="profile_form" (ngSubmit)="updatePublicProfile()">
+    	<div class="uk-grid">
+            <div class="uk-width-3-5">
+                <fieldset>
+                     <div class="uk-form-row">
+                        <label class="uk-form-label" for="form-s-ip">Name:</label>
+                        <input type="text" class="uk-width-1-1"  name="">
+                    </div>
+                    <div class="uk-form-row">
+                        <label class="uk-form-label" for="form-s-ip">Bio:</label>
+                        <textarea class="uk-width-1-1"></textarea>
+                    </div>
+                    <div class="uk-form-row">
+                        <label class="uk-form-label" for="form-s-ip">Company:</label>
+                        <input type="text" class="uk-width-1-1"  name="">
+                    </div>
+                </fieldset>
+                <p></p>
+            	<fieldset>
+            	    <div class="uk-form-row">
+            	        <input  type="submit" value="Update" class="uk-button">
+            	    </div>
+            	</fieldset>
+            </div>
+            <div class="uk-width-2-5">
+
+                <fieldset>
+                    <legend>Profile Image</legend>
+                    <div class="uk-placeholder">
+                         <!-- {{ profile_image?.queue?.length }}  -->
+                    </div>
+                     <div  class="uk-text-center">
+
+                       <a class="uk-form-file uk-button uk-button-primary">
+
+                            {{profile_image?.queue[0]?.file.name}}
+                            <span *ngIf="!(profile_image?.queue?.length)">
+                                Upload Profile Image
+                            </span>
+                               
+                            <input ng2FileSelect [uploader]="profile_image"  type="file">
+
+                       </a>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+
+</div>

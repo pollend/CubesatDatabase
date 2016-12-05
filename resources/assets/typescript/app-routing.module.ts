@@ -12,11 +12,12 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'profile' , loadChildren: 'typescript/profile/user.module#UserModule' },
+  { path: 'account' , loadChildren: 'typescript/account/account.module#UserModule' },
   { path: 'satellite' , loadChildren: 'typescript/satellite/satellite.module#SatelliteModule' },
   { path: 'mission' , loadChildren: 'typescript/mission/mission.module#MissionModule' },
   { path: 'vendor' , loadChildren: 'typescript/vendor/vendor.module#VendorModule' },
-  { path: 'component' , loadChildren: 'typescript/component/component.module#ComponentModule' }
+  { path: 'component' , loadChildren: 'typescript/component/component.module#ComponentModule' },
+  { path: 'profile', loadChildren: 'typescript/profile/profile.module#ProfileModule'}
   
 ];
 

@@ -24,6 +24,8 @@
           <script type="text/javascript" src="uikit/js/components/grid.min.js"></script>
           <script type="text/javascript" src="uikit/js/components/datepicker.min.js"></script>
           <script type="text/javascript" src="uikit/js/components/notify.min.js"></script>
+          <script type="text/javascript" src="uikit/js/components/upload.min.js"></script>
+           <!-- <script type="text/javascript" src="uikit/js/core/button.min.js"></script> -->
 
           <!-- Codemirror and marked dependencies -->
           <link rel="stylesheet" href="codemirror/lib/codemirror.css">
@@ -37,13 +39,18 @@
           <script type="text/javascript" src="uikit/js/components/htmleditor.js"></script>
           <link rel="stylesheet" type="text/css" href="uikit/css/components/htmleditor.min.css">
           <script src="systemjs.config.js"></script>
+          <link rel="stylesheet" type="text/css" href="uikit/css/uikit.almost-flat.min.css">
 
           <script>
                   System.import('app').catch(function(err){ console.error(err); });
           </script>
     </head>
     <body>
-      <my-app>Loading...</my-app>
+      <my-app>
+        <div class="uk-text-center">
+            <h3><i class="uk-icon-refresh uk-icon-spin"></i> Loading ...</h3>
+        </div>
+      </my-app>
     </body>
 </html>
  

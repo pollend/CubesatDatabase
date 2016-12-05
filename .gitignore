@@ -23,6 +23,7 @@ Homestead.json
 /public/reflect-metadata
 /public/marked
 /public/codemirror
+/public/ng2-file-upload
 
 
 /bower_components

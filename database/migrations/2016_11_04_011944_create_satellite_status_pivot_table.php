@@ -15,7 +15,7 @@ class CreateSatelliteStatusPivotTable extends Migration
         Schema::create('satellite_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->enum("status",array("active","in-orbit","in-development","data-collection","data-analysis","inactive","de-orbited","entry-closed"));
+            $table->string("status");
             $table->date("time");
             $table->integer("satellite_id")->unsigned();
 

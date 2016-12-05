@@ -10,7 +10,8 @@
         "venturecraft/revisionable": "1.*",
         "graham-campbell/markdown": "^7.0",
         "laravel/passport": "^1.0",
-         "tymon/jwt-auth": "0.5.*"
+         "tymon/jwt-auth": "0.5.*",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

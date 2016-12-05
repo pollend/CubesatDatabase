@@ -5,6 +5,8 @@ import {  ReactiveFormsModule }   from '@angular/forms';
 
 
 import {SatelliteRoutingModule} from "./satellite-routing.module";
+import {ShareModule} from "./../share/share.module";
+
 
 // components
 import { SatelliteComponent } from "./satellite.component";
@@ -13,13 +15,7 @@ import { SatelliteSingleComponent } from "./satellite-single.component";
 import { SatelliteSingleContainerComponent } from "./satellite-single-container.component";
 import { SatelliteSingleEditComponent } from "./satellite-single-edit.component";
 
-
-
-
 import {SatelliteService} from "./../services/satellite-service";
-
-import {ShareModule} from "./../share/share.module";
-
 
 
 @NgModule({
