@@ -33,11 +33,6 @@ Route::group(['prefix' => 'api/v1/'], function()
 		
 		});
 
-		Route::group(['prefix' => 'profile'],function(){
-			Route::post('user_image','Api\ProfileController@postProfileImage');
-
-		});
-
 
 		Route::post('launch_vehicle','Api\SatelliteController@postLaunchVehcile');
 
@@ -52,11 +47,7 @@ Route::group(['prefix' => 'api/v1/'], function()
 			Route::get('','Api\VendorController@getVendors');
 		});
 
-		// Authentication
-		Route::post('login', 'Auth\AuthController@postLogin');
-		Route::post('register', 'Auth\AuthController@postRegiser');
-		Route::post('verify', 'Auth\AuthController@postValidate');
-		Route::post('logout', 'Auth\AuthController@postLogout');
+	
 
 });
 

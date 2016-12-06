@@ -22,7 +22,7 @@ export class UserService extends ApiService{
 
 		this.ApplyTokenToHeader(options);
 
-		 this.http.post(UserService.API + "/verify",{},options).map(this.extractData).map((res) => this.updateToken(null,res)).subscribe();
+		 this.http.post(UserService.API + "/auth/verify",{},options).map(this.extractData).map((res) => this.updateToken(null,res)).subscribe();
 	}
 
 	public ApplyTokenToHeader(options: RequestOptions)
@@ -32,8 +32,7 @@ export class UserService extends ApiService{
 	
 	public getProfileImageUploader(): FileUploader
 	{
-		return  new FileUploader({url: UserService.API + "/profile/user_image",authToken: "Bearer " + this.token,
-		queueLimit: 1});
+		return  new FileUploader({url: UserService.API + "/profile/update_image",authToken: "Bearer " + this.token, queueLimit: 1});
 	}
 
 
@@ -60,7 +59,7 @@ export class UserService extends ApiService{
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.post(UserService.API + "/register",payload,options) 
+		return this.http.post(UserService.API + "/auth/register",payload,options) 
 		.map(this.extractData)
 		.map((res) => this.updateToken(res.token,res.user))
 		.catch(this.handleError);
@@ -71,7 +70,7 @@ export class UserService extends ApiService{
 		let options = new RequestOptions({ headers: headers });
 
 
-		return this.http.post(UserService.API + "/login", payload, options) 
+		return this.http.post(UserService.API + "/auth/login", payload, options) 
 		.map(this.extractData)
 		.map((res) => this.updateToken(res.token,res.user))
 		.catch(this.handleError);
@@ -83,7 +82,7 @@ export class UserService extends ApiService{
 
 
 		let token = localStorage.getItem("token");
-		 this.http.post(UserService.API + "/logout", {'token':token},options).map(this.extractData).subscribe();
+		 this.http.post(UserService.API + "/auth/logout", {'token':token},options).map(this.extractData).subscribe();
 		 this._user = null;
 	}
 
