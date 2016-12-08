@@ -40,11 +40,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
 	}
 
-
-
     public function login($email,$password)
     {
-        $user =  User::select("*")->where('email',$email)->first();
+        $user =  User::select("*")->where('email',$email)->firstOrFail();
         if(Hash::check($password,$user->password))
         {
             return $user;
@@ -52,6 +50,20 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return null;
     }
 
+    public function isPasswordValid(User $user,$password)
+    {
+        if(Hash::check($password,$user->password))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function updatePassword(User $user, $password)
+    {
+        $user->password = Hash::make($password);
+        return $user->save();
+    }
 
 
 

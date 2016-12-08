@@ -75,8 +75,11 @@ export class SatelliteListComponent {
 
 	onPageChange(page)
 	{
-		this.page = page;
-		this.search(undefined);
+		if(this.page != page)
+		{
+			this.page = page;
+			this.search(undefined);
+		}
 	}
 
 	search(payload : any):void{

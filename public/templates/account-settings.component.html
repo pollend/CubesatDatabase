@@ -3,20 +3,28 @@
 <div class="uk-panel uk-panel-box">
     <h3 class="uk-panel-title">Change Password</h3>
 
-    <form class="uk-form uk-form-stacked" [formGroup]="password_form" >
+    <form class="uk-form uk-form-stacked" [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
     	<fieldset>
-             <div class="uk-form-row">
+            
+           <error-collection [errors]="errors" [item]="'error'"></error-collection>
+
+            
+            <div class="uk-form-row">
                 <label class="uk-form-label" for="form-s-ip">Old Password:</label>
-                <input type="text" class="uk-form-width-large"  name="">
+                <input type="password" class="uk-form-width-large" [formControl]="passwordForm.controls['old_password']"  >
+                <error-collection [errors]="errors" [item]="'old_password'"></error-collection>
+            
             </div>
             <div class="uk-form-row">
                 <label class="uk-form-label" for="form-s-ip">New Password:</label>
-                <input type="text" class="uk-form-width-large"  name="">
+                <input type="password" class="uk-form-width-large" [formControl]="passwordForm.controls['password']"  >
             </div>
             <div class="uk-form-row">
                 <label class="uk-form-label" for="form-s-ip">Conform New Password:</label>
-                <input type="text" class="uk-form-width-large"  name="">
+                <input type="password" class="uk-form-width-large" [formControl]="passwordForm.controls['password_confirmation']"  >
             </div>
+            <error-collection [errors]="errors" [item]="'password'"></error-collection>
+            
         </fieldset>
         <p></p>
     	<fieldset>

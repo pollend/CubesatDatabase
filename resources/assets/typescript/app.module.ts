@@ -10,7 +10,8 @@ import { AppComponent }   from './app.component';
 import {HomeComponent} from './home.component';
 import {LoginComponent} from './login.component';
 import {RegisterComponent} from './register.component';
-import {ErrorCollectionComponent} from './share/error-collection.component';
+
+import { ShareModule } from './share/share.module';
 
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
@@ -22,14 +23,14 @@ import {UserService} from "./services/user-service";
       HttpModule,
   		AppRoutingModule,
   		BrowserModule,
-  		ReactiveFormsModule
+  		ReactiveFormsModule,
+      ShareModule
   ],
   declarations: [ 
   	AppComponent, 
   	HomeComponent, 
   	RegisterComponent,
-  	LoginComponent,
-    ErrorCollectionComponent
+  	LoginComponent
   ],
   providers: [UserService],
   bootstrap:    [ AppComponent ]

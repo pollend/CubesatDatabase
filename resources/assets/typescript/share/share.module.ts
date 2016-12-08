@@ -3,10 +3,8 @@ import  { MarkdownEditorComponent } from "./markdown-editor.component";
 
 import { PaginationComponent } from "./pagination.component";
 import { AutoCompleteComponent } from "./auto-complete.component";
-import {  ReactiveFormsModule }   from '@angular/forms';
-
-
-
+import { ReactiveFormsModule }   from '@angular/forms';
+import { ErrorCollectionComponent } from './error-collection.component';
 
 import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
@@ -20,14 +18,17 @@ import {NgModule}       from '@angular/core';
     ReactiveFormsModule
   ],
   	declarations: [ 
-  	PaginationComponent, 
+  	ErrorCollectionComponent,
+    PaginationComponent, 
   	AutoCompleteComponent,
-    MarkdownEditorComponent
+    MarkdownEditorComponent,
+    
   ],
   exports:      [ 
   	PaginationComponent,
   	AutoCompleteComponent,
-    MarkdownEditorComponent
+    MarkdownEditorComponent,
+    ErrorCollectionComponent
   ],
   providers:    [ ]
 })

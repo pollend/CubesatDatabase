@@ -9,6 +9,7 @@ import { ProfileRoutingModule } from './profile.routing.module';
 
 import { ProfileComponent } from './profile.component';
 import { ProfileUserComponent } from './profile-user.component';
+import { ProfileService } from './../services/profile-service';
 
 
 
@@ -23,6 +24,8 @@ import { ProfileUserComponent } from './profile-user.component';
   	ProfileComponent,
     ProfileUserComponent
   ],
-  providers:    [  ]
+  providers:    [  
+    ProfileService
+  ]
 })
 export class ProfileModule { }

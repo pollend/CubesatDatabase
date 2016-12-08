@@ -12,11 +12,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 use App\User\Repositories\UserRepositoryInterface;
 use App\User\Repositories\ProfileRepositoryInterface;
 use App\User\Services\AuthenticationServiceInterface;
-
 
 class AuthController extends Controller
 {
@@ -72,7 +73,7 @@ class AuthController extends Controller
 
         $user = $this->userRepository->registerUser($request['name'],$request['email'],$request['password']);
 
-        event(new Registered($user));
+//        event(new Registered($user));
 
         $token = $this->authenticationService->getToken($user);
         return response()->json(['token' => $token,'user'=> $user]);
@@ -104,7 +105,14 @@ class AuthController extends Controller
             return Response::json($validator->messages(), 401);
         }
 
-        $user = $this->userRepository->login($request->input("email"),$request->input("password"));
+        try{
+            $user = $this->userRepository->login($request->input("email"),$request->input("password"));
+        }
+        catch(ModelNotFoundException $e)
+        {
+            return response()->json(['error' => ['invalid_credentials']], 401);
+        }
+
         if($user == null)
         {
             $this->incrementLoginAttempts($request);

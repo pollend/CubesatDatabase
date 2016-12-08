@@ -61,14 +61,20 @@ class UserServiceProvider extends EventServiceProvider
                 $router->post('logout', AuthController::class . '@postLogout');
             });
 
-            $router->group(['prefix' => 'profile/'], function() use($router) {
-                $router->post('update', ProfileController::class . '@postProfile');
+            $router->group(['prefix' => 'account'],function() use($router){
+                $router->post('update', ProfileController::class . '@postProfile')->Middleware(['user.auth']);
                 $router->post('update_image', ProfileController::class . '@postProfileImage')->Middleware(['user.auth']);
+                $router->post('change_password',ProfileController::class . '@postUpdatePassword')->Middleware(['user.auth']);
+
+            });
+
+            $router->group(['prefix' => 'profile/'], function() use($router) {
                 
-                $router->group(['prefix' => ':username'],function() use ($router)
+                $router->group(['prefix' => '{username}'],function() use ($router)
                 {
-                    $router->get('', ProfileController::class . '@getProfileImage');
-                    $router->get('image', ProfileController::class . '@getProfile');
+                    $router->get('', ProfileController::class . '@getProfile');
+                    $router->get('/image/{hash}', ProfileController::class . '@getProfileImage')->where('hash', '(.*)(.png)$');
+
                 
                 });
                 

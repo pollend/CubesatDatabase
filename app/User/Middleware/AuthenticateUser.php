@@ -32,7 +32,11 @@ class AuthenticateUser
 
 
          try{
+
             $user = $this->authService->authenticate();
+            if(!$user)
+                return response()->json(['unknown user'], 401);
+            
             $request->route()->setParameter('user', $user);
               
          } catch(Tymon\JWTAuth\Exceptions\TokenBlacklistedException $e){

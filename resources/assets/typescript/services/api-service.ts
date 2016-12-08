@@ -2,6 +2,10 @@
 import {Observable}     from 'rxjs/Rx';
 import { Http, Response } from '@angular/http';
 
+
+import { Headers } from '@angular/http';
+
+
 export class ApiService{
 	public static API: string = "api/v1";
 	protected http: Http;
@@ -20,8 +24,13 @@ export class ApiService{
 	  return Observable.throw(body || { });
 	}
 
-
-
+	protected apiHeader()
+	{
+		return new Headers({ 
+			'Content-Type': 'application/json' , 
+			'X-Requested-With' : 'XMLHttpRequest'
+		});
+	}
 
 
 }

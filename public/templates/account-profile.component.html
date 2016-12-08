@@ -9,15 +9,15 @@
                 <fieldset>
                      <div class="uk-form-row">
                         <label class="uk-form-label" for="form-s-ip">Name:</label>
-                        <input type="text" class="uk-width-1-1"  name="">
+                        <input type="text" class="uk-width-1-1"  [formControl]="profile_form.controls['name']" >
                     </div>
                     <div class="uk-form-row">
                         <label class="uk-form-label" for="form-s-ip">Bio:</label>
-                        <textarea class="uk-width-1-1"></textarea>
+                        <textarea class="uk-width-1-1" [formControl]="profile_form.controls['bio']"></textarea>
                     </div>
                     <div class="uk-form-row">
                         <label class="uk-form-label" for="form-s-ip">Company:</label>
-                        <input type="text" class="uk-width-1-1"  name="">
+                        <input type="text" class="uk-width-1-1" [formControl]="profile_form.controls['company']"  >
                     </div>
                 </fieldset>
                 <p></p>
@@ -31,19 +31,23 @@
 
                 <fieldset>
                     <legend>Profile Image</legend>
-                    <div class="uk-placeholder">
-                         <!-- {{ profile_image?.queue?.length }}  -->
+
+                    <div *ngIf="profile_image == null" class="uk-placeholder">
+                         <!-- {{ profile_uploader?.queue?.length }}  -->
                     </div>
+                    <img class="uk-width-1-1" *ngIf="profile_image != null" src="{{profile_image}}">
+                    <p></p>
+
                      <div  class="uk-text-center">
 
                        <a class="uk-form-file uk-button uk-button-primary">
 
-                            {{profile_image?.queue[0]?.file.name}}
-                            <span *ngIf="!(profile_image?.queue?.length)">
+                            {{profile_uploader?.queue[0]?.file.name}}
+                            <span *ngIf="!(profile_uploader?.queue?.length)">
                                 Upload Profile Image
                             </span>
                                
-                            <input ng2FileSelect [uploader]="profile_image"  type="file">
+                            <input ng2FileSelect [uploader]="profile_uploader"  type="file">
 
                        </a>
                     </div>

@@ -1,58 +1,74 @@
-import { Injectable } from '@angular/core';
+ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import {User} from './../models/user';
 
 import {Observable}     from 'rxjs/Rx';
+
 import {ApiService} from "./api-service";
 
 import { Headers, RequestOptions } from '@angular/http';
 
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader,FileUploaderOptions } from 'ng2-file-upload';
+
+
 
 @Injectable()
 export class UserService extends ApiService{
 	private _user: User;
-	constructor(http: Http) {
-		super(http);
-
+	private get token(): string{
 		let token = localStorage.getItem("token");
-		
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-
-		this.ApplyTokenToHeader(options);
-
-		 this.http.post(UserService.API + "/auth/verify",{},options).map(this.extractData).map((res) => this.updateToken(null,res)).subscribe();
+		return token;
 	}
 
-	public ApplyTokenToHeader(options: RequestOptions)
+	get user(){
+		return  this._user;
+	}
+
+	getUser():Observable<User>{
+
+		if(this._user == undefined)
+		{
+
+			let headers = new Headers({ 'Content-Type': 'application/json' });
+			let options = new RequestOptions({ headers: headers });
+
+			this.applyTokenToHeader(options);
+
+			return this.http.post(UserService.API + "/auth/verify",{},options).map(this.extractData).map((res) => {
+				this._user = res;
+				return this._user;
+			});
+		
+		}
+
+		return Observable.of<User>(this._user);
+	}
+
+
+	constructor(http: Http) {
+		super(http);
+		this.getUser().subscribe();
+	}
+
+
+
+
+	public applyTokenToHeader(options: RequestOptions)
 	{
 		options.headers.append("Authorization","Bearer " + this.token);
 	}
-	
-	public getProfileImageUploader(): FileUploader
+
+	public applyTokenToFileUploader(options: FileUploaderOptions)
 	{
-		return  new FileUploader({url: UserService.API + "/profile/update_image",authToken: "Bearer " + this.token, queueLimit: 1});
+			options.authToken = "Bearer " + this.token;
 	}
 
-
-	protected updateToken(token: any,user: User)
+	protected updateToken(token: any)
 	{
 		if(token != null)
 		{
 			localStorage.setItem("token",token);
 		}
-		this._user = user;
-		return  this._user;
-	}
-
-	get token(): string{
-		let token = localStorage.getItem("token");
-		return token;
-	}
-
-	get user():User{
-		return this._user;
 	}
 
 	public register(payload: any ) : Observable<User> {
@@ -61,8 +77,12 @@ export class UserService extends ApiService{
 
 		return this.http.post(UserService.API + "/auth/register",payload,options) 
 		.map(this.extractData)
-		.map((res) => this.updateToken(res.token,res.user))
-		.catch(this.handleError);
+		.map((res) => {
+			this._user = res.user;
+			this.updateToken(res.token);
+			return this._user;
+		
+		}).catch(this.handleError);
 	}
 
 	public login(payload: any) : Observable<User>{
@@ -72,8 +92,11 @@ export class UserService extends ApiService{
 
 		return this.http.post(UserService.API + "/auth/login", payload, options) 
 		.map(this.extractData)
-		.map((res) => this.updateToken(res.token,res.user))
-		.catch(this.handleError);
+		.map((res) => {
+			this._user = res.user;
+			this.updateToken(res.token);
+			return this._user;
+		}).catch(this.handleError);
 	}
 
 	public logout(payload: any){
@@ -86,10 +109,6 @@ export class UserService extends ApiService{
 		 this._user = null;
 	}
 
-	private getUser(res: any)
-	{
-		return  res.user;
-	}
 
 	isUserLoggedIn()
 	{

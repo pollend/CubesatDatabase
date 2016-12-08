@@ -10,7 +10,7 @@
                   <li><a routerLink="/component">Components</a></li>
               </ul>
 
-              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user == null">
+              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="user == null">
                   <li><a routerLink="/login">Login</a></li>
                   <li><a routerLink="/register">Register</a></li>
               </ul>
@@ -21,7 +21,7 @@
                     <div class="uk-dropdown uk-dropdown-navbar">
                         <ul class="uk-nav uk-nav-navbar">
                             
-                             <li><a  [routerLink]=" '/profile/'+ userService.user.name" >Profile</a></li>
+                             <li><a  [routerLink]=" '/profile/'+ userService.user.username" >Profile</a></li>
                              <!-- <li *ngIf="userService.user && userService.user.admin =
                              = 'Admin'"><a routerLink="/admin">Admin</a></li> -->
                              <li><a  routerLink="/account">Settings</a></li>

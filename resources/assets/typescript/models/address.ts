@@ -8,9 +8,6 @@ export class Address {
 	public state: string;
 	public zip: string;
 
-
-
-
 	constructor() {
 		// code...
 	}

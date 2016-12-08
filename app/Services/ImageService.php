@@ -10,6 +10,9 @@ use App\Services\ImageServiceInterface;
 use App\Repositories\ImageRepositoryInterface;
 
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Image as InterventionImage;
+
+use Intervention\Image\Facades\Image as InterventionImageFacade;
 
 /**
 * 
@@ -23,17 +26,32 @@ class ImageService implements ImageServiceInterface
 
 	}
 
-	public function saveImage($image,$path,$filename = null)
+	public function saveImage(InterventionImage $image,$path,$filename = null)
 	{
 		
-		
-		$source = $path  . substr(sha1(uniqid()),0,10) . ".png";
-		var_dump($source);
-		Storage::put($source, $image->encode('png')->stream());
-		
-		$image = $this->imageRepository->create(["source" => $source]);
+		$name_key = substr(sha1(uniqid()),0,10) . ".png";
+
+		$source = $path  . $name_key;
+		if(!Storage::put($source, $image->encode('png')->stream()))
+			return null;
+		if($filename == null)
+			$filename = $name_key;
+
+		$image = $this->imageRepository->create(["source" => $source,"image_name" => $filename]);
 		$image->save();
 		return $image;
+	}
+
+	public function removeImage(Image $image)
+	{
+		Storage::delete($image->source);
+		$image->delete();
+	}
+
+	public function getImageResponse(Image $image)
+	{
+		$image = Storage::get($image->source);
+		return InterventionImageFacade::make($image)->response();
 	}
 
 }

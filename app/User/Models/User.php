@@ -2,6 +2,7 @@
 
 namespace App\User\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\User\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -22,4 +23,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function profile()
+    {
+      return $this->hasOne(Profile::class,"user_id","id");
+    }
 }

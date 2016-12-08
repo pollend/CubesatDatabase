@@ -12,6 +12,8 @@ import { AccountComponent } from './account.component';
 import {AccountProfileComponent} from './account-profile.component';
 
 import { UserService } from './../services/user-service';
+import { ProfileService } from './../services/profile-service';
+
 
 import { FileSelectDirective , FileDropDirective } from 'ng2-file-upload';
 
@@ -30,7 +32,8 @@ import { FileSelectDirective , FileDropDirective } from 'ng2-file-upload';
     FileDropDirective
   ],
   providers:    [
-    UserService
+    UserService,
+    ProfileService
   ]
 })
 export class UserModule { }

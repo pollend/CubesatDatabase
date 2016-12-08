@@ -1,1 +1,22 @@
-<div></div>
+<div class="uk-grid" *ngIf="profile">
+    <div class="uk-width-2-5">
+		    	
+		<div class="uk-panel">
+		    <h3 class="uk-panel-title">{{profile.name}}</h3>
+    		<img src="{{profile.profile_image}}">
+    		
+    		<p>
+    	    	{{profile.bio}}
+	        </p>
+			
+        	<h4 *ngIf="profile.company">Company: {{profile.company}}</h4>
+            
+		</div>
+
+        
+    </div>
+
+    <div class="uk-width-3-5">
+    	<!-- TODO:// add Owndership linkages -->
+    </div>
+</div>

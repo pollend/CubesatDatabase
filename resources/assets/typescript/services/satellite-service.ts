@@ -26,7 +26,7 @@ export class SatelliteService extends ApiService{
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		this.userservice.ApplyTokenToHeader(options);
+		this.userservice.applyTokenToHeader(options);
 
 		return this.http.post(SatelliteService.API + "/satellite/"+satellite_id +"/edit",payload,options).map(this.extractData);
 	}
