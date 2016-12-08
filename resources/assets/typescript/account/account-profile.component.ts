@@ -51,8 +51,7 @@ export class AccountProfileComponent implements OnInit{
 		if(this.profile_uploader.queue && this.profile_uploader.queue.length > 0)
 		{
 			this.profile_uploader.uploadItem(this.profile_uploader.queue[this.profile_uploader.queue.length - 1]);
-			this.profile_uploader.clearQueue();
-			
+
 		}
 		
 		this.profileService.updateProfile(this.profile_form.value).subscribe((profile:Profile) =>{

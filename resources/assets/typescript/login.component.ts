@@ -23,13 +23,12 @@ export class LoginComponent {
 
 	login():void{
 		let temp;
-		this.userService.login(this.loginForm.value).subscribe( function(resp : any){},(error : any) => {
-			this.errors = <any>error;
-			if(this.errors == undefined)
-			{
+		this.userService.login(this.loginForm.value).subscribe( 
+			(resp : any) => {
 				this.router.navigate(['/']);
-			}
-		}, function(){});
+			},(error : any) => {
+				this.errors = error;
+			});
 	}
 
 }

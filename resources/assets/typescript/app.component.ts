@@ -1,11 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-
 import {UserService} from "./services/user-service";
-
 import { Router, Event as RouterEvent, NavigationStart, NavigationCancel, NavigationEnd, NavigationError} from '@angular/router';
-
-import {User} from "./models/user";
-
 
 @Component({
   selector: 'my-app',
@@ -13,7 +8,7 @@ import {User} from "./models/user";
 })
 export class AppComponent  implements OnInit{
 	loading: boolean = true;
-	user: User;
+
 
 	constructor(public userService: UserService, private  router: Router){}
 	ngOnInit() {

@@ -128,6 +128,8 @@ class AuthController extends Controller
     public function postValidate(Request $request,$user)
     {
 
+        $user["profile"] = $user->profile()->first();
+
          return $user;
 
     }

@@ -10,17 +10,17 @@
                   <li><a routerLink="/component">Components</a></li>
               </ul>
 
-              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="user == null">
+              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user == null">
                   <li><a routerLink="/login">Login</a></li>
                   <li><a routerLink="/register">Register</a></li>
               </ul>
 
+
               <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user" >
                 <li class="uk-parent" data-uk-dropdown>
-                    <a routerLink="/profile"> <!--img class="profile-img" src="./../assets/blank_profile.png"-->  <i class=" uk-icon-user"></i></a>
+                    <a routerLink="/profile"> <!--img class="profile-img" [src]="userService.user.profile_image"-->  <i class=" uk-icon-user"></i></a>
                     <div class="uk-dropdown uk-dropdown-navbar">
                         <ul class="uk-nav uk-nav-navbar">
-                            
                              <li><a  [routerLink]=" '/profile/'+ userService.user.username" >Profile</a></li>
                              <!-- <li *ngIf="userService.user && userService.user.admin =
                              = 'Admin'"><a routerLink="/admin">Admin</a></li> -->

@@ -51,8 +51,6 @@ export class UserService extends ApiService{
 	}
 
 
-
-
 	public applyTokenToHeader(options: RequestOptions)
 	{
 		options.headers.append("Authorization","Bearer " + this.token);
