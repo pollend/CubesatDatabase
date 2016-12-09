@@ -1,0 +1,45 @@
+.component-title-group{
+	margin-top:1em;
+	.title-group{
+		border-bottom: 1px solid rgba(0,0,0,.2);
+		font-size: 1.4em;
+		padding: .4em 0em;
+		margin-bottom: .3em;
+	}
+
+	.component-group{
+		margin: 0em .4em;
+	}
+}
+
+.component-icon{
+	margin-bottom:2em;
+	border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+	img{
+		padding-bottom: .6em;
+	}
+
+	.component-title{
+		font-weight: bold;
+		font-size:1em;
+		margin: .3em .2em;
+	}
+
+	.component-price{
+		font-size: 1.4em;
+		margin: .4em .5em;
+		span{
+			vertical-align: super;
+			font-size: .8em;
+		}
+	}
+
+	.details-button{
+		margin: 0em .4em .4em 0em;
+	}
+
+
+
+}

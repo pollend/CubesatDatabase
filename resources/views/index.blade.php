@@ -25,7 +25,8 @@
           <script type="text/javascript" src="uikit/js/components/datepicker.min.js"></script>
           <script type="text/javascript" src="uikit/js/components/notify.min.js"></script>
           <script type="text/javascript" src="uikit/js/components/upload.min.js"></script>
-           <!-- <script type="text/javascript" src="uikit/js/core/button.min.js"></script> -->
+          <script type="text/javascript" src="uikit/js/components/accordion.min.js"></script>
+          <script type="text/javascript" src="uikit/js/components/slideshow.min.js"></script>
 
           <!-- Codemirror and marked dependencies -->
           <link rel="stylesheet" href="codemirror/lib/codemirror.css">

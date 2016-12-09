@@ -1,0 +1,27 @@
+
+
+.cheveron-accordion
+{
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	margin: 10px 0px;
+
+	.uk-active i{
+		@extend .uk-icon-angle-down;
+		font-style:normal;
+	}
+
+	i{
+		@extend .uk-icon-angle-right;
+		font-style:normal;
+			padding-right: .5em;
+
+	}
+
+	&>div{
+		padding-left:1em;
+	}
+
+	.uk-accordion-title{
+		background:none;
+	}
+}

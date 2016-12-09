@@ -15,6 +15,8 @@ $grid-columns: 12 !default;
 @import "./../../../bower_components/uikit/scss/components/upload.scss";
 @import "./../../../bower_components/uikit/scss/components/form-file.scss";
 @import "./../../../bower_components/uikit/scss/components/placeholder.scss";
+@import "./../../../bower_components/uikit/scss/components/accordion.scss";
+@import "./../../../bower_components/uikit/scss/components/slideshow.scss";
 
 
 @import "./../../../bower_components/uikit/scss/core/dropdown.scss";
@@ -25,6 +27,10 @@ $grid-columns: 12 !default;
 @import "./../../../bower_components/uikit/scss/core/navbar.scss";
 @import "./../../../bower_components/uikit/scss/core/table.scss";
 @import "./../../../bower_components/uikit/scss/core/button.scss";
+
+@import "./accordion.scss";
+@import "./component.scss";
+
 .uk-datepicker{
 	width: auto;
 }

@@ -1,42 +1,76 @@
-<div class="uk-grid">
+<div class="uk-grid  uk-grid-small">
   <div class="uk-width-1-4">
-    <form class="uk-form" [formGroup]="componentSearchForm"> 
-      <input class="uk-search-field " type="search" placeholder="">
+      <div class="uk-panel-box">
+       <a routerLink="./Antenna System"><h4>Antenna System <i class="uk-icon-angle-right uk-float-right" ></i></h4></a>
+       <a routerLink="./Attitude Actuators"><h4>Attitude Actuators <i class="uk-icon-angle-right uk-float-right" ></i></h4></a>
+       <a routerLink="./Attitude Sensors"><h4>Attitude Sensors <i class="uk-icon-angle-right uk-float-right" ></i></h4></a>
+       <a routerLink="./Camera & Payload"><h4>Camera & Payload <i class="uk-icon-angle-right uk-float-right" ></i></h4></a>
+       <a routerLink="./Solar Panels & Power"><h4>Solar Panels & Power <i class="uk-icon-angle-right uk-float-right" ></i></h4></a>
 
-      <div class="uk-panel uk-panel-box">
-          <h3 class="uk-panel-title">Vendor</h3>
-          <ul class="uk-list">
-              <li>
-                <input type="checkbox"> Vendor 1
-              </li>
-              <li>
-                <input type="checkbox"> Vendor 2
-              </li>
-              <li>
-                <input type="checkbox"> Vendor 3
-              </li>
-          </ul>
       </div>
-
-      <div class="uk-panel uk-panel-box">
-          <h3 class="uk-panel-title">Category</h3>
-          <ul class="uk-list">
-              <li>
-                <input type="checkbox"> Vendor 1
-              </li>
-              <li>
-                <input type="checkbox"> Vendor 2
-              </li>
-              <li>
-                <input type="checkbox"> Vendor 3
-              </li>
-          </ul>
-      </div>
-
-
-    </form>
   </div>
   <div class="uk-width-3-4">
     
-  </div>
+      <div class="component-title-group">
+        <div class="title-group uk-width-1-1"> Camera Payloads </div>
+        <div class="component-group">
+          <div class="uk-grid  uk-grid-small">
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-title-group">
+        <div class="title-group"> Antenna Systems </div>
+        <div class="component-group">
+          <div class="uk-grid  uk-grid-small">
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-title-group">
+        <div class="title-group"> Solar Panels </div>
+        <div class="component-group">
+          <div class="uk-grid  uk-grid-small">
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+            <div class="uk-width-1-4">
+              <component-icon-component></component-icon-component>        
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
 </div>

@@ -3,10 +3,10 @@ import { Component, OnInit }      from '@angular/core';
 import { FormBuilder, FormGroup,FormArray } from '@angular/forms';
 
 @Component({
-  selector: 'component-list',
-  templateUrl: 'templates/component-list.component.html'
+  selector: 'component-icon-component',
+  templateUrl: 'templates/component-icon.component.html'
 })
-export class ComponentListComponent {
+export class ComponentIconComponent {
 	constructor(private  fb: FormBuilder){
 	}
 

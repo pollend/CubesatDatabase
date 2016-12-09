@@ -4,8 +4,10 @@ import {  ReactiveFormsModule }   from '@angular/forms';
 
 import {ComponentRoutingModule} from './component-routing.module';
 
-import {ComponentComponent} from './component.component';
-import {ComponentListComponent} from './component-list.component';
+import { ComponentComponent } from './component.component';
+import { ComponentListComponent } from './component-list.component';
+import { ComponentGroupSearchComponent } from './component-group-search.component';
+import { ComponentIconComponent } from './component-icon.component';
 
 @NgModule({
   imports:      [
@@ -15,7 +17,9 @@ import {ComponentListComponent} from './component-list.component';
   ],
   declarations: [
 	ComponentComponent,
-	ComponentListComponent
+	ComponentListComponent,
+	ComponentGroupSearchComponent,
+	ComponentIconComponent
   ],
   providers:    [  ]
 })
