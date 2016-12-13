@@ -2,5 +2,6 @@
 export class Orbit {
 	public id: number;
 	public tle: string;
-	public orbit: string;
+	public satcat: string;
+	public COSPAR: string;
 }

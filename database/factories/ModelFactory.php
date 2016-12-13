@@ -30,7 +30,8 @@ $factory->define(App\Models\Address::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Orbit::class, function (Faker\Generator $faker) {
     return [
         'tle' => $faker->word,
-        'orbit' => $faker->word
+        'COSPAR' => $faker->word,
+        'satcat' => $faker->word
     ];
 });
 
@@ -69,7 +70,6 @@ $factory->define(App\Models\Satellite::class, function (Faker\Generator $faker) 
     return [
 		'name' => str_random(10),
 		'content' => $faker->sentence($nbWords = 200, $variableNbWords = true),
-		'COSPAR' => str_random(10),
 		'wiki' => str_random(10),
         'mass' => $faker->randomFloat(NULL,2,10)
     ];

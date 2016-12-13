@@ -43,7 +43,7 @@ export class SatelliteSingleEditComponent implements OnInit{
 			'launch_vehicle' :'',
 			'launch_date' :'',
 			'tle' :'',
-			'orbit' :'',
+			'satcat' :'',
 		});
 
 		this.route.parent.params.subscribe(params => {
@@ -53,11 +53,11 @@ export class SatelliteSingleEditComponent implements OnInit{
 						'content' : satellite.content,
 						'mass' : satellite.mass,
 						'cubesat_type' : satellite.type.name,
-						'COSPAR' : satellite.COSPAR,
 						'launch_vehicle' : satellite.launch.vehicle.name,
 						'launch_date' :satellite.launch.launch_date,
 						'tle' : satellite.orbit.tle,
-						'orbit' : satellite.orbit.orbit,
+						'satcat' : satellite.orbit.satcat,
+						'COSPAR' : satellite.orbit.COSPAR,
 				});
 				},(error: any)=>{
 

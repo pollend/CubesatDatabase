@@ -17,7 +17,6 @@ class CreateSatellitesTable extends Migration
             $table->timestamps();
             $table->string("name");
             $table->binary("content")->nullable();
-            $table->string("COSPAR")->nullable();
             $table->string("wiki")->nullable();
             $table->float("mass")->nullable();
 

@@ -21,7 +21,6 @@ class CreateSatelliteFlatView extends Migration
         organizations.name as organization_name,
         satellite_types.name as satellite_type,
         satellites.name,
-        satellites.COSPAR,
         satellites.wiki,
         satellites.mass,
         satellites.id,
@@ -30,13 +29,17 @@ class CreateSatelliteFlatView extends Migration
         satellites.orbit_id,
         satellites.launch_id,
         launches.launch_date,
-        launch_vehicles.name as launch_vehicle
+        launch_vehicles.name as launch_vehicle,
+        orbits.tle,
+        orbits.COSPAR,
+        orbits.satcat
         FROM satellites
           LEFT JOIN missions ON  satellites.mission_id = missions.id
           LEFT JOIN organizations ON missions.organization_id = organizations.id
           LEFT JOIN satellite_types ON satellites.satellite_type_id = satellite_types.id
           LEFT JOIN launches ON satellites.launch_id = launches.id
           LEFT JOIN launch_vehicles ON launches.launch_vehicle_id = launch_vehicles.id
+          LEFT JOIN orbits ON satellites.orbit_id = orbits.id
         " );
     }
 

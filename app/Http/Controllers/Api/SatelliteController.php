@@ -65,12 +65,12 @@ class SatelliteController extends Controller
 
         //TODO: user logic 
 
-        $satellite->COSPAR = $request->input("COSPAR");
+      
         $satellite->content = $request->input("content");
         $satellite->mass = $request->input("mass");
-        $satellite->orbit->orbit = $request->input("orbit");
+        $satellite->orbit->satcat = $request->input("satcat");
         $satellite->orbit->tle = $request->input("tle");
-
+        $satellite->orbit->COSPAR = $request->input("COSPAR");
 
         try {
             if($request->input("cubesat_type") != "")

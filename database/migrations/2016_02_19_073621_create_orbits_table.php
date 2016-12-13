@@ -14,8 +14,9 @@ class CreateOrbitsTable extends Migration
     {
         Schema::create('orbits', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("tle");
-            $table->string("orbit");
+            $table->string("tle")->nullable();
+            $table->string("COSPAR")->nullable();
+            $table->string("satcat")->nullable();
         });
     }
 
