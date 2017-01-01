@@ -12,7 +12,7 @@
 */
 
 Route::get('{any?}', function () {
-    return view('index');
+    return File::get(public_path() . '/dist/index.html');
 })->where('any', '(?!api/)(?!_debugbar)(.*)');
 
 

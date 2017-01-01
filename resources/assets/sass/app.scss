@@ -2,31 +2,31 @@
 $grid-columns: 12 !default;
 
 
-@import "./../../../bower_components/uikit/scss/uikit-mixins.scss";
-@import "./../../../bower_components/uikit/scss/uikit-variables.scss";
+@import "bower_components/uikit/scss/uikit-mixins.scss";
+@import "bower_components/uikit/scss/uikit-variables.scss";
 
 // your custom code goes here, e.g. mixins, variables
 
-@import "./../../../bower_components/uikit/scss/uikit.scss";
+@import "bower_components/uikit/scss/uikit.scss";
 
-@import "./../../../bower_components/uikit/scss/components/autocomplete.scss";
-@import "./../../../bower_components/uikit/scss/components/datepicker.scss";
-@import "./../../../bower_components/uikit/scss/components/notify.scss";
-@import "./../../../bower_components/uikit/scss/components/upload.scss";
-@import "./../../../bower_components/uikit/scss/components/form-file.scss";
-@import "./../../../bower_components/uikit/scss/components/placeholder.scss";
-@import "./../../../bower_components/uikit/scss/components/accordion.scss";
-@import "./../../../bower_components/uikit/scss/components/slideshow.scss";
+@import "bower_components/uikit/scss/components/autocomplete.scss";
+@import "bower_components/uikit/scss/components/datepicker.scss";
+@import "bower_components/uikit/scss/components/notify.scss";
+@import "bower_components/uikit/scss/components/upload.scss";
+@import "bower_components/uikit/scss/components/form-file.scss";
+@import "bower_components/uikit/scss/components/placeholder.scss";
+@import "bower_components/uikit/scss/components/accordion.scss";
+@import "bower_components/uikit/scss/components/slideshow.scss";
 
 
-@import "./../../../bower_components/uikit/scss/core/dropdown.scss";
-@import "./../../../bower_components/uikit/scss/core/form.scss";
-@import "./../../../bower_components/uikit/scss/core/base.scss";
-@import "./../../../bower_components/uikit/scss/core/utility.scss";
-@import "./../../../bower_components/uikit/scss/core/nav.scss";
-@import "./../../../bower_components/uikit/scss/core/navbar.scss";
-@import "./../../../bower_components/uikit/scss/core/table.scss";
-@import "./../../../bower_components/uikit/scss/core/button.scss";
+@import "bower_components/uikit/scss/core/dropdown.scss";
+@import "bower_components/uikit/scss/core/form.scss";
+@import "bower_components/uikit/scss/core/base.scss";
+@import "bower_components/uikit/scss/core/utility.scss";
+@import "bower_components/uikit/scss/core/nav.scss";
+@import "bower_components/uikit/scss/core/navbar.scss";
+@import "bower_components/uikit/scss/core/table.scss";
+@import "bower_components/uikit/scss/core/button.scss";
 
 @import "./accordion.scss";
 @import "./component.scss";

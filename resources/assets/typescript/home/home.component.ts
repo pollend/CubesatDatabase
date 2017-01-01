@@ -3,7 +3,7 @@ import { Component, OnInit }      from '@angular/core';
 
 @Component({
   selector: 'app-contact',
-  templateUrl: 'templates/login.component.html'
+  templateUrl: 'templates/home.component.html'
 })
 export class HomeComponent {
 }

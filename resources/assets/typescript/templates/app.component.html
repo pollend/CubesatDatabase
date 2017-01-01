@@ -1,0 +1,41 @@
+<header class="navigation" role="banner">
+          <nav class="uk-navbar ">
+            <div class="uk-width-medium-3-4 uk-container-center">
+              <a class="uk-navbar-brand">Cubesat Database</a>
+              <ul class="uk-navbar-nav">
+                  <li><a routerLink="/home">Home</a></li>
+                  <li><a routerLink="/satellite">Cubesats</a></li>
+                  <li><a routerLink="/mission">Missions</a></li>
+                  <li><a routerLink="/vendor">Vendors</a></li>
+                  <li><a routerLink="/component">Components</a></li>
+              </ul>
+
+              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user == null">
+                  <li><a routerLink="/login">Login</a></li>
+                  <li><a routerLink="/register">Register</a></li>
+              </ul>
+
+
+              <ul class="uk-navbar-nav uk-navbar-content uk-navbar-flip  uk-hidden-small" *ngIf="userService.user" >
+                <li class="uk-parent" data-uk-dropdown>
+                    <a routerLink="/profile"> <!--img class="profile-img" [src]="userService.user.profile_image"-->  <i class=" uk-icon-user"></i></a>
+                    <div class="uk-dropdown uk-dropdown-navbar">
+                        <ul class="uk-nav uk-nav-navbar">
+                             <li><a  [routerLink]=" '/profile/'+ userService.user.username" >Profile</a></li>
+                             <!-- <li *ngIf="userService.user && userService.user.admin =
+                             = 'Admin'"><a routerLink="/admin">Admin</a></li> -->
+                             <li><a  routerLink="/account">Settings</a></li>
+                             <li><a (click)="userService.logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+    <div class="main-container">
+        <div *ngIf="loading" class="uk-text-center">
+            <h3><i class="uk-icon-refresh uk-icon-spin"></i> Loading ...</h3>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
