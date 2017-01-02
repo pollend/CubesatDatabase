@@ -1,11 +1,7 @@
-//this is the base colors used for all the elements
 $grid-columns: 12 !default;
-
 
 @import "bower_components/uikit/scss/uikit-mixins.scss";
 @import "bower_components/uikit/scss/uikit-variables.scss";
-
-// your custom code goes here, e.g. mixins, variables
 
 @import "bower_components/uikit/scss/uikit.scss";
 
@@ -17,7 +13,6 @@ $grid-columns: 12 !default;
 @import "bower_components/uikit/scss/components/placeholder.scss";
 @import "bower_components/uikit/scss/components/accordion.scss";
 @import "bower_components/uikit/scss/components/slideshow.scss";
-
 
 @import "bower_components/uikit/scss/core/dropdown.scss";
 @import "bower_components/uikit/scss/core/form.scss";
@@ -31,66 +26,15 @@ $grid-columns: 12 !default;
 @import "./accordion.scss";
 @import "./component.scss";
 
-.uk-datepicker{
+.uk-datepicker {
 	width: auto;
 }
 
 
-.error-collections{
+.error-collections {
 	margin-top:15px;
 }
 
-.main-container{
+.main-container {
 	margin-top:2em;
 }
-// $base-color: gainsboro !default;
-// $base-color-2: #575665 !default;
-// $base-border-color: gainsboro !default;
-// $base-font-color: #333 !default;
-// $base-border-radius: 3px !default;
-// $large-screen: em(860) !default;
-
-// //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-// a{
-// 	cursor:pointer;
-// }
-
-// .table-hover tr th,.table-hover tr td
-// {
-// 	cursor: pointer;
-// }
-
-// .main-container{
-//   @include media ($large-screen) {
-// 	padding:20px 0px;
-// 	width: 90%;
-// 	margin: 0 auto;
-//   }
-//   padding:20px 10px;
-
-// }
-
-
-// @import "./button";
-// @import "./header";
-// @import "./footer";
-// @import "./table";
-// @import "./pagination";
-// @import "./state-list";
-// @import "./vertical-tab-container";
-// @import "./well";
-// @import "./search-bar";
-// @import "./input";
-
-// $dark-gray: #333 !default;
-
-
-// body{
-//  	margin: 0px;
-//  	padding: 0px !important;
- 	
-//  	//use a readable font
-//  	font-size: 12px;
-//  	font-family: $helvetica;
-// }

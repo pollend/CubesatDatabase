@@ -9,7 +9,6 @@ import { Router, Event as RouterEvent, NavigationStart, NavigationCancel, Naviga
 export class AppComponent  implements OnInit{
 	loading: boolean = true;
 
-
 	constructor(public userService: UserService, private  router: Router){}
 	ngOnInit() {
 		this.router.events.subscribe((event : RouterEvent) =>{

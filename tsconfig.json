@@ -9,7 +9,12 @@
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ],
+    "files":[
+      "typings/index.d.ts"
+    ]
   },
   "exclude": [
     "vendor",
