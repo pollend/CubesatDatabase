@@ -24,6 +24,7 @@
     "webpack-merge": "^0.14.1"
   },
   "scripts": {
+    "clean" : "rm -rf public/dist/*",
     "dev": "node ./dev-server.js",
     "build": "rm -rf public/dist/* && webpack --config config/webpack.prod.js  --progress --profile --display-error-details"
   },

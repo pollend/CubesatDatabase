@@ -6,16 +6,16 @@ var compiler = webpack(config);
 var server = new WebpackDevServer(compiler, {
     // webpack-dev-server options
 
-    contentBase: "./public/",
+    contentBase: "/public/dist",
     // Can also be an array, or: contentBase: "http://localhost/",
 
-    hot: true,
+    // hot: true,
     // Enable special support for Hot Module Replacement
     // Page is no longer updated, but a "webpackHotUpdate" message is sent to the content
     // Use "webpack/hot/dev-server" as additional module in your entry point
     // Note: this does _not_ add the `HotModuleReplacementPlugin` like the CLI option does.
 
-    historyApiFallback: true,
+    // historyApiFallback: false,
     // Set this as true if you want to access dev server from arbitrary url.
     // This is handy if you are using a html5 router.
 
@@ -49,15 +49,20 @@ var server = new WebpackDevServer(compiler, {
 
     clientLogLevel: "info",
     // Control the console log messages shown in the browser when using inline mode. Can be `error`, `warning`, `info` or `none`.
+    inline:true,
+    // hot: true,
 
     watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
     },
     // It's a required option.
-    publicPath: "./public/",
+    publicPath: "",
     headers: { "X-Custom-Header": "yes" },
-    stats: { colors: true }
+    stats: { colors: true },
+    historyApiFallback: {
+        index: '/'
+    }
 });
 server.listen(8080);
 

@@ -181,8 +181,12 @@ return [
         /**
         *User
         **/
-        App\User\Providers\UserServiceProvider::class
+        App\User\Providers\UserServiceProvider::class,
 
+        /**
+         * Socialite
+         */
+         Laravel\Socialite\SocialiteServiceProvider::class
 
     ],
 
@@ -229,10 +233,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

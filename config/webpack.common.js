@@ -51,7 +51,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './resources/assets/index.html',
-            filename: '../index.html'
+            filename: './index.html'
         }),
         new CopyWebpackPlugin([
             { context: 'bower_components/jquery/',  from: '**/*', to : 'jquery'},
