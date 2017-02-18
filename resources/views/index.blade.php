@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type="text/javascript" src="jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="lib/uikit/css/components/htmleditor.css">
 
     <link rel="stylesheet" type="text/css" href="lib/uikit/css/uikit.almost-flat.min.css">
-    <link href="{{elixir("style.css")}}" rel="stylesheet"></head>
+    <link href="{{mix("style.css")}}" rel="stylesheet"></head>
 <body>
 <my-app>Loading...</my-app>
 
-<script type="text/javascript" src="{{elixir("polyfills.js")}}"></script>
-<script type="text/javascript" src="{{elixir("vendor.js")}}"></script>
-<script type="text/javascript" src="{{elixir("app.js")}}"></script>
-<script type="text/javascript" src="{{elixir("style.js")}}"></script>
+<script type="text/javascript" src="{{mix("polyfills.js")}}"></script>
+<script type="text/javascript" src="{{mix("vendor.js")}}"></script>
+<script type="text/javascript" src="{{mix("app.js")}}"></script>
+<script type="text/javascript" src="{{mix("style.js")}}"></script>
 
 </body>
 

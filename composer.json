@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.3.*",
+        "laravel/framework": "5.4.*",
         "venturecraft/revisionable": "1.*",
         "graham-campbell/markdown": "^7.0",
         "laravel/passport": "^1.0",

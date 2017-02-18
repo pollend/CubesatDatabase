@@ -61,7 +61,9 @@ module.exports = {
             { context: 'node_modules/codemirror/',  from: '**/*', to : 'lib/codemirror'}
         ]),
         new ManifestPlugin({
-            fileName: 'mix-manifest.json'
+            fileName: 'mix-manifest.json',
+            basePath:'/'
+
         })
     ]
 };

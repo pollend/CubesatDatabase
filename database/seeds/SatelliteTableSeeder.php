@@ -17,7 +17,7 @@ class SatelliteTableSeeder extends Seeder
                 $satellite->orbit()->associate(factory(App\Models\Orbit::class)->create())->save();
                 $satellite->mission()->associate(App\Models\Mission::inRandomOrder()->first())->save();
                 $satellite->launch()->associate(App\Models\Launch::inRandomOrder()->first())->save();
-                $satellite->components()->attach(App\Models\Mission::inRandomOrder()->limit(5)->get());
+                $satellite->components()->attach(App\Models\Component::inRandomOrder()->limit(5)->get());
             });
     }
 }

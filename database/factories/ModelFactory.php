@@ -11,6 +11,15 @@
 |
 */
 
+$factory->define(App\User\Models\User::class,function (Faker\Generator $faker){
+   return [
+       'username' => $faker->unique()->userName,
+       'email' => $faker->email,
+       'password' =>  Hash::make("password")
+   ];
+
+});
+
 $factory->define(App\Models\Organization::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,

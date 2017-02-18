@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //seed satellite table
+        $this->call(UserTableSeeder::class);
         $this->call(OrganizationTableSeeder::class);
         $this->call(VendorTableSeeder::class);
         $this->call(SpaceportTableSeeder::class);

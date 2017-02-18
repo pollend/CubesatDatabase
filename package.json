@@ -24,9 +24,9 @@
     "webpack-merge": "^0.14.1"
   },
   "scripts": {
-    "clean" : "rm -rf public/dist/*",
+    "watch": "webpack --config config/webpack.prod.js  --progress --profile --display-error-details --watch",
     "dev": "node ./dev-server.js",
-    "build": "rm -rf public/dist/* && webpack --config config/webpack.prod.js  --progress --profile --display-error-details"
+    "build": "webpack --config config/webpack.prod.js  --progress --profile --display-error-details"
   },
   "dependencies": {
     "@angular/common": "~2.2.3",
@@ -49,6 +49,7 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",
+    "webpack-manifest-plugin": "^1.1.0",
     "zone.js": "^0.6.25"
   }
 }
