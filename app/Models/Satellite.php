@@ -25,27 +25,27 @@ class Satellite extends Model
 
    	public function components()
    	{
-   		return $this->belongsToMany('App\Models\Component');
+   		return $this->belongsToMany(Component::class);
    	}
 
     public function type()
     {
-      return $this->belongsTo("App\Models\SatelliteType","satellite_type_id","id");
+      return $this->belongsTo(SatelliteType::class,"satellite_type_id","id");
     }
 
     public function orbit()
     {
-      return $this->belongsTo("App\Models\Orbit","orbit_id","id");
+      return $this->belongsTo(Orbit::class,"orbit_id","id");
     }
 
     public function mission()
     {
-      return $this->belongsTo("App\Models\Mission","mission_id","id");
+      return $this->belongsTo(Mission::class,"mission_id","id");
     }
 
     public function launch()
     {
-      return $this->belongsTo("App\Models\Launch","launch_id","id");
+      return $this->belongsTo(Launch::class,"launch_id","id");
     }
 
 

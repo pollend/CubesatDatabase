@@ -20,7 +20,7 @@
     <script type="text/javascript" src="lib/uikit/js/components/slideshow.min.js"></script>
 
     <!-- Codemirror and marked dependencies -->
-    <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
     <script src="lib/codemirror/lib/codemirror.js"></script>
     <script src="lib/codemirror/mode/markdown/markdown.js"></script>
     <script src="lib/codemirror/addon/mode/overlay.js"></script>

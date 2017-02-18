@@ -49,8 +49,8 @@ module.exports = {
 
 
     plugins: [
-        ExtractCss,
         new ExtractTextPlugin('[name].[hash].css'),
+        ExtractCss,
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         }),

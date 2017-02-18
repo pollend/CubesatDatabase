@@ -51,7 +51,6 @@ class AuthController extends Controller
     }
 
 
-
     /**
      * Handle a registration request for the application.
      *

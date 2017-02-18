@@ -9,6 +9,6 @@ class Address extends Model
 
     public function streetAddresses()
     {
-        return $this->hasMany('App\Models\StreetAddress',"address_id","id");
+        return $this->hasMany(StreetAddress::class,"address_id","id");
     }
 }

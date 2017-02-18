@@ -46,43 +46,30 @@ class UserServiceProvider extends EventServiceProvider
      */
     public function register()
     {
-    	$router = $this->app['router'];
 
-
-        $router->group(['prefix' => 'api/v1/'], function() use ($router)
-        {
-
-
-            $router->group(['prefix' => 'auth/'], function() use ($router)
-            {
-                $router->post('login', AuthController::class . '@postLogin');
-                $router->post('register', AuthController::class . '@postRegiser');
-                $router->post('verify', AuthController::class . '@postValidate')->Middleware(['user.auth']);
-                $router->post('logout', AuthController::class . '@postLogout');
+        \Route::group(['prefix' => 'api/v1/'], function() {
+            \Route::group(['prefix' => 'auth/'], function() {
+                \Route::post('login', AuthController::class . '@postLogin');
+                \Route::post('register', AuthController::class . '@postRegiser');
+                \Route::post('verify', AuthController::class . '@postValidate')->Middleware(['user.auth']);
+                \Route::post('logout', AuthController::class . '@postLogout');
             });
 
-            $router->group(['prefix' => 'account'],function() use($router){
-                $router->post('update', ProfileController::class . '@postProfile')->Middleware(['user.auth']);
-                $router->post('update_image', ProfileController::class . '@postProfileImage')->Middleware(['user.auth']);
-                $router->post('change_password',ProfileController::class . '@postUpdatePassword')->Middleware(['user.auth']);
+            \Route::group(['prefix' => 'account'],function() {
+                \Route::post('update', ProfileController::class . '@postProfile')->Middleware(['user.auth']);
+                \Route::post('update_image', ProfileController::class . '@postProfileImage')->Middleware(['user.auth']);
+                \Route::post('change_password',ProfileController::class . '@postUpdatePassword')->Middleware(['user.auth']);
 
             });
 
-            $router->group(['prefix' => 'profile/'], function() use($router) {
-                
-                $router->group(['prefix' => '{username}'],function() use ($router)
-                {
-                    $router->get('', ProfileController::class . '@getProfile');
-                    $router->get('/image/{hash}', ProfileController::class . '@getProfileImage')->where('hash', '(.*)(.png)$');
+            \Route::group(['prefix' => 'profile/'], function() {
 
-                
+                \Route::group(['prefix' => '{username}'],function() {
+                    \Route::get('', ProfileController::class . '@getProfile');
+                    \Route::get('/image/{hash}', ProfileController::class . '@getProfileImage')->where('hash', '(.*)(.png)$');
                 });
-                
             });
-
         });
-
-
 
     	$this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(ProfileRepositoryInterface::class, ProfileRepository::class);

@@ -18,7 +18,6 @@ class AuthenticateUser
         
     }
 
-
     /**
      * Handle an incoming request.
      *

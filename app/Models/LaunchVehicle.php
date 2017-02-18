@@ -9,6 +9,6 @@ class LaunchVehicle extends Model
 
 	public function launches()
 	{
-		return $this->hasMany("App\Models\Launch","launch_vehicle_id","id");
+		return $this->hasMany(Launch::class,"launch_vehicle_id","id");
 	}
 }

@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User\Models\User::class,function (Faker\Generator $faker){
+$factory->define(App\User\User::class,function (Faker\Generator $faker){
    return [
        'username' => $faker->unique()->userName,
        'email' => $faker->email,

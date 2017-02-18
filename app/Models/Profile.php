@@ -1,23 +1,20 @@
 <?php
 
-namespace App\User\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Image;
-use App\User\Models\User;
+use App\Models\User;
 
 class Profile extends Model
 {
-
-
     public function getProfileImageAttribute()
     {
     	$user =  $this->user()->first();
         $image = $this->image()->first();
         if($image)
             return $this->attributes['profile_image'] =  url("/api/v1/profile/". $user->username . "/image/" . $image->image_name);
-    
     }
 
     public function image()

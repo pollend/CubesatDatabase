@@ -19,7 +19,7 @@ class Mission extends Model
 
     public function organization()
     {
-    	return $this->belongsTo('App\Models\Organization','organization_id','id');
+    	return $this->belongsTo(Organization::class,'organization_id','id');
     }
 
     protected $appends = ['url'];

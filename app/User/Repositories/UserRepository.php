@@ -3,9 +3,8 @@
 namespace App\User\Repositories;
 
 use App\Core\Repositories\BaseRepository;
+use App\Models\User;
 use App\User\Repositories\UserRepositoryInterface;
-use App\User\Models\User;
-use App\User\Models\Profile;
 
 
 use JWTAuth;

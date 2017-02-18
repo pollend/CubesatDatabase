@@ -20,7 +20,7 @@ class CreateProfileTable extends Migration
             $table->string('bio', 300)->nullable();
             $table->string('company', 60)->nullable();
             $table->integer('image_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('image_id')->references('id')->on('images');

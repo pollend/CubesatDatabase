@@ -2,20 +2,23 @@
 
 namespace App\User\Repositories;
 
+use App\Models\Profile;
+use App\Models\User;
 use Prettus\Repository\Eloquent\BaseRepository;
 use App\User\Repositories\ProfileRepositoryInterface;
-use App\User\Models\Profile;
 
 use App\Services\ImageServiceInterface;
 use Intervention\Image\Facades\Image as Image;
-use App\User\Models\User;
-
 
 class ProfileRepository extends BaseRepository implements ProfileRepositoryInterface
 {
 	
     private $imageService;
 
+    /**
+     * ProfileRepository constructor.
+     * @param ImageServiceInterface $imageService
+     */
     public function __construct(ImageServiceInterface $imageService)
     {
         $this->imageService = $imageService;
@@ -24,7 +27,9 @@ class ProfileRepository extends BaseRepository implements ProfileRepositoryInter
 
     public function getProfile(User $user)
     {
-        return Profile::select("*")->where("user_id",$user->id)->firstOrFail();
+        $profile = Profile::firstOrCreate(["user_id" => $user->id]);
+        $profile->user_id = $user->id;
+        return   $profile;
     }
 
     public function saveProfileImage(Profile $profile,$image)
@@ -46,7 +51,6 @@ class ProfileRepository extends BaseRepository implements ProfileRepositoryInter
 
     public function getProfileByUsername($username)
     {
-
         $user = User::select("*")->where("username",$username)->firstOrFail();
         return $user->profile()->firstOrFail();
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\User\Models;
+namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\User\Models\Profile;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {

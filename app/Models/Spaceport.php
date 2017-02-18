@@ -19,7 +19,7 @@ class Spaceport extends Model
 
     public function spaceports()
     {
-        return $this->belongsToMany('App\Models\Vendor', 'vendor_spaceport');
+        return $this->belongsToMany(Vendor::class, 'vendor_spaceport');
     }
 
     protected $appends = ['url'];
