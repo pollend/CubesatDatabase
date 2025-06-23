@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@source "src";
+@source "web";
+@source "templates";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+[x-cloak] { display: none !important; }

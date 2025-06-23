@@ -1,0 +1,37 @@
+# docker-compose.yml for travis ci testing
+services:
+  cubesat:
+    restart: always
+    build:
+      context: .
+      dockerfile: dev.Dockerfile 
+    ports:
+      - "3001:3001"
+    volumes:
+    - ./src:/app/src:ro
+    - ./static:/app/static:ro
+    - ./templates:/app/templates:ro
+    - ./Cargo.toml:/app/Cargo.toml:ro
+    - ./askama.toml:/app/askama.toml:ro
+    - ./dev.toml:/app/app.toml:ro
+    - ./migrations:/app/migrations:ro
+    environment:
+      DATABASE_URL: postgres://root:password@postgres:6433/db
+    depends_on:
+    - postgres
+  postgres:
+    image: postgres:latest  # Use the official PostgreSQL image
+    container_name: cubesat_db 
+    restart: always
+    ports:
+      - "6433:6433"  # Map host port 5432 to container port 5433
+    environment:
+      POSTGRES_USER: root 
+      POSTGRES_PASSWORD: password 
+      POSTGRES_DB: db
+      PGPORT: 6433 
+    volumes:
+      - pg_db:/var/lib/postgresql/data # Mount a volume for persistence
+volumes:
+  pg_db: {}
+
