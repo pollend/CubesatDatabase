@@ -48,19 +48,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let mut users: Vec<User> = vec![];
 
             let en_eng_faker = Name(EN);
-            for n in 1..=100 {
-                println!("user: {}", n);
-                let name: String = en_eng_faker.fake();
-                users.push(
-                    repo.create_user(
-                        &mut tx,
-                        &config.password_salt.as_str(),
-                        name.as_str(),
-                        "password",
-                    )
-                    .await?,
-                );
-            }
 
             tx.commit().await?;
         }

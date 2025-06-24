@@ -35,24 +35,6 @@ enum Commands {
     /// run application
     #[command()]
     Migrate {},
-    /// create user
-    #[command()]
-    CreateUser {
-        /// username to add
-        #[arg(required = true)]
-        user: String,
-        /// password to add
-        #[arg(required = true)]
-        password: String,
-    },
-    UpdatePassword {
-        /// username to add
-        #[arg(required = true)]
-        user: String,
-        /// password to add
-        #[arg(required = true)]
-        password: String,
-    },
 }
 
 async fn shutdown_signal(deletion_task_abort_handle: AbortHandle) {
@@ -134,49 +116,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::Migrate {} => {
             let pool = PgPoolOptions::new().connect(config.db.url()?).await?;
             sqlx::migrate!("./migrations").run(&pool).await?;
-            Ok(())
-        }
-        Commands::CreateUser { user, password } => {
-            let pool = PgPoolOptions::new().connect(config.db.url()?).await?;
-            let mut tx = pool.begin().await?;
-            let repo = Repository::from(&pool);
-            if let Err(e) = repo
-                .create_user(
-                    &mut tx,
-                    state.password_salt.as_str(),
-                    user.as_str(),
-                    password.as_str(),
-                )
-                .await
-            {
-                return Err(Box::from(e));
-            }
-            tx.commit().await?;
-            Ok(())
-        }
-        Commands::UpdatePassword { user, password } => {
-            let pool = PgPoolOptions::new().connect(config.db.url()?).await?;
-            let mut tx = pool.begin().await?;
-            let repo = Repository::from(&pool);
-            let res = match repo.get_user_by_username(&mut tx, user.as_str()).await {
-                Err(e) => {
-                    println!("failed to fetch user by {} - {}", user, e);
-                    return Err(Box::from(e));
-                }
-                Ok(res) => res,
-            };
-            if let Err(e) = repo
-                .update_password(
-                    &mut tx,
-                    res.user_id.0,
-                    config.password_salt.as_str(),
-                    password.as_str(),
-                )
-                .await
-            {
-                return Err(Box::from(e));
-            }
-            tx.commit().await?;
             Ok(())
         }
     }
