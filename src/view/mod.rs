@@ -14,6 +14,7 @@ pub const MAIN_ROOT_UID: UnqID = UnqID::new_str("main-root");
 #[rustfmt::skip]
 pub fn view_routes() -> Router<Arc<AppState>> {
     Router::new()
+        .route("/", get(view::index::root))
 }
 
 

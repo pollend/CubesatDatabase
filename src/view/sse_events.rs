@@ -21,7 +21,6 @@ use {
 };
 
 pub const RETRY_DURATION: u64 = 1000;
-
 pub trait SSETarget {
     fn sse_target(&self) -> Option<&str>;
 }
